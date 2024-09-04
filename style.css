@@ -1,0 +1,1020 @@
+/* import the fonts  from google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:rgba(251, 248, 204, 1);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* logo and name design styles */
+
+
+.logo {
+    border-radius: 50%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.2); 
+    filter: brightness(1.5); 
+}
+
+#name {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color:darkblue;
+    font-size: 28px;
+    cursor:default;
+}
+.layoutmob {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color:darkblue;
+    font-size: 28px;
+    cursor:default;
+}
+
+
+/*  nav- links design */
+
+nav, .nav-links {
+    display:flex;
+}
+nav {
+    justify-content: space-around;
+    align-items: center;
+    height:9vh;
+}
+.nav-links {
+    gap:2rem;
+    list-style: none;
+    font-size :18px;;
+    font-family:"Poppins", sans-serif;
+    font-weight: regular;
+    font-style: normal;
+ 
+
+}
+a {
+    color:darkblue;
+    text-decoration: none;
+    text-decoration-color: white ;
+}
+
+a:hover {
+    color:orangered;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: red ;
+}
+
+/* styles for hamburger menu */
+
+#hamburger-nav {
+    display:none;
+}
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+}
+.hamburger-icon span {
+    width:100%;
+    height:2px;
+    background-color: darkblue;
+    transition:all 0.3 ease-in-out;
+}
+.menu-links {
+    position: absolute;
+    border-color: #333;
+    top:100%;
+    right:0;
+    background-color:#FFEB99;
+    width:fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out;
+
+}
+
+/* hamburger menu links design */
+
+.menu-links a {
+    display: block;
+    padding: 10px;
+    text-align:center;
+    font-family:"Poppins", sans-serif;
+    font-size: 1srem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
+}
+/* Hover effect for menu links */
+.menu-links a:hover {
+    color: #007BFF; 
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.menu-links li {
+    list-style: none;
+}
+.menu-links.open {
+    max-height: 300px;
+    
+}
+
+.hamburger-icon.open  span:first-child{
+transform: rotate(45deg) translate(10px,5px);
+}
+.hamburger-icon.open  span:nth-child(2){
+  opacity: 0; /* removing the second line */
+}
+.hamburger-icon.open  span:last-child{
+transform: rotate(-45deg) translate(10px,-5px);
+}
+
+/* to get the close icon after opening the menu */
+
+.hamburger-icon span:first-child {
+    transform: none;
+}
+.hamburger-icon span:first-child {
+    opacity: 1;
+}
+.hamburger-icon span:first-child {
+    transform: none;
+}
+
+/* General section styling */
+section {
+    padding-top: 4vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+/* profile section styles */
+#profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    height: 80vh;
+}
+
+/* Profile picture container styling */
+.section__pic-container {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(251, 248, 204, 1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.section__pic-container img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 10px solid darkblue;
+    transition: transform 0.3s ease; 
+}
+
+/* Hover effect  while clicking on the profile */
+
+.section__pic-container:hover img {
+    transform: scale(1.1); 
+}
+
+
+/* Text container styling */
+
+.section__text {
+    flex: 1;
+    text-align: left; 
+    align-self: center;
+}
+
+.section__text p {
+    font-weight: 600;
+}
+.section__text1 {
+    text-align: center;
+}
+
+.section__text1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: medium;
+    
+    color: darkblue;
+}
+
+.title {
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    color:darkblue
+}
+.section__text2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: medium;
+    
+    color: darkblue;
+    text-align: center;
+}
+
+/* for social container styling */
+
+#social-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+/* icons designing */
+.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+}
+
+.icon:hover {
+    transform: scale(1.2); 
+    background-color: #FFD700;
+}
+
+
+/* Resume button design  */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+button {
+    background-color: #FFEB99; /* Light yellow background color */
+    color: #333; /* Text color */
+    border: 2px solid #555; /* Border color */
+    padding: 10px 20px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: box-shadow 0.3s ease; /* Transition for the shadow effect */
+}
+
+button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect when the button is pressed */
+}
+
+/* General styling for the About section */
+
+#About {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    background-color: #fbf8cc;
+}
+
+/* Styling for the "About Me" title */
+
+.title_about {
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    text-align: left;
+    font-size: 2rem;
+    color: #002B5B;
+   
+    
+}
+
+/* Description paragraph under About Me */
+
+.about_description p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: darkblue;
+    margin-bottom: 40px;
+}
+/* Container for the Experience and Education details */
+
+.about_details_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures the boxes stretch to the same height */
+    gap: 20px;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Box styling for Experience and Education */
+
+.details_container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1; /* Flexbox: allow boxes to take equal space */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: center; /* Centers the content horizontally */
+}
+
+.details_container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styling */
+
+.aicon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    display: block; /* Ensure the icon is treated as a block element */
+    margin-left: auto; /* Align icon horizontally */
+    margin-right: auto; /* Align icon horizontally */
+}
+
+/* Heading styling within the box */
+
+.details_container h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    color: darkblue;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styling within the box */
+
+.details_container p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    color: darkblue;
+    line-height: 1.5;
+}
+
+/* Timeline styling */
+
+.timeline {
+    margin-top: 20px;
+}
+
+/* Individual timeline entry */
+
+.timeline_entry {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Timeline box */
+
+.timeline_box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 30px);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Timeline dot */
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: darkblue;
+    border-radius: 50%;
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Timeline content */
+
+.timeline_content {
+    margin-left: 30px;
+}
+
+.timeline_content h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    color: darkblue;
+    margin-bottom: 10px;
+}
+
+.timeline_content p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    color: darkblue;
+    line-height: 1.5;
+}
+
+/* Styling for the arrow container */
+.arrow-container {
+    text-align: right;
+    margin-top: 40px;
+}
+
+/* Styling for the arrow icon */
+.arrow-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Arrow hover effect */
+
+.arrow-icon:hover {
+    transform: translateY(5px);
+}
+
+/* Fade-in animation for about section elements */
+
+.details_container, .timeline_box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.details_container.visible, .timeline_box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* for skills section */
+
+#Skills {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    background-color: #fbf8cc;
+    margin-top: 20px;
+}
+
+.title_skills {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 2rem;
+    color: #002B5B;
+    margin-bottom: 30px;
+     
+}
+
+.skills_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    
+}
+
+.skill {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    text-align: center;
+    margin: 20px;
+    cursor: pointer; 
+    transition: transform 0.2s; 
+
+}
+ .skill:hover {
+    transform: scale(1.05); 
+}
+
+
+ .skill-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+} 
+
+.skill h3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    color: darkblue;
+    margin-bottom: 10px;
+}
+
+.skill-bar-container { */
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 25px;
+    height: 20px; 
+    width: 100%;
+    margin: 10px 0;
+    
+    
+}
+
+.skill-bar {
+    width: 100%;
+    background-color:#e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 15px;
+    position: relative;
+    
+}
+
+.skill-level {
+    background-color: darkblue;
+    height: 100%;
+    width: 0%; 
+    border-radius: 25px;
+    transition: width 2s ease-in-out; 
+    position:relative;
+}
+
+.skill-percentage {
+    position: absolute;
+    opacity: 1;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.skill-level {
+    animation: fillBar 1.5s ease-in-out forwards;
+} 
+
+
+.skill-percentage {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.skill-level {
+    opacity: 1; 
+    transition: width 2s ease-in-out; 
+}
+
+
+.skill-bar-container .skill-percentage,
+.skill-bar-container .skill-level {
+    opacity: 1;
+}
+
+
+/* Achievements Section */
+
+#Achievements {
+    font-family: "Poppins", sans-serif;
+    background-color: #fbf8cc;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.title_achievements {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 2rem;
+    color: #002B5B;
+    
+}
+
+.achievements_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.achievement {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: left;
+    padding: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.achievement-icon {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.achievement-content {
+    margin-top: 15px;
+}
+
+.achievement-content h3 {
+    font-size: 1.5em;
+    color: #002B5B;
+}
+
+.achievement-content p {
+    font-size: 1em;
+    color: darkblue;
+}
+
+/* Animation triggered when the section comes into view */
+
+.achievement.animate-achievement {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.achievement:hover {
+    transform: translateY(-10px);
+}
+
+
+
+/* for the projects section */
+
+#Projects {
+    font-family: "Poppins", sans-serif;
+    background-color:#fbf8cc;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.title_projects {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: left;
+    font-size: 2rem;
+    color: #002B5B;
+    
+}
+
+.projects_container {
+    display: grid;
+   
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent; /* Initial transparent border */
+    transition: border-color 0.3s ease;
+}
+
+
+
+.project:hover {
+    transform: scale(1.05) rotate(3deg) translateY(-5px);
+}
+
+.project:hover {
+    border-color: darkblue; /* Changes border color on hover */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.project:hover {
+    animation: pulse 1s infinite; /* Pulsing effect on hover */
+}
+
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+
+.project-info h3 {
+
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.project-info p {
+    font-size: 1rem;
+    color: #666;
+}
+.project {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* for the contact section */
+
+#Contact {
+    font-family: "Poppins", sans-serif;
+    background-color: #fbf8cc;
+    padding: 50px 20px;
+    text-align: left;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-left, .contact-right {
+    flex: 1;
+    margin: 10px;
+}
+
+.sub-title {
+    text-align: left;
+    font-size: 2rem;
+    color: #002B5B;
+    margin-bottom: 30px;
+}
+
+.contact-left p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: #002B5B;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00509E;
+}
+
+.contact-right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-right input, .contact-right textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.contact-right button {
+    background-color: #00509E;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-right button:hover {
+    background-color: #002B5B;
+}
+
+/* General Styles for Icons under the contact section */
+
+.contact_icon {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 5px;
+    vertical-align: middle;
+    margin-right: 8px;
+    background-color: #002B5B; /* Background color for the icons */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+p a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Removes underline from links */
+    color: #1a2f7d; /* Set the text color */
+    font-size: 18px; /* Font size for the text */
+}
+
+.social-icons a .contact_icon {
+    background-color: #333; /* Default background for social icons */
+}
+
+.contact-left p a .contact_icon {
+    background-color: #002B5B; /* Background for mail and phone icons */
+}
+
+.contact-left p a:hover .contact_icon, 
+.social-icons a:hover .contact_icon {
+    transform: scale(1.1);
+    background-color: #00509E; /* Hover background color */
+}
+
+/* for the modal that displays thanks message */
+
+/* Modal Container */
+.modal {
+    font-family: "Poppins", sans-serif;
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color:#fbf8cc;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Close Button */
+
+.close-button {
+    color: darkblue;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #007BFF; /* Primary color on hover */
+}
+
+/* Modal Message */
+#modalMessage {
+    font-size: 18px;
+    color: darkblue;
+    margin: 20px 0;
+}
+
+
+/* styles for the arrowUP icon */
+
+.arrowup-container {
+    text-align: right; /* Center the arrow within the container */
+    margin: 20px 0; /* Add some space around the arrow */
+}
+
+.arrowup-icon {
+    width: 40px; /* Set the size of the arrow */
+    height: 40px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect */
+.arrowup-icon:hover {
+    transform: scale(1.2); /* Enlarge the arrow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+/* Additional styling */
+.arrowup-icon:active {
+    transform: scale(1); /* Slightly reduce size when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
+
+
+/* for the footer */
+
+.site-footer {
+    background-color:#fbf8cc;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
+
+.footer-copyright {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.footer-message {
+    font-style: italic;
+    color: #333;
+}
+
+
+/* end of tonyBaskar's portfolio styles */

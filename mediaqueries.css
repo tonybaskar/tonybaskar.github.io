@@ -1,0 +1,353 @@
+/*  what the media screen do here is  when the screen size is lesser than 1200px it will hide the nav bar menus */
+
+@media  screen and (max-width:1200px) {
+    
+
+#home {
+    display: none;
+}
+#hamburger-nav {
+    display:flex;
+}
+}
+
+
+/* for profile pic adjustment */
+
+@media (max-width: 768px) {
+    #profile {
+        flex-direction: column; /* Stacks the image on top of the text */
+        align-items: center;
+        height: auto;
+        gap: 2rem; /* Adds space between the image and text */
+    }
+
+    .section__pic-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .section__pic-container img {
+        height: 250px;
+        width: 250px;
+    }
+
+    section {
+        margin: 0 2rem; /* Reduces side margins on smaller screens */
+    }
+
+    .section__text {
+        text-align: center; /* Centers text on smaller screens */
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section__pic-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .section__pic-container img {
+        height: 200px;
+        width: 200px;
+    }
+
+    section {
+        margin: 0 1rem;
+    }
+}
+
+/*  for about section */
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+    .about_details_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .details_container {
+        width: 100%;
+        max-width: 300px; /* Max width for better readability */
+        margin-bottom: 20px; /* Space between boxes */
+    }
+}
+
+@media (max-width: 480px) {
+    .title_about {
+        font-size: 1.5rem;
+    }
+
+    .details_container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .aicon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .details_container h3 {
+        font-size: 1rem;
+    }
+
+    .details_container p {
+        font-size: 0.9rem;
+    }
+}
+/* Media Queries for mobile responsiveness */
+/* for about section in mobile screens */
+
+@media (max-width: 768px) {
+    .about_details_container {
+        flex-direction: column; /* Stack the boxes vertically */
+        gap: 20px;
+    }
+
+    .details_container {
+        max-width: 100%; /* Full width on mobile */
+        margin-bottom: 20px; 
+    }
+}
+
+/* for the timeline contents */
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+    .title_about {
+        font-size: 2rem;
+    }
+
+    .about_description p {
+        font-size: 1rem;
+    }
+
+    .timeline_content h3 {
+        font-size: 1rem;
+    }
+
+    .timeline_content p {
+        font-size: 0.9rem;
+    }
+
+    .timeline_box {
+        width: calc(100% - 20px);
+        padding: 15px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        left: -20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title_about {
+        font-size: 1.5rem;
+    }
+
+    .about_description p {
+        font-size: 0.9rem;
+    }
+
+    .timeline_entry {
+        margin-bottom: 20px;
+    }
+
+    .timeline_box {
+        padding: 10px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        left: -15px;
+    }
+
+    .timeline_content h3 {
+        font-size: 0.9rem;
+    }
+
+    .timeline_content p {
+        font-size: 0.8rem;
+    }
+}
+
+/*  for the arrow icon responsiveness */
+/* Media query for screens with a max width of 768px (Tablets and smaller devices) */
+
+@media (max-width: 768px) {
+    .arrow-container {
+        text-align: right; /* Center the arrow on smaller screens */
+        margin-top: 20px; /* Reduce the top margin for smaller screens */
+    }
+    .arrow-icon {
+        width: 30px; /* Slightly reduce the arrow size */
+        height: 30px;
+    }
+}
+
+/* Media query for screens with a max width of 480px (Mobile devices) */
+
+@media (max-width: 480px) {
+    .arrow-container {
+        text-align: right; /* Center the arrow on small mobile screens */
+        margin-top: 10px; /* Further reduce the top margin for mobile screens */
+    }
+    .arrow-icon {
+        width: 25px; /* Further reduce the arrow size */
+        height: 25px;
+    }
+}
+
+/* for the skill section */
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+    .skills_container {
+        flex-direction: column;
+    }
+
+    .skill {
+        max-width: 100%;
+    }
+}
+
+/* for the achievement section */
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .achievements_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .achievement {
+        max-width: 150%;
+    }
+}
+
+/* for project section responsiveness */
+
+@media (max-width: 768px) {
+    .projects_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* for the contact section */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .contact-left, .contact-right {
+        margin: 20px 0;
+    }
+
+    .sub-title {
+        text-align: left;
+    }
+
+    .social-icons {
+        text-align: center;
+    }
+
+    .contact-right {
+        text-align: left;
+    }
+}
+/* Media Queries for the contact section */
+
+@media (max-width: 480px) {
+    .contact_icon {
+        width: 30px; /* Even smaller size for mobile screens */
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    .contact-left p, 
+    .social-icons a {
+        margin-bottom: 15px; /* Add space between icons */
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: left;
+        gap: 10px; /* Space out social icons */
+    }
+
+    .contact-right form {
+        width: 90%; /* Make form fields full width on mobile */
+        margin: 0 auto; /* Center the form */
+        
+    }
+
+    .contact-right input, .contact-right textarea {
+        font-size: 0.9rem; /* Adjust font size for mobile */
+        padding: 8px; /* Reduce padding for mobile */
+    }
+
+    .contact-right button {
+        padding: 8px 15px; /* Adjust button size for mobile */
+    }
+}
+/* for the icon size of contact section in mobile screens */
+@media (max-width: 600px) {
+    p a {
+        font-size: 16px; /* Slightly smaller font on mobile screens */
+    }
+    
+    .contact_icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+    }
+}
+
+/* Media Queries  for the footer*/
+@media (max-width: 768px) {
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links a {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 15px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+    .footer-copyright,
+    .footer-message {
+        font-size: 12px;
+    }
+}
+
+/* end of mediaquery styles for tonybaskar's portfolio */
+
+
