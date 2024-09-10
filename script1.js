@@ -54,7 +54,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const message = this.Message.value.trim();
 
     if (validateForm(name, email, message)) {
-        showModal(`Thanks for your valuable feedback, ${name}`);
+        showModal(`Your Message has been received , ${name}`);
         this.reset();
     } else {
         showModal('Please fill out all fields correctly.');
