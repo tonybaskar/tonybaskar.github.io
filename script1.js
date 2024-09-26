@@ -1,6 +1,4 @@
 // for achievement section
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const achievementItems = document.querySelectorAll('.achievement');
     const options = {
@@ -45,6 +43,46 @@ document.addEventListener('DOMContentLoaded', function() {
         projectObserver.observe(section);
     });
 });
+
+// for the certificate section
+document.addEventListener('DOMContentLoaded', () => {
+    const certificates = document.querySelectorAll('.certificate-container');
+    let currentCertificate = 0;
+
+    // Function to show the current certificate
+    const showCertificate = (index) => {
+        certificates.forEach((cert, i) => {
+            if (i === index) {
+                cert.style.display = 'inline-block'; // Show current certificate
+            } else {
+                cert.style.display = 'none'; // Hide others
+            }
+        });
+    };
+
+    // Initial display
+    showCertificate(currentCertificate);
+
+    // Function to go to the next certificate
+    const nextCertificate = () => {
+        currentCertificate = (currentCertificate + 1) % certificates.length;
+        showCertificate(currentCertificate);
+    };
+
+    // Function to go to the previous certificate
+    const prevCertificate = () => {
+        currentCertificate = (currentCertificate - 1 + certificates.length) % certificates.length;
+        showCertificate(currentCertificate);
+    };
+
+    // Add event listeners for the buttons
+    document.getElementById('nextBtn').addEventListener('click', nextCertificate);
+    document.getElementById('prevBtn').addEventListener('click', prevCertificate);
+
+    // Automatically rotate certificates every 5 seconds
+    setInterval(nextCertificate, 5000);
+});
+
 
 // for contact section
 document.getElementById('contactForm').addEventListener('submit', function(event) {

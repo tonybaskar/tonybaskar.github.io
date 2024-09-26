@@ -23,6 +23,7 @@
                 <li><a href="#Skills">Skills </a></li>
                 <li><a href="#Achievements">Achievements </a></li>
                 <li><a href="#Projects">Projects </a></li>
+                <li><a href="#Certificates">Certificates </a></li>
                 <li><a href="#Contact">Contact </a></li>
                 
             </ul>
@@ -45,6 +46,7 @@
                     <li><a href="#Skills"onclick="toggleMenu()">Skills</a></li>
                     <li><a href="#Achievements"onclick="toggleMenu()">Achievements</a></li>
                     <li><a href="#Projects"onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#Certificates"onclick="toggleMenu()">Certificates</a></li>
                     <li><a href="#Contact"onclick="toggleMenu()">Contact</a></li>
                
                 </div>
@@ -254,6 +256,14 @@
         <section id="Achievements">
             <div class="title_achievements">Achievements</div>
             <div class="achievements_container">
+                
+                <div class="achievement">
+                    <img src="assets/CbWinner.jpg" alt="CodeBlaster Event Winner" class="achievement-icon">
+                    <div class="achievement-content">
+                        <h3>3rd Place - Code Blaster (KMG College of Arts and Science)</h3>
+                        <p>Secured 3rd place in the Code Blaster event organized by KMG College of Arts and Science, competing against participants from over 20 colleges. Demonstrated exceptional debugging skills in C and C++, successfully identifying and resolving complex issues under time constraints.</p>
+                    </div>
+                </div>
                 <div class="achievement">
                     <img src="assets/achievement1.png" alt="CGPA Award" class="achievement-icon">
                     <div class="achievement-content">
@@ -269,7 +279,7 @@
                     </div>
                 </div>
                 <div class="achievement">
-                    <img src="assets/achievement3.png" alt="Short film making" class="achievement-icon">
+                    <img src="assets/shortFilmMaking.jpg" alt="Short film making" class="achievement-icon">
                     <div class="achievement-content">
                         <h3>Short Film Making</h3>
                         <p>As the director and editor, I led a team in creating a short film, utilizing Adobe Premiere Pro for editing. Our collaborative effort was recognized with a prize, highlighting the success of our project and the strength of our teamwork.</p>
@@ -284,7 +294,7 @@
                 </div>
             
                 <div class="achievement">
-                    <img src="assets/achievement5.png" alt="knowledge Sharing On JavaScript" class="achievement-icon">
+                    <img src="assets/KnowledSharing.png" alt="knowledge Sharing On JavaScript" class="achievement-icon">
                     <div class="achievement-content">
                         <h3>JavaScript Basics and Core Concepts</h3>
                         <p>Conducted a session for 2nd and 3rd-year department students, covering JavaScript fundamentals and core concepts. The session included live demonstrations to enhance understanding of code functionality.</p>
@@ -341,11 +351,42 @@
             </div>
         </div>
         <div class="arrow-container">
-            <a href="#Contact">
-                <img src="assets/arrow.png" alt="Navigate to contact" class="arrow-icon"onclick="scrollToContact()"/>
+            <a href="#Certificates">
+                <img src="assets/arrow.png" alt="Navigate to certificates" class="arrow-icon"onclick="scrollToCertificates()"/>
             </a>
         </div>
     </section>
+    <!-- tonyBaskar's Portfolio certificates section -->
+     
+     <section id="Certificates">
+        <div class="title_Certificates">Certificates</div>
+        <div class="certificate-wrapper">
+            <button id="prevBtn" class="nav-btn">⟨</button> <!-- Previous Button -->
+            
+            <div class="certificate-container">
+                <img src="assets/RbiQuiz.png" alt="Certificate 1" class="certificate-image">
+                <div class="certificate-description"><strong>RBI Quiz Competition:</strong> Participated in a quiz on financial regulations and central banking, showcasing strong knowledge in these areas.</div>
+            </div>
+            <div class="certificate-container">
+                <img src="assets/ComputerVisionWebminar.png" alt="Certificate 2" class="certificate-image">
+                <div class="certificate-description"><strong>Computer Vision Webinar:</strong> Completed a webinar on advanced image processing techniques and machine learning applications.
+            </div>
+            </div>
+            <div class="certificate-container">
+                <img src="assets/TestingJavaGFG.png" alt="Certificate 3" class="certificate-image">
+                <div class="certificate-description"> <strong>Test Automation Using Selenium Java by GeeksforGeeks:</strong> Earned a certification in automating web tests with Selenium and Java, highlighting effective testing skills.</div>
+            </div>
+    
+            <button id="nextBtn" class="nav-btn">⟩</button> <!-- Next Button -->
+        </div>
+        <div class="arrow-container">
+            <a href="#Contact">
+                <img src="assets/arrow.png" alt="Navigate to contact" class="arrow-icon" onclick="scrollToContact()"/>
+            </a>
+        </div>
+        
+    </section>
+    
     <!-- tonybaskar's portfolio contact section-->
     <section id="Contact">
         <div class="container">
@@ -382,7 +423,7 @@
                         <input type="text" name="Name" placeholder="Your Name" required>
                         <label for="Email">Email</label>
                         <input type="email" name="Email" placeholder="Email" required>
-                        <label for="Message">Feedback</label>
+                        <label for="Message">Message</label>
                         <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
                         <button type="submit" >Submit</button>
                     </form>
@@ -410,6 +451,7 @@
         <a href="#Skills">Skills</a>
         <a href="#Achievements">Achievements</a>
         <a href="#Projects">Projects</a>
+        <a href="#Certificates">Certificates</a>
         <a href="#Contact">Contact</a>
     </div>
     <div class="footer-copyright">
