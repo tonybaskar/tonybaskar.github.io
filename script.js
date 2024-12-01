@@ -16,8 +16,19 @@ document.addEventListener("DOMContentLoaded", function() {
     typeWriter();
 });
 
+//script for the announcement section
 
-
+document.addEventListener("DOMContentLoaded", () => {
+    const announcementText = document.querySelector(".announcement-text");
+    announcementText.style.opacity = 0;
+    announcementText.style.transform = "translateY(20px)";
+    
+    setTimeout(() => {
+        announcementText.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        announcementText.style.opacity = 1;
+        announcementText.style.transform = "translateY(0)";
+    }, 500);
+});
 
 
 // script for  hamburger menu toggle open and close
