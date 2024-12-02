@@ -204,16 +204,21 @@ section {
     font-size: 18px;
     font-weight: 500;
     background-color: #FFEB99; 
+    border: 2px solid #555;
     color: #333;
-    border: none;
+    
     border-radius: 5px;
     text-decoration: none;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;  
+    
 }
 
 .btn:hover {
-    transform: scale(1.1);
+    transform: scale(0.9);
     text-decoration: none;
+    transition: box-shadow 0.3s ease; 
     
 }
 
