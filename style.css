@@ -1148,6 +1148,95 @@ p a {
     margin: 20px 0;
 }
 
+/* Chatbot Styles */
+.chatbot-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#chatbot {
+    width: 350px;
+    background-color: #fbf8cc;
+    border: 2px solid #00509E;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chatbot-header {
+    background-color: #00509E;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* General container styling for chatbot messages */
+.chatbot-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+/* Styling for user messages */
+.user-message {
+    background-color: #e0f7fa; /* Light blue */
+    color: #004d40; /* Dark green */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-align: right; /* Align user messages to the right */
+}
+
+/* Styling for bot messages */
+.bot-message {
+    background-color: #fce4ec; /* Light pink */
+    color: #880e4f; /* Dark magenta */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-align: left; /* Align bot messages to the left */
+}
+
+
+.chatbot-messages div {
+    margin-bottom: 10px;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    background-color: #fbf8cc;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#chatbot-send {
+    padding: 8px 15px;
+    background-color: #00509E;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#chatbot-send:hover {
+    background-color: #002B5B;
+}
 
 /* styles for the arrowUP icon */
 
@@ -1166,7 +1255,7 @@ p a {
 /* Hover effect */
 .arrowup-icon:hover {
     transform: scale(1.2); /* Enlarge the arrow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    box-shadow: 0 4px 8px rgba(87, 30, 220, 0.409); /* Add a shadow effect */
 }
 
 /* Additional styling */

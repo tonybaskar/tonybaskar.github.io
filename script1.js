@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nextBtn').addEventListener('click', nextCertificate);
     document.getElementById('prevBtn').addEventListener('click', prevCertificate);
 
-    // Automatically rotate certificates every 5 seconds
-    setInterval(nextCertificate, 5000);
+    // Automatically rotate certificates every 10 seconds
+    setInterval(nextCertificate, 10000);
 });
 
 

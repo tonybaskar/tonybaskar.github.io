@@ -428,7 +428,7 @@
     }
 
     .contact-right form {
-        width: 120%; /* Make form fields full width on mobile */
+        width: 100%; /* Make form fields full width on mobile */
         margin: 0 auto; /* Center the form */
         
     }
@@ -452,6 +452,28 @@
         width: 30px;
         height: 30px;
         margin-right: 6px;
+    }
+}
+
+/* Responsive Design for the chatBot*/
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .contact-left, .contact-right {
+        width: 100%;
+        text-align: center;
+    }
+
+    #chatbot {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #chatbot {
+        width: 100%;
     }
 }
 
