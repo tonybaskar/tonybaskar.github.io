@@ -291,7 +291,7 @@ function getBotResponse(message) {
     else if (lowerMessage.includes('thank you') || lowerMessage.includes('thanks')) {
         return 'You’re welcome! Let me know if you have more questions about Tony.';
     } 
-    else if (lowerMessage.includes('name')) {
+    else if (lowerMessage.includes('name')|| lowerMessage.includes('who is')) {
         return 'My creator is Tony Baskar Y!';
     } 
     else if (lowerMessage.includes('introduce')) {
@@ -331,7 +331,7 @@ function getBotResponse(message) {
     else if (lowerMessage.includes('coding')) {
         return 'Absolutely! Tony is passionate about coding and constantly learning new technologies.';
     }
-    else if (lowerMessage.includes('technologies')) {
+    else if (lowerMessage.includes('technologies')|| lowerMessage.includes('technology')) {
         return 'Tony is skilled in Java, JavaScript, SQL, PL/SQL, Figma, Canva, MS Office, and Full Stack Development.';
     }
     else {
