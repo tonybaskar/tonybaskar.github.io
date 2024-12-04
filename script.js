@@ -305,7 +305,7 @@ function getBotResponse(message) {
         return 'Tony is skilled in Java, JavaScript, SQL, PL/SQL, and Full Stack Development.';
     } 
     else if (lowerMessage.includes('achievements')) {
-        return 'Tony was a gold medalist and received the LIC Best Student of the Year award.';
+        return 'Tony was a gold medalist and received the LIC Best Student of the Year award.and he is recently certified by nptel with 75% in programming in java';
     } 
     else if (lowerMessage.includes('quick learner')|| lowerMessage.includes('character')) {
         return 'Tony is a quick learner and excels in understanding new concepts easily.';
