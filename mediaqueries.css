@@ -467,13 +467,74 @@
     }
 
     #chatbot {
-        width: 90%;
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     #chatbot {
         width: 100%;
+    }
+}
+
+/* mediaqueries for the testimonial section */
+
+/* Media query for screens smaller than 768px (tablets and phones) */
+@media screen and (max-width: 768px) {
+    .carousel-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .carousel-item h3 {
+        font-size: 1em;
+    }
+
+    .carousel-item .designation {
+        font-size: 0.9em;
+    }
+
+    .carousel-item .feedback {
+        font-size: 0.8em;
+    }
+
+    .carousel-item .rating {
+        font-size: 1em;
+    }
+}
+
+/* Media query for screens smaller than 480px (phones) */
+@media screen and (max-width: 480px) {
+    .testimonial-container {
+        padding: 10px;
+    }
+
+    .carousel-item img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .carousel-item h3 {
+        font-size: 0.9em;
+    }
+
+    .carousel-item .designation {
+        font-size: 0.8em;
+    }
+
+    .carousel-item .feedback {
+        font-size: 0.7em;
+        margin: 5px 0;
+    }
+
+    .carousel-item .rating {
+        font-size: 0.9em;
+    }
+
+    #prev,
+    #next {
+        font-size: 1.2em;
+        padding: 5px;
     }
 }
 

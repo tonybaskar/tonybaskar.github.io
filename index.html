@@ -15,6 +15,7 @@
         <div>
          <img class="logo" src="assets/logo.png" width="28px" height="28px"/> 
          <span id="name"></span>
+         
         </div>
         <div>
             <ul class="nav-links">
@@ -25,6 +26,7 @@
                 <li><a href="#Projects">Projects </a></li>
                 <li><a href="#Certificates">Certificates </a></li>
                 <li><a href="#Contact">Contact </a></li>
+                <li><a href="#Testimonials">Testimonials </a></li>
                 
             </ul>
         </div>
@@ -48,6 +50,7 @@
                     <li><a href="#Projects"onclick="toggleMenu()">Projects</a></li>
                     <li><a href="#Certificates"onclick="toggleMenu()">Certificates</a></li>
                     <li><a href="#Contact"onclick="toggleMenu()">Contact</a></li>
+                   
                
                 </div>
             </div>
@@ -57,10 +60,10 @@
     <!-- announcement section to make announcements -->
     <section id="announcement">
         <div class="announcement-container">
-            <p class="announcement-text">"Open to work and eager to make an impact.<br> Check out my work and reach out."</p>
+            <p class="announcement-text">"Open to work <br> Check out my work and reach out."</p>
             <div class="announcement-buttons">
                 <a href="#Projects" class="btn">Browse My Work</a>
-                <a href="#Contact" class="btn">Hire Me</a>
+                <a href="mailto:tonybaskar83@gmail.com" class="btn">Hire Me</a>
             </div>
         </div>
     </section>
@@ -182,6 +185,16 @@
                 <div class="skill-bar-container">
                     <div class="skill-bar">
                         <div class="skill-level" data-skill="95%"></div>
+                    </div>
+                    <span class="skill-percentage">0%</span>
+                </div>
+            </div>
+            <div class="skill">
+                <img src="assets/bootstrap.png" alt="bootstrap" class="skill-icon">
+                <h3>Bootstrap</h3>
+                <div class="skill-bar-container">
+                    <div class="skill-bar">
+                        <div class="skill-level" data-skill="50%"></div>
                     </div>
                     <span class="skill-percentage">0%</span>
                 </div>
@@ -491,14 +504,73 @@
             </div>
             </div>
             </div>
+        </div>
+        <div class="arrow-container">
+            <a href="#Testimonials">
+                <img src="assets/arrow.png" alt="Navigate to testimonials" class="arrow-icon" onclick="scrollToTestimonials()"/>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Tonybaskar portfolio testimonials section -->
 
+
+    <section class="testimonials-section" id="Testimonials">
+        <h2 style="color: #002B5B;">Testimonials</h2>
+        <div class="carousel">
+          <div class="carousel-inner" id="carouselInner">
+            <div class="carousel-item">
+              <img src="assets/personAvatar.png" alt="avatar">
+              <h3>Antony</h3>
+              <p class="designation">Student at SHC</p>
+              <p class="feedback">"Really good to see this God may bless you abundantly and by His grace you can achieve a lot. Really really hats off you. BASKAR"</p>
+              <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="carousel-item">
+              <img src="assets/personAvatar.png" alt="avatar">
+              <h3>Shalini</h3>
+              <p class="designation">Student at SHC</p>
+              <p class="feedback">"Congratulations for ur success and keep rocking by ur skills.i wish u to achieve & continue the successful path."</p>
+              <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            </div>
+            <div class="carousel-item">
+              <img src="assets/personAvatar.png" alt="avatar">
+              <h3>Christhu Raj</h3>
+              <p class="designation">Senior Software Engineer</p>
+              <p class="feedback">"Nice Tony, you really created a nice Profile"</p>
+              <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+          </div>
+        </div>
+      
+        <div class="testimonial-form">
+          <h3 style="color: darkblue;">Submit Your Testimonial</h3>
+          <form id="testimonialForm">
+            <input type="text" id="username" placeholder="Your Name" required />
+            <input type="text" id="designation" placeholder="Your Designation" required />
+            <textarea id="feedback" placeholder="Your Feedback" required></textarea>
+            <label for="rating">Rating:</label>
+            <select id="rating" required>
+              <option value="5">5 - Excellent</option>
+              <option value="4">4 - Good</option>
+              <option value="3">3 - Average</option>
+              <option value="2">2 - Below Average</option>
+              <option value="1">1 - Poor</option>
+            </select>
+            <button type="submit">Submit</button>
+          </form>
         </div>
         <div class="arrowup-container">
             <a href="#profile">
                 <img src="assets/arrowUp.png" alt="Navigate to Top" class="arrowup-icon"onclick="scrollToprofile()"/>
             </a>
         </div>
-    </section>
+      </section>
+    
     <!-- tonybaskar's portfolio footer section-->
 <footer class="site-footer">
     <div class="footer-links">
@@ -509,6 +581,7 @@
         <a href="#Projects">Projects</a>
         <a href="#Certificates">Certificates</a>
         <a href="#Contact">Contact</a>
+        <a href="#Testimonials">Testimonials</a>
     </div>
     <div class="footer-copyright">
         <p>&copy; 2024 Tony Baskar Y. All rights reserved.</p>
@@ -517,8 +590,9 @@
         <p>Thanks to Almighty God for His abundant blessing, and thank you to all who visited my portfolio. <b>with regards bAsKaR.</b></p>
     </div>
 </footer>
- 
+
  <script src="script.js"></script>   
  <script src="script1.js"></script>   
+ <script src="script2.js"></script>   
 </body>
 </html>
