@@ -1,132 +1,111 @@
-// for achievement section
-document.addEventListener('DOMContentLoaded', function () {
-    const achievementItems = document.querySelectorAll('.achievement');
-    const options = {
-        threshold: 0.3
-    };
-
-    const achievementObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-achievement');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    achievementItems.forEach(item => {
-        achievementObserver.observe(item);
-    });
-});
 
 
-// for project section
-document.addEventListener('DOMContentLoaded', function() {
-    const projectSections = document.querySelectorAll('.project');
-    console.log('Projects found:', projectSections.length); // Debugging
-
-    const options = {
-        threshold: 0.3
-    };
-
-    const projectObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                console.log('Animating:', entry.target); // Debugging
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    projectSections.forEach(section => {
-        projectObserver.observe(section);
-    });
-});
-
-// for the certificate section
-document.addEventListener('DOMContentLoaded', () => {
-    const certificates = document.querySelectorAll('.certificate-container');
-    let currentCertificate = 0;
-
-    // Function to show the current certificate
-    const showCertificate = (index) => {
-        certificates.forEach((cert, i) => {
-            if (i === index) {
-                cert.style.display = 'inline-block'; // Show current certificate
-            } else {
-                cert.style.display = 'none'; // Hide others
-            }
-        });
-    };
-
-    // Initial display
-    showCertificate(currentCertificate);
-
-    // Function to go to the next certificate
-    const nextCertificate = () => {
-        currentCertificate = (currentCertificate + 1) % certificates.length;
-        showCertificate(currentCertificate);
-    };
-
-    // Function to go to the previous certificate
-    const prevCertificate = () => {
-        currentCertificate = (currentCertificate - 1 + certificates.length) % certificates.length;
-        showCertificate(currentCertificate);
-    };
-
-    // Add event listeners for the buttons
-    document.getElementById('nextBtn').addEventListener('click', nextCertificate);
-    document.getElementById('prevBtn').addEventListener('click', prevCertificate);
-
-    // Automatically rotate certificates every 10 seconds
-    setInterval(nextCertificate, 10000);
-});
-
-
-// for contact section
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const name = this.Name.value.trim();
-    const email = this.Email.value.trim();
-    const message = this.Message.value.trim();
-
-    if (validateForm(name, email, message)) {
-        showModal(`Your Message has been received , ${name}`);
-        this.reset();
-    } else {
-        showModal('Please fill out all fields correctly.');
+// tonybaskar's portfolio script for the testimonials section
+const testimonials = [
+    {
+        name: "Antony",
+        designation: "Student at SHC",
+        feedback: "Really good to see this God may bless you abundantly and by His grace you can achieve a lot. Really really hats off you. BASKAR",
+        rating: 5,
+        image: "assets/personAvatar.png"
+    },
+    {
+        name: "Shalini",
+        designation: "Student at SHC",
+        feedback: "Congratulations for ur success and keep rocking by ur skills.i wish u to achieve & continue the successful path.",
+        rating: 4,
+        image: "assets/personAvatar.png"
+    },
+    {
+        name: "Christhu Raj",
+        designation: "Senior Software Engineer",
+        feedback: "Nice Tony, you really created a nice Profile",
+        rating: 5,
+        image: "assets/personAvatar.png"
     }
+];
+
+const carouselInner = document.getElementById("carouselInner");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
+let currentIndex = 0;
+let autoScrollInterval;
+
+function updateCarousel() {
+    const offset = -currentIndex * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
+}
+
+prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    updateCarousel();
+    resetAutoScroll();
 });
 
-function validateForm(name, email, message) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const namePattern = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    updateCarousel();
+    resetAutoScroll();
+});
 
-    return (
-        namePattern.test(name) &&
-        emailPattern.test(email) &&
-        message.length > 10
-    );
+document.getElementById("testimonialForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+     console.log("username",username)
+    const designation = document.getElementById("designation").value;
+    const feedback = document.getElementById("feedback").value;
+    const rating = document.getElementById("rating").value;
+
+    const newTestimonial = {
+        username,
+        designation,
+        feedback,
+        rating,
+        image: "assets/personAvatar.png"
+    };
+
+    testimonials.push(newTestimonial);
+
+    const newCarouselItem = document.createElement("div");
+    newCarouselItem.classList.add("carousel-item");
+    newCarouselItem.innerHTML = `
+        <img src="${newTestimonial.image}" alt="${newTestimonial.username}">
+        <h3>${newTestimonial.username}</h3>
+        <p class="designation">${newTestimonial.designation}</p>
+        <p class="feedback">"${newTestimonial.feedback}"</p>
+        <div class="rating">${"&#9733;".repeat(newTestimonial.rating)}${"&#9734;".repeat(5 - newTestimonial.rating)}</div>
+    `;
+
+    carouselInner.appendChild(newCarouselItem);
+    alert(`Thank you for your testimonial, ${username}!`);
+    e.target.reset();
+    resetAutoScroll();
+});
+
+// Auto-scroll functionality
+function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        updateCarousel();
+    }, 5000); 
 }
 
-function showModal(message) {
-    const modal = document.getElementById('modal');
-    const modalMessage = document.getElementById('modalMessage');
-    const closeButton = document.querySelector('.close-button');
-
-    modalMessage.textContent = message;
-    modal.style.display = 'block';
-
-    closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+function resetAutoScroll() {
+    clearInterval(autoScrollInterval);
+    startAutoScroll();
 }
+
+// Initialize carousel and start auto-scroll
+updateCarousel();
+startAutoScroll();
+
+
+
+
+
+
+
+
 
 

@@ -1,4 +1,4 @@
-// script to reveal the letters of my name tonybaskar y
+//tonybaskar's portfolio  script to reveal the letters of my name tonybaskar y
 
 document.addEventListener("DOMContentLoaded", function() {
     const name = "Tony Baskar Y";
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     typeWriter();
 });
 
-//script for the announcement section
+//tonybaskar's portfolio script for the announcement section
 
 document.addEventListener("DOMContentLoaded", () => {
     const announcementText = document.querySelector(".announcement-text");
@@ -31,23 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// script for  hamburger menu toggle open and close
+// tonybaskar's portfolio script for  hamburger menu toggle open and close
 
 function toggleMenu()
 {
     const menu= document.querySelector(".menu-links");
     const icon= document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open") // here the menu classlist calls the inbuilt function toggle with class open
+    menu.classList.toggle("open") 
     icon.classList.toggle("open")
 
 }
 
 
-// for about section reveal as the visitor scrolls the screen
+//tonybaskar's portfolio script for about section 
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Smooth scrolling to the Skills section
+    
     const arrowIcon = document.querySelector('.arrow-icon');
     arrowIcon.addEventListener('click', function (e) {
         e.preventDefault();
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Fade-in effect for About section content
+    
     const fadeInElements = document.querySelectorAll('.details_container, .timeline_box');
 
     function fadeInOnScroll() {
@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', fadeInOnScroll);
 
-    // Initial call to check if elements are already in view
+    
 
     fadeInOnScroll();
 
-    // Interactive arrow icon - change color on hover
+    
     arrowIcon.addEventListener('mouseenter', function () {
         arrowIcon.style.filter = 'brightness(1.5)';
     });
@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
         arrowIcon.style.filter = 'brightness(1)';
     });
 
-    // Change arrow color on click
     arrowIcon.addEventListener('mousedown', function () {
         arrowIcon.style.transform = 'scale(0.95)';
     });
@@ -94,12 +93,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//  function to scroll to next section  while clicking on arrow
+// tonybaskar's portfolio  function to scroll to next section  while clicking on arrow
 
 function scrollToSkills() {
     document.getElementById('Skills').scrollIntoView({ behavior: 'smooth' });
 }
-// function to scroll to achivement section
+// function to scroll to achievements section
 function scrollToAchievements() {
     document.getElementById('Achievements').scrollIntoView({ behavior: 'smooth' });
 }
@@ -125,7 +124,7 @@ function scrollToprofile() {
 }
 
 
-//skills section
+//tonybaskar's portfolio script for skills section
 
 document.addEventListener('DOMContentLoaded', () => {
     const skills = document.querySelectorAll('.skill');
@@ -135,47 +134,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillPercentage = skill.querySelector('.skill-percentage');
         const targetPercentage = skillLevel.getAttribute('data-skill');
 
-        // Reset skill level width and percentage
+        
         skillLevel.style.width = '0%';
         skillPercentage.textContent = '0%';
 
-        // Start animating the skill level width
+       
         skillLevel.style.width = targetPercentage;
 
-        // Animate percentage
+        
         let currentPercentage = 0;
         const target = parseInt(targetPercentage, 10);
-        const increment = Math.ceil(target / 100); // Increment step size
-        const intervalTime = 20; // Time in ms for each increment
-        const totalTime = 2000; // Total time for animation in ms
+        const increment = Math.ceil(target / 100); 
+        const intervalTime = 20;
+        const totalTime = 2000; 
 
         const percentageInterval = setInterval(() => {
             if (currentPercentage < target) {
                 currentPercentage += increment;
-                if (currentPercentage > target) currentPercentage = target; // Clamp value
+                if (currentPercentage > target) currentPercentage = target; 
                 skillPercentage.textContent = currentPercentage + '%';
             } else {
                 clearInterval(percentageInterval);
             }
         }, totalTime / (target / increment));
 
-        // Ensure the percentage remains visible after animation
+        
         skillPercentage.style.opacity = '1';
         skillLevel.style.opacity = '1';
     };
 
-    // Create an intersection observer to detect when the skills section is visible
+   
     const observerOptions = {
-        threshold: 0.5 // Trigger when at least 50% of the element is visible
+        threshold: 0.5 
     };
 
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // If the skill is visible, animate it
+                
                 const skill = entry.target;
                 animateSkillBar(skill);
-                // Unobserve the skill after animation
+                
                 observer.unobserve(skill);
             }
         });
@@ -183,108 +182,139 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    // Observe each skill
+    
     skills.forEach(skill => {
         observer.observe(skill);
     });
 });
 
+// tonybaskar's portfolio script for achievement section
+document.addEventListener('DOMContentLoaded', function () {
+    const achievementItems = document.querySelectorAll('.achievement');
+    const options = {
+        threshold: 0.3
+    };
 
-// script for the chatbot
-document.getElementById('chatbot-send').addEventListener('click', function () {
-    const inputField = document.getElementById('chatbot-input');
-    const userMessage = inputField.value.trim();
-    const messagesContainer = document.getElementById('chatbot-messages');
+    const achievementObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-achievement');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
 
-    if (userMessage) {
-        // Add user message to the chat
-        const userDiv = document.createElement('div');
-        userDiv.className = "user-message";
-        userDiv.textContent = `You: ${userMessage}`;
-        messagesContainer.appendChild(userDiv);
+    achievementItems.forEach(item => {
+        achievementObserver.observe(item);
+    });
+});
 
-       
+// tonybaskar's portfolio script for project section
+document.addEventListener('DOMContentLoaded', function() {
+    const projectSections = document.querySelectorAll('.project');
+    console.log('Projects found:', projectSections.length); 
 
+    const options = {
+        threshold: 0.3
+    };
 
-        // Add bot reply
-        const botDiv = document.createElement('div');
-        const botResponse = getBotResponse(userMessage);
-        botDiv.className = "bot-message";
-        botDiv.textContent = `Bot: ${botResponse}`;
-        messagesContainer.appendChild(botDiv);
+    const projectObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log('Animating:', entry.target); 
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
 
-        // Scroll to the bottom
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    projectSections.forEach(section => {
+        projectObserver.observe(section);
+    });
+});
 
-        // Clear the input field
-        inputField.value = '';
-    }
-    else {
-        alert('Please type a message before sending!');
+// tonybaskar's portfolio script for the certificate section
+document.addEventListener('DOMContentLoaded', () => {
+    const certificates = document.querySelectorAll('.certificate-container');
+    let currentCertificate = 0;
+
+    
+    const showCertificate = (index) => {
+        certificates.forEach((cert, i) => {
+            if (i === index) {
+                cert.style.display = 'inline-block'; 
+            } else {
+                cert.style.display = 'none'; 
+            }
+        });
+    };
+
+    
+    showCertificate(currentCertificate);
+
+    
+    const nextCertificate = () => {
+        currentCertificate = (currentCertificate + 1) % certificates.length;
+        showCertificate(currentCertificate);
+    };
+
+    
+    const prevCertificate = () => {
+        currentCertificate = (currentCertificate - 1 + certificates.length) % certificates.length;
+        showCertificate(currentCertificate);
+    };
+
+   
+    document.getElementById('nextBtn').addEventListener('click', nextCertificate);
+    document.getElementById('prevBtn').addEventListener('click', prevCertificate);
+
+ 
+    setInterval(nextCertificate, 10000);
+});
+
+// tonybaskar's portfolio script for contact section
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = this.Name.value.trim();
+    const email = this.Email.value.trim();
+    const message = this.Message.value.trim();
+
+    if (validateForm(name, email, message)) {
+        showModal(`Your Message has been received , ${name}`);
+        this.reset();
+    } else {
+        showModal('Please fill out all fields correctly.');
     }
 });
 
-function getBotResponse(message) {
-    const lowerMessage = message.toLowerCase();
+function validateForm(name, email, message) {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const namePattern = /^[A-Za-z\s]+$/; 
 
-    if (lowerMessage.includes('hello')) {
-        return 'Hi there! How can I assist you today? You can ask me about Tony\'s skills, education, or achievements.';
-    } 
-    else if (lowerMessage.includes('how are you')) {
-        return 'I am just a bot, but I am here to help you with details about Tony. What would you like to know?';
-    } 
-    else if (lowerMessage.includes('nice') || lowerMessage.includes('great')) {
-        return 'I’m glad you think so! Tony is an amazing person. Ask me more about his achievements or skills!';
-    } 
-    else if (lowerMessage.includes('thank you') || lowerMessage.includes('thanks')) {
-        return 'You’re welcome! Let me know if you have more questions about Tony.';
-    } 
-    else if (lowerMessage.includes('name')|| lowerMessage.includes('who is')) {
-        return 'My creator is Tony Baskar Y!';
-    } 
-    else if (lowerMessage.includes('introduce')) {
-        return 'Tony Baskar Y is a dedicated B.Sc. Computer Science student with a CGPA of 8.57. Skilled in Java, JavaScript, SQL, and Full Stack Development, he’s a quick learner and a gold medalist, ready to excel in his career!';
-    } 
-    
-    else if (lowerMessage.includes('education')) {
-        return 'Tony completed his B.Sc. Computer Science with a CGPA of 8.57.';
-    } 
-    else if (lowerMessage.includes('skills')) {
-        return 'Tony is skilled in Java, JavaScript, SQL, PL/SQL, and Full Stack Development.';
-    } 
-    else if (lowerMessage.includes('achievements')) {
-        return 'Tony was a gold medalist and received the LIC Best Student of the Year award.and he is recently certified by nptel with 75% in programming in java';
-    } 
-    else if (lowerMessage.includes('quick learner')|| lowerMessage.includes('character')) {
-        return 'Tony is a quick learner and excels in understanding new concepts easily.';
-    } 
-    else if (lowerMessage.includes('work') || lowerMessage.includes('career')|| lowerMessage.includes('experience')) {
-        return 'Tony is a fresher and he is ready to work in a reputed company where he can showcase his skills and grow professionally.';
-    } 
-    else if (lowerMessage.includes('hobbies') || lowerMessage.includes('interests')) {
-        return 'Tony enjoys coding, designing, and learning new technologies. He also likes sharing his knowledge with others.';
-    } 
-    else if (lowerMessage.includes('ready to work')) {
-    } 
-    
-    else if (lowerMessage.includes('oh') || lowerMessage.includes('ok')) {
-        return 'Let me know , if you want to know further about tony';
-    } 
-    else if (lowerMessage.includes('ready to work')) {
-        return 'Yes, Tony is ready to contribute to a dynamic team and bring value to a reputed organization.';
-    } 
-    else if (lowerMessage.includes('hire')) {
-        return 'Absolutely! Tony Baskar Y is an excellent candidate, equipped with the skills, dedication, and passion to contribute effectively to your team. He’s ready to showcase his talents and grow professionally.';
-    }
-    else if (lowerMessage.includes('coding')) {
-        return 'Absolutely! Tony is passionate about coding and constantly learning new technologies.';
-    }
-    else if (lowerMessage.includes('technologies')|| lowerMessage.includes('technology')) {
-        return 'Tony is skilled in Java, JavaScript, SQL, PL/SQL, Figma, Canva, MS Office, and Full Stack Development.';
-    }
-    else {
-        return 'I’m not sure about that. Try asking about Tony\'s work, achievements, skills, education, or his readiness to work!';
-    }
+    return (
+        namePattern.test(name) &&
+        emailPattern.test(email) &&
+        message.length > 10
+    );
+}
+
+function showModal(message) {
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modalMessage');
+    const closeButton = document.querySelector('.close-button');
+
+    modalMessage.textContent = message;
+    modal.style.display = 'block';
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 }
 
 

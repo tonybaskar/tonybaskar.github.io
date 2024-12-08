@@ -1,4 +1,4 @@
-/* import the fonts  from google */
+/* fonts imported for tonybaskar's portfolio */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -46,7 +46,7 @@ html {
 }
 
 
-/*  nav- links design */
+/*  nav- links design for tonybaskar's portfolio */
 
 nav, .nav-links {
     display:flex;
@@ -152,7 +152,7 @@ transform: rotate(45deg) translate(10px,5px);
 transform: rotate(-45deg) translate(10px,-5px);
 }
 
-/* to get the close icon after opening the menu */
+/* close icon trigger after clicking hamburger icon */
 
 .hamburger-icon span:first-child {
     transform: none;
@@ -164,7 +164,7 @@ transform: rotate(-45deg) translate(10px,-5px);
     transform: none;
 }
 
-/* General section styling */
+/* tonybaskar's portfolio section styling */
 section {
     padding-top: 4vh;
     margin: 0 10rem;
@@ -173,7 +173,7 @@ section {
 }
 
 
-/* Announcement Section Styles */
+/* tonybaskar's portfolio Announcement Section Styles */
 #announcement {
     background: linear-gradient(to right, rgba(251, 248, 204, 1), rgba(240, 234, 170, 1), rgba(245, 241, 185, 1));
     text-align: center;
@@ -222,7 +222,7 @@ section {
     
 }
 
-/* profile section styles */
+/* tonybaskar's portfolio profile section styles */
 #profile {
     display: flex;
     justify-content: space-between;
@@ -232,6 +232,7 @@ section {
 }
 
 /* Profile picture container styling */
+
 .section__pic-container {
     width: 400px;
     height: 400px;
@@ -252,7 +253,7 @@ section {
     transition: transform 0.3s ease; 
 }
 
-/* Hover effect  while clicking on the profile */
+/* tonybaskar's portfolio hover effect while clicking on the profile */
 
 .section__pic-container:hover img {
     transform: scale(1.1); 
@@ -321,7 +322,8 @@ section {
 }
 
 
-/* Resume button design  */
+/* tonybaskar's portfolio Resume button design  */
+
 .btn-container {
     display: flex;
     justify-content: center;
@@ -348,7 +350,7 @@ button:active {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-/* General styling for the About section */
+/* tonybaskar's portfolio General styling for the About section */
 
 #About {
     font-family: "Poppins", sans-serif;
@@ -371,7 +373,7 @@ button:active {
     
 }
 
-/* Description paragraph under About Me */
+/* tonybaskar's portfolio Description paragraph under About Me */
 
 .about_description p {
     font-family: "Poppins", sans-serif;
@@ -379,7 +381,7 @@ button:active {
     color: darkblue;
     margin-bottom: 40px;
 }
-/* Container for the Experience and Education details */
+/* tonybaskar's portfolio Container for the Experience and Education details */
 
 .about_details_container {
     display: flex;
@@ -391,7 +393,7 @@ button:active {
     width: 100%;
 }
 
-/* Box styling for Experience and Education */
+/* tonybaskar's portfolio Box styling for Experience and Education */
 
 .details_container {
     background-color: #fff;
@@ -412,7 +414,7 @@ button:active {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon styling */
+/* tonybaskar's portfolio Icon styling */
 
 .aicon {
     width: 40px;
@@ -423,7 +425,7 @@ button:active {
     margin-right: auto; 
 }
 
-/* Heading styling within the box */
+/* tonybaskar's portfolio Heading styling within the box */
 
 .details_container h3 {
     font-family: "Poppins", sans-serif;
@@ -432,7 +434,7 @@ button:active {
     margin-bottom: 10px;
 }
 
-/* Paragraph styling within the box */
+/*tonybaskar's portfolio Paragraph styling within the box */
 
 .details_container p {
     font-family: "Poppins", sans-serif;
@@ -441,13 +443,13 @@ button:active {
     line-height: 1.5;
 }
 
-/* Timeline styling */
+/*tonybaskar's portfolio Timeline styling */
 
 .timeline {
     margin-top: 20px;
 }
 
-/* Individual timeline entry */
+/* tonybaskar's portfolio Individual timeline entry */
 
 .timeline_entry {
     display: flex;
@@ -455,7 +457,7 @@ button:active {
     margin-bottom: 30px;
 }
 
-/* Timeline box */
+/*tonybaskar's portfolio  Timeline box */
 
 .timeline_box {
     background-color: #fff;
@@ -468,7 +470,7 @@ button:active {
     align-items: center;
 }
 
-/* Timeline dot */
+/*tonybaskar's portfolio Timeline dot */
 
 .dot {
     width: 10px;
@@ -481,7 +483,7 @@ button:active {
     transform: translateY(-50%);
 }
 
-/* Timeline content */
+/* tonybaskar's portfolio Timeline content */
 
 .timeline_content {
     margin-left: 30px;
@@ -501,7 +503,7 @@ button:active {
     line-height: 1.5;
 }
 
-/* Styling for the arrow container */
+/* tonybaskar's portfolio Styling for the arrow container */
 .arrow-container {
     text-align: right;
     margin-top: 40px;
@@ -510,7 +512,7 @@ button:active {
     padding: 20px 0;
 }
 
-/* Styling for the arrow icon */
+/* tonybaskar's portfolio Styling for the arrow icon */
 .arrow-icon {
     width: 40px;
     height: 40px;
@@ -518,13 +520,13 @@ button:active {
     transition: transform 0.3s ease;
 }
 
-/* Arrow hover effect */
+/*tonybaskar's portfolio Arrow hover effect */
 
 .arrow-icon:hover {
-    transform: translateY(5px);
+    transform: translateY(9px);
 }
 
-/* Fade-in animation for about section elements */
+/*tonybaskar's portfolio Fade-in animation for about section elements */
 
 .details_container, .timeline_box {
     opacity: 0;
@@ -539,7 +541,7 @@ button:active {
 
 
 
-/* for skills section */
+/* tonybaskar's portfolio  skills section styles */
 
 #Skills {
     position: relative;
@@ -662,7 +664,7 @@ button:active {
 }
 
 
-/* Achievements Section */
+/*tonybaskar's portfolio Achievements Section styles */
 
 #Achievements {
     font-family: "Poppins", sans-serif;
@@ -719,7 +721,7 @@ button:active {
     color: darkblue;
 }
 
-/* Animation triggered when the section comes into view */
+/* tonybaskar's portfolio Animation triggered when the section comes into view */
 
 .achievement.animate-achievement {
     opacity: 1;
@@ -732,7 +734,7 @@ button:active {
 
 
 
-/* for the projects section */
+/* tonybaskar's portfolio projects section styles */
 
 #Projects {
     font-family: "Poppins", sans-serif;
@@ -838,7 +840,7 @@ button:active {
     }
 }
 
-/* for the certificates section */
+/* tonybaskar's portfolio certificates section old try */
 
 
 /*#Certificates {
@@ -878,7 +880,7 @@ button:active {
 
 
 
- /* new try for certificates section */
+ /* tonybaskar's portfolio new try for certificates section */
 
 #Certificates {
     padding: 50px;
@@ -925,7 +927,7 @@ button:active {
 }
 
 .certificate-image:hover {
-    transform: scale(1.05); /* Zoom on hover */
+    transform: scale(1.05); 
 }
 
 .certificate-description {
@@ -978,7 +980,7 @@ button:active {
     right: -50px; 
 }
 
-/* for the contact section */
+/*tonybaskar's portfolio styles for the contact section */
 
 #Contact {
     font-family: "Poppins", sans-serif;
@@ -1062,7 +1064,7 @@ button:active {
     background-color: #002B5B;
 }
 
-/* General Styles for Icons under the contact section */
+/* tonybaskar's portfolio General Styles for Icons under the contact section */
 
 .contact_icon {
     width: 40px; 
@@ -1097,7 +1099,7 @@ p a {
     background-color: #00509E; 
 }
 
-/* for the modal that displays thanks message */
+/* tonybaskar's portfolio styles for the modal that displays thanks message */
 
 /* Modal Container */
 .modal {
@@ -1138,7 +1140,7 @@ p a {
 
 .close-button:hover,
 .close-button:focus {
-    color: #007BFF; /* Primary color on hover */
+    color: #007BFF; 
 }
 
 /* Modal Message */
@@ -1148,7 +1150,7 @@ p a {
     margin: 20px 0;
 }
 
-/* Chatbot Styles */
+/*tonybaskar's portfolio  Chatbot Styles */
 .chatbot-container {
     margin-top: 30px;
     display: flex;
@@ -1172,7 +1174,7 @@ p a {
     font-size: 1.2rem;
 }
 
-/* General container styling for chatbot messages */
+/*tonybaskar's portfolio General container styling for chatbot messages */
 .chatbot-messages {
     max-height: 300px;
     overflow-y: auto;
@@ -1187,22 +1189,22 @@ p a {
 
 /* Styling for user messages */
 .user-message {
-    background-color: #e0f7fa; /* Light blue */
-    color: #004d40; /* Dark green */
+    background-color: #e0f7fa; 
+    color: #004d40; 
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
-    text-align: right; /* Align user messages to the right */
+    text-align: right; 
 }
 
 /* Styling for bot messages */
 .bot-message {
-    background-color: #fce4ec; /* Light pink */
-    color: #880e4f; /* Dark magenta */
+    background-color: #fce4ec; 
+    color: #880e4f; 
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
-    text-align: left; /* Align bot messages to the left */
+    text-align: left; 
 }
 
 
@@ -1239,7 +1241,7 @@ p a {
 }
 
 
-/* styles for the testimonials section */
+/*tonybaskar's portfolio styles for the testimonials section */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: rgba(251, 248, 204, 1);
@@ -1333,34 +1335,34 @@ body {
     background-color: #0056b3;
   }
 
-/* styles for the arrowUP icon */
+/* tonybaskar's portfolio styles for the arrowup icon */
 
 .arrowup-container {
-    text-align: right; /* Center the arrow within the container */
-    margin: 20px 0; /* Add some space around the arrow */
+    text-align: right; 
+    margin: 20px 0; 
 }
 
 .arrowup-icon {
-    width: 40px; /* Set the size of the arrow */
+    width: 40px; 
     height: 40px;
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
-/* Hover effect */
+/* Hover effect for tonybaskar's portfolio arrow icon */
 .arrowup-icon:hover {
-    transform: scale(1.2); /* Enlarge the arrow slightly on hover */
-    box-shadow: 0 4px 8px rgba(87, 30, 220, 0.409); /* Add a shadow effect */
+    transform: scale(1.2); 
+    box-shadow: 0 4px 8px rgba(87, 30, 220, 0.409); 
 }
 
-/* Additional styling */
+/* Additional styling tonybaskar's portfolio arrow icon */
 .arrowup-icon:active {
-    transform: scale(1); /* Slightly reduce size when clicked */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 
-/* for the footer */
+/* tonybaskar's portfolios styles for the footer */
 
 .site-footer {
     background-color:#fbf8cc;

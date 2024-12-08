@@ -1,8 +1,6 @@
-/*  what the media screen do here is  when the screen size is lesser than 1200px it will hide the nav bar menus */
+/*  tonybaskar's portfolio mediqueries for reponsiveness in tablets, mobile and laptops*/
 
 @media  screen and (max-width:1200px) {
-    
-
 #home {
     display: none;
 }
@@ -12,14 +10,14 @@
 }
 
 
-/* for profile pic adjustment */
+/* tonybaskar's portfolio styles for profile picture adjustment */
 
 @media (max-width: 768px) {
     #profile {
-        flex-direction: column; /* Stacks the image on top of the text */
+        flex-direction: column; 
         align-items: center;
         height: auto;
-        gap: 2rem; /* Adds space between the image and text */
+        gap: 2rem; 
     }
 
     .section__pic-container {
@@ -33,11 +31,11 @@
     }
 
     section {
-        margin: 0 2rem; /* Reduces side margins on smaller screens */
+        margin: 0 2rem; 
     }
 
     .section__text {
-        text-align: center; /* Centers text on smaller screens */
+        text-align: center; 
     }
 
     .icon {
@@ -62,7 +60,7 @@
     }
 }
 
-/* Responsive Design  for the announcement section*/
+/* tonybaskar's portfolio Responsive Design  for the announcement section*/
 
 @media (max-width: 768px) {
     .announcement-text {
@@ -92,8 +90,8 @@
 }
 
 
-/*  for about section */
-/* Media Queries for Responsiveness */
+/* tonybaskar's portfolio mediaqueries for about section */
+
 
 @media (max-width: 768px) {
     .about_details_container {
@@ -103,8 +101,8 @@
 
     .details_container {
         width: 100%;
-        max-width: 300px; /* Max width for better readability */
-        margin-bottom: 20px; /* Space between boxes */
+        max-width: 300px; 
+        margin-bottom: 20px;
     }
 }
 
@@ -131,23 +129,23 @@
         font-size: 0.9rem;
     }
 }
-/* Media Queries for mobile responsiveness */
-/* for about section in mobile screens */
+/* tonybaskar's portfolio Media Queries for about section  */
+
 
 @media (max-width: 768px) {
     .about_details_container {
-        flex-direction: column; /* Stack the boxes vertically */
+        flex-direction: column; 
         gap: 20px;
     }
 
     .details_container {
-        max-width: 100%; /* Full width on mobile */
+        max-width: 100%;
         margin-bottom: 20px; 
     }
 }
 
-/* for the timeline contents */
-/* Media Queries for Responsiveness */
+/* tonybaskar's portfolio mediaqueries for the timeline contents */
+
 
 @media (max-width: 768px) {
     .title_about {
@@ -211,35 +209,36 @@
 }
 
 /*  for the arrow icon responsiveness */
-/* Media query for screens with a max width of 768px (Tablets and smaller devices) */
+
 
 @media (max-width: 768px) {
     .arrow-container {
-        text-align: right; /* Center the arrow on smaller screens */
-        margin-top: 20px; /* Reduce the top margin for smaller screens */
+        text-align: right; 
+        margin-top: 20px; 
     }
     .arrow-icon {
-        width: 30px; /* Slightly reduce the arrow size */
+        width: 30px; 
         height: 30px;
     }
+    
 }
 
 /* Media query for screens with a max width of 480px (Mobile devices) */
 
 @media (max-width: 480px) {
     .arrow-container {
-        text-align: right; /* Center the arrow on small mobile screens */
-        margin-top: 10px; /* Further reduce the top margin for mobile screens */
+        text-align: right; 
+        margin-top: 10px; 
     }
     .arrow-icon {
-        width: 25px; /* Further reduce the arrow size */
+        width: 25px; 
         height: 25px;
     }
 }
 
-/* for the skill section */
+/* tonybaskar's portfolio mediaqueries for the skills section */
 
-/* Media Queries for Responsive Design */
+
 
 @media (max-width: 768px) {
     .skills_container {
@@ -251,8 +250,8 @@
     }
 }
 
-/* for the achievement section */
-/* Media Queries */
+/* tonybaskar's portfolio mediaqueries for the achievement section */
+
 
 @media (max-width: 768px) {
     .achievements_container {
@@ -265,7 +264,7 @@
     }
 }
 
-/* for project section responsiveness */
+/* tonybaskar's portfolio mediaqueries for project section responsiveness */
 
 @media (max-width: 768px) {
     .projects_container {
@@ -279,7 +278,7 @@
     }
 }
 
-/* for the contact section */
+/*tonybaskar's portfolio mediaqueries for the contact section */
 @media (max-width: 768px) {
     .row {
         flex-direction: column;
@@ -302,27 +301,26 @@
     }
 }
 
-/* media queries for the certificates section */
-/* Responsive Styles */
+/* tonybaskar's portfolio media queries for the certificates section */
 
-/* Tablets (768px to 1024px) */
+
+
 @media (max-width: 1024px) {
     .certificate-wrapper {
         width: 90%;
     }
     
     .certificate-container {
-        height: 400px; /* Slightly smaller on tablet */
+        height: 400px;
     }
     
     .certificate-description {
-        font-size: 1rem; /* Adjust font size for tablet */
+        font-size: 1rem; 
     }
     
     .nav-btn {
         font-size: 1.5rem;
-        padding: 8px 15px; /* Smaller navigation buttons */
-    }
+        padding: 8px 15px; 
     
     #prevBtn {
         left: -30px;
@@ -340,21 +338,21 @@
     }
 
     .certificate-container {
-        height: 300px; /* Smaller on mobile */
+        height: 300px; 
     }
 
     .certificate-description {
-        font-size: 0.9rem; /* Smaller font size for mobile */
-        padding: 10px; /* Less padding for mobile */
+        font-size: 0.9rem; 
+        padding: 10px;
     }
 
     .nav-btn {
         font-size: 1.2rem;
-        padding: 5px 10px; /* Smaller buttons on mobile */
+        padding: 5px 10px;
     }
 
     #prevBtn {
-        left: -20px; /* Adjusted positioning for mobile */
+        left: -20px; 
     }
 
     #nextBtn {
@@ -362,25 +360,25 @@
     }
 
     .certificate-image:hover {
-        transform: scale(1.02); /* Less zoom effect on mobile */
+        transform: scale(1.02); 
     }
 }
 
 /* Mobile (up to 767px) */
 @media (max-width: 767px) {
     .certificate-wrapper {
-        width: 100%; /* Full width for mobile */
+        width: 100%; 
     }
 
     .certificate-container {
-        height: auto; /* Auto height for proper scaling */
-        max-height: 250px; /* Max height to control size on mobile */
+        height: auto; 
+        max-height: 250px; 
     }
 
     .certificate-image {
         width: 100%;
-        height: auto; /* Ensure the image scales properly */
-        object-fit: contain; /* Ensure full visibility without cropping */
+        height: auto; 
+        object-fit: contain; 
     }
 
     .certificate-description {
@@ -394,7 +392,7 @@
     }
 
     #prevBtn {
-        left: -1px; /* Adjusted positioning for mobile */
+        left: -1px; 
     }
 
     #nextBtn {
@@ -407,45 +405,45 @@
 }
 
 
-/* Media Queries for the contact section */
+/*tonybaskar's portfolio  Media Queries for the contact section */
 
 @media (max-width: 480px) {
     .contact_icon {
-        width: 30px; /* Even smaller size for mobile screens */
+        width: 30px;
         height: 30px;
         margin-right: 8px;
     }
 
     .contact-left p, 
     .social-icons a {
-        margin-bottom: 15px; /* Add space between icons */
+        margin-bottom: 15px; 
     }
 
     .social-icons {
         display: flex;
         justify-content: left;
-        gap: 10px; /* Space out social icons */
+        gap: 10px; 
     }
 
     .contact-right form {
-        width: 100%; /* Make form fields full width on mobile */
-        margin: 0 auto; /* Center the form */
+        width: 90%; 
+        margin: 0 auto; 
         
     }
 
     .contact-right input, .contact-right textarea {
-        font-size: 0.9rem; /* Adjust font size for mobile */
-        padding: 8px; /* Reduce padding for mobile */
+        font-size: 0.9rem; 
+        padding: 8px; 
     }
 
     .contact-right button {
-        padding: 8px 15px; /* Adjust button size for mobile */
+        padding: 8px 15px; 
     }
 }
-/* for the icon size of contact section in mobile screens */
+/* tonybaskar's portfolio media queries for the icon size of contact section in mobile screens */
 @media (max-width: 600px) {
     p a {
-        font-size: 16px; /* Slightly smaller font on mobile screens */
+        font-size: 16px; 
     }
     
     .contact_icon {
@@ -455,7 +453,7 @@
     }
 }
 
-/* Responsive Design for the chatBot*/
+/*tonybaskar's portfolio media queries Responsive Design for the chatBot*/
 @media (max-width: 768px) {
     .row {
         flex-direction: column;
@@ -477,9 +475,9 @@
     }
 }
 
-/* mediaqueries for the testimonial section */
+/* tonybaskar's portfolio mediaqueries for the testimonial section */
 
-/* Media query for screens smaller than 768px (tablets and phones) */
+
 @media screen and (max-width: 768px) {
     .carousel-item img {
         width: 100px;
@@ -538,7 +536,7 @@
     }
 }
 
-/* Media Queries  for the footer*/
+/* tonybaskar's portfolio Media Queries  for the footer*/
 @media (max-width: 768px) {
     .footer-links {
         display: flex;
@@ -568,5 +566,4 @@
 }
 
 /* end of mediaquery styles for tonybaskar's portfolio */
-
 
