@@ -278,6 +278,19 @@
     }
 }
 
+/* Media Queries for Buttons */
+@media screen and (max-width: 768px) {
+    .project-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .view-project-btn,
+    .view-code-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
 /*tonybaskar's portfolio mediaqueries for the contact section */
 @media (max-width: 768px) {
     .row {

@@ -817,6 +817,30 @@ button:active {
     font-size: 1rem;
     color: #666;
 }
+
+.project-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-project-btn,
+.view-code-btn {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-project-btn:hover,
+.view-code-btn:hover {
+    background-color: #003f73;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .project {
     opacity: 0;
     transform: translateY(20px);
@@ -888,7 +912,6 @@ button:active {
     font-family: "Poppins", sans-serif;
     position: relative;
     padding: 40px;
-    background-color: #fbf8cc;
     margin-top: 40px;
     
 }
@@ -904,7 +927,7 @@ button:active {
 .certificate-wrapper {
     position: relative;
     display: inline-block;
-    width: 70%; 
+    width: 80%; 
     max-width: 800px;
     margin: 0 auto;
 }
@@ -1047,7 +1070,7 @@ button:active {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    width: 100%;
+    width:100%;
 }
 
 .contact-right button {
@@ -1109,7 +1132,7 @@ p a {
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4); 

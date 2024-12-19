@@ -84,6 +84,7 @@ document.getElementById("testimonialForm").addEventListener("submit", (e) => {
 });
 
 // Auto-scroll functionality
+
 function startAutoScroll() {
     autoScrollInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % testimonials.length;

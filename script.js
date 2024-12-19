@@ -233,6 +233,58 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// view project and view code button
+
+function viewProject(projectId) {
+    switch (projectId) {
+        case 'project1':
+            window.open("https://tonybaskar.github.io", "_blank"); 
+            break;
+        case 'project2':
+            window.open("https://tonybaskar.github.io/CIneHavenTB/", "_blank"); 
+            break;
+        case 'project3':
+            // window.open("#", "_blank"); 
+            alert("Project will be Linked soon...");
+        case 'project4':
+            // window.open("#", "_blank"); 
+            alert("Project will be Linked soon...");
+            break;
+        case 'project5':
+            // window.open("#", "_blank"); 
+            alert("Project will be Linked soon...");
+            break;
+        default:
+            alert("Project not found!");
+    }
+}
+
+function viewCode(projectId) {
+    switch (projectId) {
+        case 'project1':
+            window.open("https://github.com/tonybaskar/tonybaskar.github.io", "_blank"); 
+            break;
+        case 'project2':
+            window.open("https://github.com/tonybaskar/CIneHavenTB", "_blank"); 
+            break;
+        case 'project3':
+            // window.open("#", "_blank"); 
+            alert("Code will Be linked soon...");
+            break;
+        case 'project4':
+            // window.open("#", "_blank"); 
+            alert("Code will Be linked soon...");
+            break;
+        case 'project5':
+            // window.open("#", "_blank");
+            alert("Code will Be linked soon...");
+            break;
+        default:
+            alert("Code not found!");
+    }
+}
+
+
 // tonybaskar's portfolio script for the certificate section
 document.addEventListener('DOMContentLoaded', () => {
     const certificates = document.querySelectorAll('.certificate-container');
@@ -269,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('prevBtn').addEventListener('click', prevCertificate);
 
  
-    setInterval(nextCertificate, 10000);
+    setInterval(nextCertificate, 5000);
 });
 
 // tonybaskar's portfolio script for contact section
