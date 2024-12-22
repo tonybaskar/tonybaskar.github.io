@@ -241,7 +241,7 @@ function viewProject(projectId) {
             window.open("https://tonybaskar.github.io", "_blank"); 
             break;
         case 'project2':
-            window.open("https://tonybaskar.github.io/CIneHavenTB/", "_blank"); 
+            window.open("https://tonybaskar.github.io/CIneHavenTB/home.html", "_blank"); 
             break;
         case 'project3':
             // window.open("#", "_blank"); 
