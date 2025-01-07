@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: rgba(251, 248, 204, 1);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: darkblue;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out, slideUp 2s ease-in-out;
+        }
+        header p {
+            font-size: 1rem;
+            margin: 5px 0 0;
+            animation: fadeIn 2.5s ease-in-out, slideUp 2.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        .blog-post {
+            border: 1px solid darkblue;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px auto;
+            background-color: white;
+            max-width: 800px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: darkblue;
+        }
+        .blog-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+        .blog-content {
+            font-size: 1rem;
+            color: #333;
+        }
+        .category-btn, .bookmark-btn, .share-btn {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .category-btn:hover, .bookmark-btn:hover, .share-btn:hover {
+            background-color: #0056b3;
+        }
+        #darkModeToggle {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+        }
+        #darkModeToggle:hover {
+            background-color: #0056b3;
+        }
+        #pagination button {
+            padding: 10px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: darkblue;
+            color: white;
+            cursor: pointer;
+        }
+        #pagination button:hover {
+            background-color: #0056b3;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .dark-mode .blog-post {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        footer {
+            background: darkblue;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin: 10px 0;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: lightblue;
+        }
+        .quotes {
+            margin: 10px 0;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .blog-post {
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tony Baskar's Blog</h1>
+        <p>Sharing knowledge, code, and insights</p>
+    </header>
+
+    <div class="watermark">Tony Baskar's Blog</div>
+
+    <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="Search blogs..." 
+        style="width: 100%; padding: 0.5rem; margin: 1.5rem 0; border: 1px solid darkblue; border-radius: 5px;">
+
+    <div style="margin-bottom: 1rem; text-align: center;">
+        <button class="category-btn" data-category="javascript">JavaScript</button>
+        <button class="category-btn" data-category="web-design">Web Design</button>
+        <button class="category-btn" data-category="all">All</button>
+    </div>
+
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+
+    <div id="blogContainer">
+        <div class="blog-post" data-category="javascript">
+            <img src="./assets/blog1.jpeg" alt="JavaScript ES6" class="blog-image">
+            <h2 class="blog-title"> "Mastering JavaScript: A Beginner's Guide"</h2>
+            <p class="blog-content">JavaScript is a vital language for web development, enabling interactive features. Key topics for beginners include variables, functions, and DOM manipulation. Understanding these basics helps in building dynamic, interactive websites.</p>
+            <button class="bookmark-btn">Bookmark</button>
+            <div class="social-share">
+                <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+            </div>
+        </div>
+
+        <div class="blog-post" data-category="web-design">
+            <img src="./assets/blog2.jpeg" alt="JavaScript ES6" class="blog-image">
+            <h2 class="blog-title">"The Importance of Web Design"</h2>
+            <p class="blog-content">Effective web design focuses on user experience. It includes responsive layouts, visual hierarchy, and accessibility to ensure websites are functional and easy to navigate across all devices.</p>
+            <button class="bookmark-btn">Bookmark</button>
+            <div class="social-share">
+                <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pagination" style="text-align: center; margin-top: 1rem;"></div>
+
+    <footer>
+        <a href="index.html">Back to Portfolio</a>
+        <div class="social-icons">
+            <a href="https://x.com/tonyyesu1234" target="_blank">Twitter</a>
+            <a href="https://www.linkedin.com/in/tony-baskar-y-55a2282a7/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/tonybaskar" target="_blank">GitHub</a>
+        </div>
+        <div class="quotes" id="quoteDisplay"></div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchBar').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const blogPosts = document.querySelectorAll('.blog-post');
+            blogPosts.forEach(post => {
+                const title = post.querySelector('.blog-title').textContent.toLowerCase();
+                const content = post.querySelector('.blog-content').textContent.toLowerCase();
+                if (title.includes(query) || content.includes(query)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedCategory = button.dataset.category;
+                const blogPosts = document.querySelectorAll('.blog-post');
+                
+                // Show or hide blog posts based on category
+                blogPosts.forEach(post => {
+                    if (selectedCategory === 'all') {
+                        post.style.display = 'block';
+                    } else if (post.dataset.category === selectedCategory) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Bookmark button
+        const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+        bookmarkButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Blog post bookmarked!');
+                button.textContent = 'Bookmarked';
+                button.disabled = true;
+                button.style.backgroundColor = '#666';
+            });
+        });
+
+        // Share buttons
+        const shareButtons = document.querySelectorAll('.share-btn');
+        shareButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const platform = button.dataset.platform;
+                const blogTitle = button.closest('.blog-post').querySelector('.blog-title').textContent;
+                let shareUrl = '';
+
+                if (platform === 'twitter') {
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}`;
+                } else if (platform === 'linkedin') {
+                    shareUrl = `https://www.linkedin.com/shareArticle?title=${encodeURIComponent(blogTitle)}`;
+                }
+
+                window.open(shareUrl, '_blank');
+            });
+        });
+
+        // Quotes for footer
+        const quotes = [
+            "The best way to predict the future is to invent it.",
+            "Code is like humor. When you have to explain it, it’s bad.",
+            "Simplicity is the soul of efficiency.",
+            "First, solve the problem. Then, write the code.",
+        ];
+        let quoteIndex = 0;
+
+        function displayQuote() {
+            const quoteDisplay = document.getElementById('quoteDisplay');
+            quoteDisplay.textContent = quotes[quoteIndex];
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+        }
+
+        setInterval(displayQuote, 5000);
+        displayQuote();
+
+        // Pagination 
+        let currentPage = 1;
+        const postsPerPage = 2;
+        const blogPosts = document.querySelectorAll('.blog-post');
+        const pagination = document.getElementById('pagination');
+
+        function displayBlogs(page) {
+            const start = (page - 1) * postsPerPage;
+            const end = start + postsPerPage;
+            blogPosts.forEach((post, index) => {
+                if (index >= start && index < end) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+            pagination.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayBlogs(currentPage);
+                });
+                if (i === currentPage) {
+                    btn.style.backgroundColor = '#0056b3';
+                    btn.style.color = 'white';
+                }
+                pagination.appendChild(btn);
+            }
+        }
+
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        displayBlogs(currentPage);
+    </script>
+</body>
+</html>
