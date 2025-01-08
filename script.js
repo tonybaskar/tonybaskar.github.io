@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactButton = document.getElementById("contact-btn");
   
     contactButton.addEventListener("click", function () {
-      const contactSection = document.getElementById("Contact"); // Ensure the contact section has id="contact"
+      const contactSection = document.getElementById("Contact"); 
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: "smooth" });
       } else {
