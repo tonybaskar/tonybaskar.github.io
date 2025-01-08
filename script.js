@@ -30,6 +30,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
 });
 
+// availability section
+document.addEventListener("DOMContentLoaded", function () {
+    const contactButton = document.getElementById("contact-btn");
+  
+    contactButton.addEventListener("click", function () {
+      const contactSection = document.getElementById("Contact"); // Ensure the contact section has id="contact"
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.error("Contact section not found!");
+      }
+    });
+  });
+  
+
+// gamification
+const sections = document.querySelectorAll("section");
+const achievements = [
+    { id: "profile", message: "Welcome to my world! Thanks for stopping by my profile." },
+    { id: "About", message: "Wow! You’ve uncovered some fascinating facts about me!" },
+    { id: "Skills", message: "You’ve unlocked the treasure chest of my skills. Impressed yet?" },
+    { id: "Achievements", message: "Congratulations! You’ve just stumbled upon my hall of fame!" },
+    { id: "Projects", message: "Take a peek at my creations—every project tells a story!" },
+    { id: "Certificates", message: "Look at these! Proof of my hard work and dedication!" },
+    { id: "Contact", message: "You’re almost there—reach out and let’s connect!" },
+    { id: "chatbot", message: "Hey there! Meet my friendly assistant. Ready to chat?" },
+    { id: "Testimonials", message: "Voices from the past—hear what others have to say about me!" },
+];
+
+const unlockAchievement = (message) => {
+    const popup = document.getElementById("achievement-popup");
+    const text = document.getElementById("achievement-text");
+
+    text.textContent = message;
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 3000);
+};
+
+let unlocked = new Set();
+
+window.addEventListener("scroll", () => {
+    sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight && !unlocked.has(section.id)) {
+            const achievement = achievements.find((a) => a.id === section.id);
+            if (achievement) {
+                unlockAchievement(achievement.message);
+                unlocked.add(section.id);
+            }
+        }
+    });
+});
+
+
 
 // tonybaskar's portfolio script for  hamburger menu toggle open and close
 
@@ -368,6 +425,9 @@ function showModal(message) {
         }
     });
 }
+
+
+  
 
 
 

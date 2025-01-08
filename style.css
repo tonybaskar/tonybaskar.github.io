@@ -221,6 +221,81 @@ section {
     transition: box-shadow 0.3s ease; 
     
 }
+/* availability section */
+.availability-section {
+    background-color: #002366;
+    padding: 20px;
+    text-align: center;
+    font-family:  'Poppins', sans-serif;
+    color: #002366;
+  }
+  
+  .availability-container {
+    display: inline-block;
+    background: #ffffff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .availability-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+    padding-bottom: 10px;
+  }
+  
+  .availability-btn {
+    background-color: #002366;
+    color: #ffffff;
+    font-size: 1rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .availability-btn:hover {
+    background-color: #000099;
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .availability-container {
+      padding: 10px 20px;
+    }
+  
+    .availability-text {
+      font-size: 1rem;
+    }
+  
+    .availability-btn {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+
+/* gamification styles */
+#achievement-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    z-index: 1000;
+}
+
+#achievement-popup.show {
+    opacity: 1;
+}
+
 
 /* tonybaskar's portfolio profile section styles */
 #profile {
@@ -1383,6 +1458,55 @@ body {
     transform: scale(1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
+
+/* branding section */
+.branding-section {
+    background-color: #fbf8cc; 
+    padding: 4rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #003366; 
+  }
+  
+  .branding-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .avatar-container {
+    border: 5px solid #003366;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+  }
+  
+ 
+  
+  .branding-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .fun-fact {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #006699; 
+  }
+  
+  .personal-quote {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    font-style: italic;
+    color: #003366;
+    border-left: 4px solid #006699;
+    padding-left: 1rem;
+  }
+  
 
 
 /* tonybaskar's portfolios styles for the footer */
