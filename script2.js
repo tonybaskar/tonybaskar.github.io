@@ -95,23 +95,3 @@ function getBotResponse(message) {
     }
 }
 
-
-
-// script for the branding section
-document.addEventListener("DOMContentLoaded", () => {
-    const funFact = document.querySelector(".fun-fact");
-    const quote = document.querySelector(".personal-quote");
-  
-    funFact.style.opacity = 0;
-    quote.style.opacity = 0;
-  
-    setTimeout(() => {
-      funFact.style.transition = "opacity 1.5s ease-in";
-      funFact.style.opacity = 1;
-    }, 500);
-  
-    setTimeout(() => {
-      quote.style.transition = "opacity 1.5s ease-in";
-      quote.style.opacity = 1;
-    }, 1000);
-  });

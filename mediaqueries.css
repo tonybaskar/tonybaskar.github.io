@@ -548,28 +548,6 @@
         padding: 5px;
     }
 }
-/* tonybaskar's portfolio mediaqueries for the branding section */
-@media (max-width: 768px) {
-    .branding-container {
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-  
-    .avatar-container {
-      width: 150px;
-      height: 150px;
-    }
-  
-    .branding-title {
-      font-size: 1.5rem;
-    }
-  
-    .fun-fact,
-    .personal-quote {
-      font-size: 1rem;
-    }
-  }
-  
 
 /* tonybaskar's portfolio Media Queries  for the footer*/
 @media (max-width: 768px) {
