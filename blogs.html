@@ -69,7 +69,7 @@
             color: darkblue;
         }
         .blog-image {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -83,6 +83,63 @@
             font-size: 1rem;
             color: #333;
         }
+
+        .date {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555; 
+            font-style: italic;
+            text-align: right; 
+            }
+
+     /* code container styling */
+
+    .code-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+    }
+
+    pre {
+        background-color: #f5f5f5; 
+        border: 1px solid #ddd; 
+        border-radius: 8px; 
+        padding: 16px;
+        overflow-x: auto; 
+        margin: 20px 0;
+    }
+
+    code {
+        font-family: "Courier New", Courier, monospace; 
+        font-size: 14px; 
+        line-height: 1.6;
+        color: #2c3e50;
+    }
+
+    
+    .code-keyword {
+        color: #2980b9; 
+        font-weight: bold; 
+    }
+
+    
+    .code-string {
+        color: #27ae60; 
+    }
+
+   
+    .code-comment {
+        color: #7f8c8d; 
+        font-style: italic; 
+    }
+
         .category-btn, .bookmark-btn, .share-btn {
             padding: 10px 15px;
             margin: 5px;
@@ -119,14 +176,8 @@
         #pagination button:hover {
             background-color: #0056b3;
         }
-        .dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .dark-mode .blog-post {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
+
+        /* footer  styling*/
         footer {
             background: darkblue;
             color: white;
@@ -159,6 +210,133 @@
             margin: 10px 0;
             font-style: italic;
         }
+
+        /* dark-mode styles */
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .dark-mode .blog-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .blog-image {
+             width: 100%;
+             height: auto;
+             border-radius: 5px;
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             overflow: hidden;
+        }
+
+        .dark-mode .blog-image:hover {
+              transform: scale(1.05);
+              box-shadow: 0 8px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .dark-mode .blog-post {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .dark-mode .blog-content{
+            color:#ffffff;
+
+        }
+
+        .dark-mode .date{
+            color:#ffffff;
+
+        }
+       
+        /* Dark Mode Code Container Styling */
+        .dark-mode .code-section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            color: #ecf0f1;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        .dark-mode pre {
+            background-color: #2c3e50;
+            border: 1px solid #34495e;
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .dark-mode code {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .code-keyword {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .dark-mode .code-string {
+            color: #2ecc71;
+        }
+
+        .dark-mode .code-comment {
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        /* dark-mode styles for the footer */
+        
+        .dark-mode footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .dark-mode footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dark-mode footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode .social-icons {
+            margin: 10px 0;
+        }
+
+        .dark-mode .social-icons a {
+            margin: 0 10px;
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .dark-mode .social-icons a:hover {
+            color: #3498db;
+        }
+
+        .dark-mode .quotes {
+            margin: 10px 0;
+            font-style: italic;
+            color: #bdc3c7;
+        }
+
+
+       /* mediaqueries for responsive design */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -195,11 +373,153 @@
 
     <button id="darkModeToggle">Toggle Dark Mode</button>
 
+    <!-- blog 1- javascript -->
+
     <div id="blogContainer">
         <div class="blog-post" data-category="javascript">
             <img src="./assets/blog1.jpeg" alt="JavaScript ES6" class="blog-image">
-            <h2 class="blog-title"> "Mastering JavaScript: A Beginner's Guide"</h2>
+            <h2 class="blog-title">"Mastering JavaScript: A Beginner's Guide"</h2>
             <p class="blog-content">JavaScript is a vital language for web development, enabling interactive features. Key topics for beginners include variables, functions, and DOM manipulation. Understanding these basics helps in building dynamic, interactive websites.</p>
+            <!-- code 1 -->
+            <h3 class="code-section-title">Code for Beginners</h3>
+            <pre>
+                <code>
+                // <span class="code-comment">Add two numbers</span>
+                let num1 = <span class="code-keyword">5</span>;
+                let num2 = <span class="code-keyword">3</span>;
+                let sum = num1 + num2;
+                
+                console.log(<span class="code-string">"The sum is: "</span> + sum);
+                // Output: The sum is: 8
+                </code>
+            </pre>
+            <!-- code 2 -->
+            <h3 class="code-section-title">Code for Advanced Learners</h3>
+            <pre>
+                <code>
+                // <span class="code-comment">Filter even numbers from an array</span>
+                let numbers = [<span class="code-keyword">1</span>, <span class="code-keyword">2</span>, <span class="code-keyword">3</span>, <span class="code-keyword">4</span>, <span class="code-keyword">5</span>, <span class="code-keyword">6</span>];
+                let evens = numbers.filter(num => num % <span class="code-keyword">2</span> === <span class="code-keyword">0</span>);
+                
+                console.log(<span class="code-string">"Even numbers:"</span>, evens);
+                // Output: Even numbers: [2, 4, 6]
+                </code>
+            </pre>
+            
+            <span class="date">Posted On: 13.01.2025</span>   
+            <button class="bookmark-btn">Bookmark</button>
+            <div class="social-share">
+                <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+            </div>
+        </div>
+    </div>
+    <!-- blog 2- react.js -->
+    
+        <div id="blogContainer">
+            <div class="blog-post" data-category="javascript">
+                <img src="./assets/blog5.jpeg" alt="React.js Library" class="blog-image">
+                <h2 class="blog-title">"Unlocking React.js: Building Dynamic User Interfaces"</h2>
+                <p class="blog-content">
+                    React.js is a popular JavaScript library for building fast and interactive user interfaces. Developed by Facebook, React enables developers to create reusable components, making code more manageable and efficient. Its virtual DOM ensures high performance by minimizing updates to the actual DOM. Whether you're creating single-page applications or complex web platforms, React.js simplifies the development process and enhances user experiences. To learn more and start building with React, visit their official website at 
+                    <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">reactjs.org</a>.
+                   </p>
+                   <!-- code 1 -->
+                   <h3 class="code-section-title">Code for Beginners</h3>
+                <pre>
+                    <code>
+                    <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">"react"</span>;
+                    
+                    <span class="code-keyword">function</span> Welcome() {
+                        <span class="code-keyword">return</span> &lt;h1&gt;Welcome to bAsKaR's Blog here you can gain knowledge on computer science !&lt;/h1&gt;;
+                    }
+                    
+                    <span class="code-keyword">export default</span> Welcome;
+                    </code>
+                    </pre>
+                     <!-- Code 2-->
+                    <h3 class="code-section-title">Code for Advanced Learners</h3>
+                    <pre>
+                        <code>
+                        <span class="code-keyword">import</span> React, { useState } <span class="code-keyword">from</span> <span class="code-string">"react"</span>;
+                        
+                        <span class="code-keyword">function</span> Counter() {
+                            <span class="code-keyword">const</span> [count, setCount] = useState(<span class="code-keyword">0</span>);
+                        
+                            <span class="code-keyword">return</span> (
+                                &lt;div&gt;
+                                    &lt;h1&gt;Counter: {count}&lt;/h1&gt;
+                                    &lt;button onClick={() => setCount(count + <span class="code-keyword">1</span>)}&gt;Increase&lt;/button&gt;
+                                    &lt;button onClick={() => setCount(count - <span class="code-keyword">1</span>)}&gt;Decrease&lt;/button&gt;
+                                &lt;/div&gt;
+                            );
+                        }
+                        
+                        <span class="code-keyword">export default</span> Counter;
+                        </code>
+                        </pre>
+                        <span class="date">Posted On: 13.01.2025</span>                    
+
+                <button class="bookmark-btn">Bookmark</button>
+                <div class="social-share">
+                    <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                    <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- blog 3- importance of web design -->
+        <div class="blog-post" data-category="web-design">
+            <img src="./assets/blog2.jpeg" alt="JavaScript ES6" class="blog-image">
+            <h2 class="blog-title">"The Importance of Web Design"</h2>
+            <p class="blog-content">Effective web design focuses on user experience. It includes responsive layouts, visual hierarchy, and accessibility to ensure websites are functional and easy to navigate across all devices.
+            </p>
+
+            <!-- example 1 -->
+
+            <h3 class="code-section-title">Responsive Layout Example</h3>
+            <pre>
+            <code>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <style>
+                .container {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 10px;
+                }
+                .box {
+                  flex: 1 1 calc(33.33% - 10px); 
+                  background-color: #3498db;
+                  color: white;
+                  text-align: center;
+                  padding: 20px;
+                  box-sizing: border-box;
+                }
+                @media (max-width: 768px) {
+                  .box {
+                    flex: 1 1 calc(50% - 10px); 
+                  }
+                }
+                @media (max-width: 480px) {
+                  .box {
+                    flex: 1 1 100%; 
+                  }
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="box">Box 1</div>
+                <div class="box">Box 2</div>
+                <div class="box">Box 3</div>
+              </div>
+            </body>
+            </html>
+            </code>
+            </pre>
+            <span class="date">Posted On: 13.01.2025</span>
             <button class="bookmark-btn">Bookmark</button>
             <div class="social-share">
                 <button class="share-btn" data-platform="twitter">Share on Twitter</button>
@@ -207,16 +527,105 @@
             </div>
         </div>
 
-        <div class="blog-post" data-category="web-design">
-            <img src="./assets/blog2.jpeg" alt="JavaScript ES6" class="blog-image">
-            <h2 class="blog-title">"The Importance of Web Design"</h2>
-            <p class="blog-content">Effective web design focuses on user experience. It includes responsive layouts, visual hierarchy, and accessibility to ensure websites are functional and easy to navigate across all devices.</p>
-            <button class="bookmark-btn">Bookmark</button>
-            <div class="social-share">
-                <button class="share-btn" data-platform="twitter">Share on Twitter</button>
-                <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+        <!-- blog 4- figma -->
+        <div id="blogContainer">
+            <div class="blog-post" data-category="web-design">
+                <img src="./assets/blog4.jpeg" alt="Figma Design Tool" class="blog-image">
+                <h2 class="blog-title">"Exploring Figma: A Collaborative Design Tool for Creative Minds"</h2>
+                <p class="blog-content">
+                    Figma is a versatile and collaborative design tool that has revolutionized the way designers create and share their work. Known for its cloud-based platform, Figma enables real-time collaboration, making it perfect for team projects. With features like vector networks, prototyping, and a user-friendly interface, Figma empowers both beginners and professionals to bring their ideas to life seamlessly. Whether you're designing websites, mobile apps, or wireframes, Figma provides a robust environment to unlock your creativity. To dive deeper into Figma’s capabilities, visit their official website at 
+                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer">figma.com</a>.
+                </p>
+                <!-- example 1 -->
+                <h3 class="code-section-title">Embed Figma Design Example</h3>
+                <pre>
+                <code>
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                  &lt;head&gt;
+                    &lt;style&gt;
+                      .figma-embed {
+                        width: 100%;
+                        height: 500px;
+                        border: none;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      }
+                    &lt;/style&gt;
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                    &lt;iframe
+                      class="figma-embed"
+                      src="https://www.figma.com/embed?embed_host=share&amp;url=https://www.figma.com/proto/example"
+                      allowfullscreen
+                    &gt;&lt;/iframe&gt;
+                  &lt;/body&gt;
+                &lt;/html&gt;
+                </code>
+                </pre>
+                <span class="date">Posted On: 10.01.2025</span>
+                <button class="bookmark-btn">Bookmark</button>
+                <div class="social-share">
+                    <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                    <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+                </div>
             </div>
         </div>
+        <!-- blog 5- Bootstrap -->
+
+        <div id="blogContainer">
+            <div class="blog-post" data-category="web-design">
+                <img src="./assets/blog3.jpeg" alt="Bootstrap Insights" class="blog-image">
+                <h2 class="blog-title">"Getting Started with Bootstrap: A Mobile-First Approach to Web Design"</h2>
+                <p class="blog-content">
+                    Bootstrap is a powerful framework for building responsive and mobile-first websites effortlessly. It provides a collection of pre-styled components, grid systems, and utilities that make creating modern, dynamic web pages simple and efficient. With its mobile-first design philosophy, Bootstrap ensures your website looks great on any device, from smartphones to desktops. Whether you're a beginner or an experienced developer, Bootstrap can significantly streamline your workflow. To learn more and start using Bootstrap, visit their official website at 
+                    <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer">getbootstrap.com</a>.
+                  </p>
+                <!-- example 1 -->
+                <h3 class="code-section-title">Bootstrap Example Code</h3>
+                <pre>
+                    <code>
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html lang="en"&gt;
+                        &lt;head&gt;
+                          &lt;meta charset="UTF-8"&gt;
+                          &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                          &lt;title&gt;Bootstrap Example&lt;/title&gt;
+                          &lt;!-- Bootstrap CSS --&gt;
+                          &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                          &lt;div class="container mt-5"&gt;
+                            &lt;h2 class="text-center mb-4"&gt;Responsive Bootstrap Card&lt;/h2&gt;
+                            &lt;div class="row justify-content-center"&gt;
+                              &lt;div class="col-md-6 col-lg-4"&gt;
+                                &lt;div class="card"&gt;
+                                  &lt;img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Example Image"&gt;
+                                  &lt;div class="card-body"&gt;
+                                    &lt;h5 class="card-title"&gt;Welcome to Bootstrap&lt;/h5&gt;
+                                    &lt;p class="card-text"&gt;Bootstrap simplifies the process of building responsive websites with its pre-styled components and grid system.&lt;/p&gt;
+                                    &lt;a href="https://getbootstrap.com" target="_blank" class="btn btn-primary"&gt;Learn More&lt;/a&gt;
+                                  &lt;/div&gt;
+                                &lt;/div&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+        
+                          &lt;!-- Bootstrap JS --&gt;
+                          &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </code>
+                </pre>
+                 <span class="date">Posted On: 10.01.2025</span>
+                <button class="bookmark-btn">Bookmark</button>
+                <div class="social-share">
+                    <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+                    <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <div id="pagination" style="text-align: center; margin-top: 1rem;"></div>
@@ -254,7 +663,6 @@
                 const selectedCategory = button.dataset.category;
                 const blogPosts = document.querySelectorAll('.blog-post');
                 
-                // Show or hide blog posts based on category
                 blogPosts.forEach(post => {
                     if (selectedCategory === 'all') {
                         post.style.display = 'block';
@@ -314,7 +722,7 @@
         setInterval(displayQuote, 5000);
         displayQuote();
 
-        // Pagination 
+        // Pagination script
         let currentPage = 1;
         const postsPerPage = 2;
         const blogPosts = document.querySelectorAll('.blog-post');
