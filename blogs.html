@@ -176,6 +176,34 @@
         #pagination button:hover {
             background-color: #0056b3;
         }
+ /* Scroll to Top Button */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: darkblue;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: scale(0);
+}
+
+#scrollTopBtn:hover {
+    background: #0056b3;
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    transform: scale(1);
+}
 
         /* footer  styling*/
         footer {
@@ -241,7 +269,7 @@
         }
 
         .dark-mode .blog-content{
-            color:#ffffff;
+            color:#E0E0E0;
 
         }
 
@@ -250,7 +278,7 @@
 
         }
        
-        /* Dark Mode Code Container Styling */
+        /*  Code Container Styling */
         .dark-mode .code-section-title {
             font-family: 'Poppins', sans-serif;
             font-size: 1.5em;
@@ -349,6 +377,22 @@
                 padding: 10px;
             }
         }
+        /* category Button */
+@media (max-width: 768px) {
+    .category-btn {
+        width: 45%; 
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-btn {
+        width: 100%; 
+        font-size: 14px;
+        padding: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -368,6 +412,7 @@
     <div style="margin-bottom: 1rem; text-align: center;">
         <button class="category-btn" data-category="javascript">JavaScript</button>
         <button class="category-btn" data-category="web-design">Web Design</button>
+        <button class="category-btn" data-category="scripting">Operating Systems</button>
         <button class="category-btn" data-category="all">All</button>
     </div>
 
@@ -626,10 +671,168 @@
             </div>
         </div>
         
+        <!-- Blog 6 - Linux and Shell Programming -->
+
+<div id="blogContainer">
+    <div class="blog-post" data-category="scripting">
+        <img src="./assets/blog6.png" alt="Linux and Shell Programming" class="blog-image">
+        <h2 class="blog-title">"Mastering Linux and Shell Scripting: A Comprehensive Guide"</h2>
+        <p class="blog-content">
+            Linux is a powerful open-source operating system widely used in servers, development environments, and embedded systems. Understanding its command-line interface and shell scripting is essential for automation and system administration. In this guide, we will cover Linux fundamentals and dive into shell scripting from beginner to advanced levels.
+        </p>
+
+        <!-- Section 1: Basics of Linux -->
+        <h3 class="code-section-title">Getting Started with Linux</h3>
+        <p class="blog-content">
+            Linux is a Unix-like OS known for its flexibility, security, and performance. It consists of a **kernel**, shell, and various utilities. Below are some essential Linux commands:
+        </p>
+        <pre>
+            <code>
+            # Display current directory
+            pwd 
+
+            # List files in a directory
+            ls -l 
+
+            # Create a new directory
+            mkdir my_folder 
+
+            # Change directory
+            cd my_folder 
+
+            # Remove a file
+            rm my_file.txt 
+
+            # Display contents of a file
+            cat my_file.txt
+            </code>
+        </pre>
+
+        <!-- Section 2: File Permissions and Process Management -->
+        <h3 class="code-section-title">Understanding File Permissions & Processes</h3>
+        <p class="blog-content">
+            Linux file permissions control access to files and directories. Use **chmod**, **chown**, and **ps** commands for permission and process management.
+        </p>
+        <pre>
+            <code>
+            # Check file permissions
+            ls -l file.txt 
+
+            # Change file permissions (read, write, execute)
+            chmod 755 file.txt 
+
+            # Change file ownership
+            chown user:usergroup file.txt 
+
+            # List running processes
+            ps aux 
+
+            # Kill a process (using PID)
+            kill -9 1234
+            </code>
+        </pre>
+
+        <!-- Section 3: Introduction to Shell Scripting -->
+        <h3 class="code-section-title">Introduction to Shell Scripting</h3>
+        <p class="blog-content">
+            A shell script is a file containing a series of Linux commands. It is used for automation and task scheduling.
+        </p>
+        <pre>
+            <code>
+            # Create a basic shell script
+            echo "Hello, Linux!" 
+
+            # Save this as hello.sh and make it executable
+            chmod +x hello.sh 
+
+            # Run the script
+            ./hello.sh
+            </code>
+        </pre>
+
+        <!-- Section 4: Variables, Loops, and Conditional Statements -->
+        <h3 class="code-section-title">Shell Scripting: Variables, Loops, and Conditionals</h3>
+        <p class="blog-content">
+            Shell scripts support variables, loops, and conditionals to make execution more dynamic.
+        </p>
+        <pre>
+            <code>
+            # Declare a variable
+            name="Tony Baskar"
+            echo "Hello, $name"
+
+            # If-Else Condition
+            if [ $name == "Tony" ]; then
+                echo "Welcome Tony!"
+            else
+                echo "Access Denied!"
+            fi
+
+            # For Loop Example
+            for i in 1 2 3 4 5; do
+                echo "Number: $i"
+            done
+            </code>
+        </pre>
+
+        <!-- Section 5: Advanced Shell Scripting -->
+        <h3 class="code-section-title">Advanced Shell Scripting: Functions and Arguments</h3>
+        <p class="blog-content">
+            Functions and arguments in shell scripts allow reusability and flexibility in automation.
+        </p>
+        <pre>
+            <code>
+            # Define a function
+            my_function() {
+                echo "Hello, $1"
+            }
+
+            # Call the function with an argument
+            my_function "Linux User"
+
+            # Script that accepts command-line arguments
+            echo "Script Name: $0"
+            echo "First Argument: $1"
+            echo "Second Argument: $2"
+            </code>
+        </pre>
+
+        <!-- Section 6: Shell Scripting Automation -->
+        <h3 class="code-section-title">Automating Tasks with Cron Jobs</h3>
+        <p class="blog-content">
+            Cron jobs allow scheduling scripts to run at specific times.
+        </p>
+        <pre>
+            <code>
+            # Open the cron editor
+            crontab -e 
+
+            # Schedule a script to run every day at 10 AM
+            0 10 * * * /path/to/script.sh 
+            </code>
+        </pre>
+
+        <span class="date">Posted On: 03.02.2025</span>   
+        <button class="bookmark-btn">Bookmark</button>
+        <div class="social-share">
+            <button class="share-btn" data-platform="twitter">Share on Twitter</button>
+            <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+        </div>
     </div>
+</div>
+
+        
+    </div>
+
+    <!-- pagination -->
 
     <div id="pagination" style="text-align: center; margin-top: 1rem;"></div>
 
+    <!-- Scroll to Top Button -->
+
+    <div id="scrollTopBtn">↑</div>
+
+<!-- footer -->
     <footer>
         <a href="index.html">Back to Portfolio</a>
         <div class="social-icons">
@@ -640,7 +843,10 @@
         <div class="quotes" id="quoteDisplay"></div>
     </footer>
 
+    <!-- scripts -->
+
     <script>
+        
         // Search functionality
         document.getElementById('searchBar').addEventListener('input', function() {
             const query = this.value.toLowerCase();
@@ -721,6 +927,25 @@
 
         setInterval(displayQuote, 5000);
         displayQuote();
+        document.addEventListener("DOMContentLoaded", function () {
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) {
+            scrollTopBtn.classList.add("show");
+        } else {
+            scrollTopBtn.classList.remove("show");
+        }
+    });
+
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+
 
         // Pagination script
         let currentPage = 1;
