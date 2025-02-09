@@ -16,6 +16,44 @@ document.addEventListener("DOMContentLoaded", function() {
     typeWriter();
 });
 
+// script for the role
+document.addEventListener("DOMContentLoaded", function () {
+    const titleElement = document.querySelector(".title");
+    const text = "Tech Enthusiast";
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            titleElement.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 100);
+        }
+    }
+
+    titleElement.innerHTML = ""; 
+    typeEffect();
+});
+
+// glow effect for the profile section
+window.addEventListener("scroll", function () {
+    let profileSection = document.getElementById("profile");
+    let scrollPosition = window.scrollY;
+    
+    let glowIntensity = Math.min(scrollPosition / 5, 50); 
+    profileSection.style.boxShadow = `0px 0px ${glowIntensity}px rgba(255, 215, 0, 0.6)`;
+});
+
+// section_text1
+
+window.addEventListener("load", function () {
+    document.querySelector(".section__text1").classList.add("show");
+});
+
+
+
+
+
+
 //tonybaskar's portfolio script for the announcement section
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -207,6 +245,16 @@ document.addEventListener('DOMContentLoaded', function () {
         achievementObserver.observe(item);
     });
 });
+
+VanillaTilt.init(document.querySelectorAll(".achievement"), {
+    max: 15,
+    speed: 300,
+    glare: true,
+    "max-glare": 0.4,
+});
+
+
+
 
 // tonybaskar's portfolio script for project section
 document.addEventListener('DOMContentLoaded', function() {
