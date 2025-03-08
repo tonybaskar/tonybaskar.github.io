@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TonyBaskarPortfolio</title>
     <link rel="shortcut icon" type="x-icon" href="assets/logo.png"/>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="mediaqueries.css"/> 
    
@@ -21,58 +23,64 @@
 </head>
 <body>
     <!-- tonybaskar's portfolio navigation section -->
-    <nav id="home">
-        <div>
-         <img class="logo" src="assets/logo.png" width="28px" height="28px"/> 
-         <span id="name"></span>
-        </div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#profile">Profile </a></li>
-                <li><a href="#About">About </a></li>
-                <li><a href="#Skills">Skills </a></li>
-                <li><a href="#Achievements">Achievements </a></li>
-                <li><a href="#Projects">Projects </a></li>
-                <li><a href="#Certificates">Certificates </a></li>
-                <li><a href="#Contact">Contact </a></li>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tony Baskar's Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="navbar-container">
+            <!-- Logo and Name -->
+            <div class="navbar-brand">
+                <img src="assets/logo.png" alt="Logo" class="logo">
+                <span class="name">Tony Baskar Y</span>
+            </div>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <!-- Nav Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#profile"><i class="fas fa-user"></i>Profile</a></li>
+                <li><a href="#About"><i class="fas fa-info-circle"></i>About</a></li>
+                <li><a href="#Skills"><i class="fas fa-cogs"></i>Skills</a></li>
+                <li><a href="#Achievements"><i class="fas fa-trophy"></i>Achievements</a></li>
+                <li><a href="#Projects"><i class="fas fa-project-diagram"></i>Projects</a></li>
+                <li><a href="#Certificates"><i class="fas fa-certificate"></i>Certificates</a></li>
+                <li><a href="#Contact"><i class="fas fa-envelope"></i>Contact</a></li>
             </ul>
         </div>
-    </nav>
-    <nav id="hamburger-nav">
-        <div class="layoutmob">
-            <img class="logo" src="assets/logo.png" width="28px" height="28px"/> Tony Baskar Y
-        </div>
-        <div class="logo">
-            <div class="hamburger-menu">
-                <div class="hamburger-icon" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="menu-links">
-                    <li><a href="#profile"onclick="toggleMenu()">Profile</a></li>
-                    <li><a href="#About"onclick="toggleMenu()">About</a></li>
-                    <li><a href="#Skills"onclick="toggleMenu()">Skills</a></li>
-                    <li><a href="#Achievements"onclick="toggleMenu()">Achievements</a></li>
-                    <li><a href="#Projects"onclick="toggleMenu()">Projects</a></li>
-                    <li><a href="#Certificates"onclick="toggleMenu()">Certificates</a></li>
-                    <li><a href="#Contact"onclick="toggleMenu()">Contact</a></li>
-                </div>
-            </div>
-        </div>
-    </nav>
+    </nav><br>
+
+   
 
     <!-- tonybaskar's portfolio Announcement section-->
-    <section id="announcement">
-        <div class="announcement-container">
-            <p class="announcement-text">"Open to work" <br> Actively Seeking Opportunities.</p>
-            <div class="announcement-buttons">
-                <a href="#Projects" class="btn">Browse My Work</a>
-                <a href="mailto:tonybaskar83@gmail.com" class="btn">Hire Me</a>
-                <a href="blogs.html" class="btn">View My Blogs</a>
-            </div>
+ 
+<section id="announcement">
+    <div class="announcement-container">
+       
+        <p class="announcement-text">
+            <span class="icon">📢</span>
+            "Open to Work" <br> Actively Seeking Opportunities.
+        </p>
+        
+        <div class="announcement-buttons">
+            <a href="#Projects" class="btn browse-work">Browse My Work</a>
+            <a href="mailto:tonybaskar83@gmail.com" class="btn hire-me">Hire Me</a>
+            <a href="blogs.html" class="btn view-blogs">View My Blogs</a>
         </div>
-    </section>
+    </div>
+</section>
     
 <!-- tonybaskar's portfolio  profile section -->
     <section id="profile">
@@ -151,6 +159,7 @@
 
     <section id="Skills">
         <div class="title_skills">My Skills</div>
+        
         <div class="skills_container">
             <div class="skill">
                 <img src="assets/java2.png" alt="Java" class="skill-icon">
@@ -532,7 +541,7 @@
                 <!-- tonybaskar's Portfolio contact form -->
 
                 <div class="contact-right">
-                    <h2 style="text-align:center; color: #002B5B;">Message</h2>
+                    <h2 style="text-align:center; color: #002B5B;text-transform: uppercase;">Message</h2>
                     <form action="https://formspree.io/f/xyzgoqay" class="contactForm" method="post"> 
                     <!-- <form id="contactForm" class="contactForm" > -->
                         <label for="Name">Name</label>
@@ -572,7 +581,7 @@
         </div>
         <div class="arrow-container">
             <a href="#Testimonials">
-                <img src="assets/arrow.png" alt="Navigate to testimonials" class="arrow-icon" onclick="scrollToTestimonials()"/>
+                <img src="assets/arrow.png" alt="Navigate to Feedbacks" class="arrow-icon" onclick="scrollToTestimonials()"/>
             </a>
         </div>
     </section>
@@ -581,7 +590,7 @@
 
 
     <section class="testimonials-section" id="Testimonials">
-        <h2 style="color: #002B5B;">Testimonials</h2>
+        <h2 style="color: #002B5B;text-transform: uppercase;font-weight: bold;">Feedbacks</h2>
         <div class="carousel">
           <div class="carousel-inner" id="carouselInner">
             <div class="carousel-item">
@@ -613,7 +622,7 @@
         </div>
       
         <div class="testimonial-form">
-          <h3 style="color: darkblue;">Submit Your Testimonial</h3>
+          <h3 style="color: darkblue;">Submit Your Feedbacks</h3>
           <form id="testimonialForm">
             <input type="text" id="username" placeholder="Your Name" required />
             <input type="text" id="designation" placeholder="Your Designation" required />
@@ -635,6 +644,11 @@
             </a>
         </div>
       </section>
+
+      <!-- Scroll-to-Top Button -->
+<button id="scrollToTopBtn" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i> 
+</button>
     
     <!-- tonybaskar's portfolio footer section-->
 <footer class="site-footer">
@@ -653,6 +667,11 @@
     </div>
     <div class="footer-message">
         <p>Thanks to Almighty God for His abundant blessing, and thank you to all who visited my portfolio. <b>with regards bAsKaR.</b></p>
+    </div>
+    <div class="footer-social">
+        <a href="https://www.linkedin.com/in/tony-baskar-y-55a2282a7/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/tonybaskar" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/tonyyesu1234" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     </div>
     
 </footer>

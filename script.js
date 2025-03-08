@@ -1,20 +1,4 @@
-//tonybaskar's portfolio  script to reveal the letters of my name tonybaskar y
 
-document.addEventListener("DOMContentLoaded", function() {
-    const name = "Tony Baskar Y";
-    const nameElement = document.getElementById("name");
-    let index = 0;
-
-    function typeWriter() {
-        if (index < name.length) {
-            nameElement.innerHTML += name.charAt(index);
-            index++;
-            setTimeout(typeWriter, 150); 
-        }
-    }
-
-    typeWriter();
-});
 
 // script for the role
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,14 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // tonybaskar's portfolio script for  hamburger menu toggle open and close
 
-function toggleMenu()
-{
-    const menu= document.querySelector(".menu-links");
-    const icon= document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open") 
-    icon.classList.toggle("open")
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
 
-}
+    hamburgerMenu.addEventListener('click', function () {
+        navLinks.classList.toggle('active');
+        hamburgerMenu.classList.toggle('active');
+    });
+});
 
 
 //tonybaskar's portfolio script for about section 
@@ -225,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
 // tonybaskar's portfolio script for achievement section
 document.addEventListener('DOMContentLoaded', function () {
     const achievementItems = document.querySelectorAll('.achievement');
@@ -252,8 +239,6 @@ VanillaTilt.init(document.querySelectorAll(".achievement"), {
     glare: true,
     "max-glare": 0.4,
 });
-
-
 
 
 // tonybaskar's portfolio script for project section
@@ -417,7 +402,6 @@ function showModal(message) {
 }
 
 
-  
 
 
 
