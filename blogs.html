@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Page</title>
+    <link rel="shortcut icon" type="x-icon" href="assets/logo.png"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -46,6 +47,105 @@
                 transform: translateY(0);
             }
         }
+       /* Popup Styling */
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(251, 248, 204, 1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 400px;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Popup Content */
+.popup-content {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: darkblue;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Input and Textarea Styling */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Submit Button */
+button {
+    background-color: darkblue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #003366;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .popup {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+    }
+    .popup-content {
+        font-size: 14px;
+    }
+    input, textarea {
+        font-size: 14px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .popup {
+        width: 95%;
+        padding: 10px;
+    }
+    .close-btn {
+        font-size: 18px;
+    }
+}
+
         .watermark {
             position: fixed;
             bottom: 10px;
@@ -92,6 +192,7 @@
             font-style: italic;
             text-align: right; 
             }
+
 
      /* code container styling */
 
@@ -140,7 +241,7 @@
         font-style: italic; 
     }
 
-        .category-btn, .bookmark-btn, .share-btn {
+        .category-btn, .bookmark-btn, .share-btn,.comment-btn {
             padding: 10px 15px;
             margin: 5px;
             border: none;
@@ -417,6 +518,26 @@
     </div>
 
     <button id="darkModeToggle">Toggle Dark Mode</button>
+    
+    <!-- Comment Popup -->
+<div id="commentPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeCommentPopup()">&times;</span>
+        <h2>Leave a Comment</h2>
+        <form id="commentForm" action="https://formspree.io/f/xkgjvqje" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="comment">Your Comment:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
     <!-- blog 1- javascript -->
 
@@ -613,6 +734,8 @@
                 <div class="social-share">
                     <button class="share-btn" data-platform="twitter">Share on Twitter</button>
                     <button class="share-btn" data-platform="linkedin">Share on LinkedIn</button>
+                    <!-- Comment Button -->
+                    <button class="comment-btn" onclick="openCommentPopup()">Add Comment</button>
                 </div>
             </div>
         </div>
@@ -663,6 +786,7 @@
                     </code>
                 </pre>
                  <span class="date">Posted On: 10.01.2025</span>
+                 
                 <button class="bookmark-btn">Bookmark</button>
                 <div class="social-share">
                     <button class="share-btn" data-platform="twitter">Share on Twitter</button>
@@ -846,6 +970,84 @@
     <!-- scripts -->
 
     <script>
+        //download the blog as pdf
+        document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".bookmark-btn").forEach(button => {
+        button.textContent = "Download";
+        button.addEventListener("click", function() {
+            generatePDF(this.closest(".blog-post"));
+        });
+    });
+});
+
+function generatePDF(blogPost) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const marginLeft = 10;
+    let yPosition = 20;
+    const pageHeight = doc.internal.pageSize.height - 20;
+    
+    const blogTitle = blogPost.querySelector(".blog-title").textContent;
+    const blogContent = blogPost.querySelector(".blog-content").textContent;
+    const codeSections = blogPost.querySelectorAll("pre code");
+    let codeContent = "";
+    
+    codeSections.forEach(section => {
+        codeContent += section.innerText + "\n\n";
+    });
+    
+    // Add watermark
+    doc.setTextColor(200, 200, 200);
+    doc.setFontSize(30);
+    doc.text("Tony Baskar's Blog", 40, pageHeight / 2, { angle: 45, opacity: 0.3 });
+    
+    // Reset text color for actual content
+    doc.setTextColor(0, 0, 0);
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(16);
+    doc.text(blogTitle, marginLeft, yPosition);
+    yPosition += 10;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    let splitContent = doc.splitTextToSize(blogContent, 180);
+    yPosition = addTextToPDF(doc, splitContent, yPosition, marginLeft, pageHeight);
+    
+    if (codeContent) {
+        doc.setFont("courier", "bold");
+        doc.setFontSize(14);
+        doc.text("Code Snippets:", marginLeft, yPosition);
+        yPosition += 8;
+
+        doc.setFont("courier", "normal");
+        doc.setFontSize(10);
+        let splitCode = doc.splitTextToSize(codeContent, 180);
+        yPosition = addTextToPDF(doc, splitCode, yPosition, marginLeft, pageHeight);
+    }
+    
+    // Add creator's name and designation
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    doc.text("Created by: Tony Baskar Y, Tech Enthusiast", marginLeft, doc.internal.pageSize.height - 10);
+    
+    doc.save(blogTitle.replace(/[^a-zA-Z0-9]/g, '_') + ".pdf");
+}
+
+function addTextToPDF(doc, textArray, yPosition, marginLeft, pageHeight) {
+    textArray.forEach(line => {
+        if (yPosition + 10 > pageHeight) {
+            doc.addPage();
+            yPosition = 20;
+        }
+        doc.text(line, marginLeft, yPosition);
+        yPosition += 6;
+    });
+    return yPosition;
+}
+
+
         
         // Search functionality
         document.getElementById('searchBar').addEventListener('input', function() {
@@ -885,8 +1087,8 @@
         const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
         bookmarkButtons.forEach(button => {
             button.addEventListener('click', () => {
-                alert('Blog post bookmarked!');
-                button.textContent = 'Bookmarked';
+                alert('Blog post downloaded!');
+                button.textContent = 'Downloaded';
                 button.disabled = true;
                 button.style.backgroundColor = '#666';
             });
@@ -909,6 +1111,16 @@
                 window.open(shareUrl, '_blank');
             });
         });
+
+        // add comment
+        function openCommentPopup() {
+    document.getElementById("commentPopup").style.display = "block";
+}
+
+// Close Comment Popup
+function closeCommentPopup() {
+    document.getElementById("commentPopup").style.display = "none";
+}
 
         // Quotes for footer
         const quotes = [
@@ -988,5 +1200,7 @@
 
         displayBlogs(currentPage);
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 </html>
