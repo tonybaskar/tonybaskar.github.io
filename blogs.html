@@ -1191,21 +1191,29 @@ function addTextToPDF(doc, textArray, yPosition, marginLeft, pageHeight) {
 
         // Share buttons
         const shareButtons = document.querySelectorAll('.share-btn');
-        shareButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const platform = button.dataset.platform;
-                const blogTitle = button.closest('.blog-post').querySelector('.blog-title').textContent;
-                let shareUrl = '';
 
-                if (platform === 'twitter') {
-                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}`;
-                } else if (platform === 'linkedin') {
-                    shareUrl = `https://www.linkedin.com/shareArticle?title=${encodeURIComponent(blogTitle)}`;
-                }
+shareButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const platform = button.dataset.platform;
+        const blogPost = button.closest('.blog-post');
+        const blogTitle = blogPost.querySelector('.blog-title').textContent;
+        const blogLink = "https://tonybaskar.github.io/blogs.html";
+        const authorTag = "Posted by Tony Baskar Y";  
 
-                window.open(shareUrl, '_blank');
-            });
-        });
+        let shareUrl = '';
+
+        if (platform === 'twitter') {
+            const tweetText = `${blogTitle}\n\n${authorTag}\n\nRead more: ${blogLink}`;
+            shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+        } else if (platform === 'linkedin') {
+            const linkedInText = `${blogTitle}\n\n${authorTag}\n\nRead more: ${blogLink}`;
+            shareUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(blogLink)}&title=${encodeURIComponent(blogTitle)}&summary=${encodeURIComponent(linkedInText)}`;
+        }
+
+        window.open(shareUrl, '_blank');
+    });
+});
+
 
         // add comment
         function openCommentPopup() {
