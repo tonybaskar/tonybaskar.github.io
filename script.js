@@ -19,13 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // glow effect for the profile section
-window.addEventListener("scroll", function () {
-    let profileSection = document.getElementById("profile");
-    let scrollPosition = window.scrollY;
+// window.addEventListener("scroll", function () {
+//     let profileSection = document.getElementById("profile");
+//     let scrollPosition = window.scrollY;
     
-    let glowIntensity = Math.min(scrollPosition / 5, 50); 
-    profileSection.style.boxShadow = `0px 0px ${glowIntensity}px rgba(255, 215, 0, 0.6)`;
-});
+//     let glowIntensity = Math.min(scrollPosition / 5, 50); 
+//     profileSection.style.boxShadow = `0px 0px ${glowIntensity}px rgba(255, 215, 0, 0.6)`;
+// });
 
 // section_text1
 
@@ -40,17 +40,17 @@ window.addEventListener("load", function () {
 
 //tonybaskar's portfolio script for the announcement section
 
-document.addEventListener("DOMContentLoaded", () => {
-    const announcementText = document.querySelector(".announcement-text");
-    announcementText.style.opacity = 0;
-    announcementText.style.transform = "translateY(20px)";
+// document.addEventListener("DOMContentLoaded", () => {
+//     const announcementText = document.querySelector(".announcement-text");
+//     announcementText.style.opacity = 0;
+//     announcementText.style.transform = "translateY(20px)";
     
-    setTimeout(() => {
-        announcementText.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-        announcementText.style.opacity = 1;
-        announcementText.style.transform = "translateY(0)";
-    }, 500);
-});
+//     setTimeout(() => {
+//         announcementText.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+//         announcementText.style.opacity = 1;
+//         announcementText.style.transform = "translateY(0)";
+//     }, 500);
+// });
 
 // tonybaskar's portfolio script for  hamburger menu toggle open and close
 
