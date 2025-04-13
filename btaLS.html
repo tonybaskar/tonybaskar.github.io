@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTA | Live Session</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: lightyellow;
+      color: #1f2d3d;
+    }
+    .session-card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .session-card:hover {
+      transform: scale(1.02);
+    }
+    .card-img-top {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  background-color: #f8f9fa; 
+  padding: 10px;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+
+    
+    .status-badge {
+      font-size: 0.9rem;
+      padding: 0.4em 0.8em;
+      border-radius: 1rem;
+    }
+    .live {
+      background-color: #28a745;
+      color: white;
+    }
+    .completed {
+      background-color: #6c757d;
+      color: white;
+    }
+    .btn-join {
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-join:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">📡 Live Classes</h2>
+
+  <div class="row g-4">
+   
+    <!-- Session 1 -->
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card session-card shadow h-100 border-0">
+      <img src="btaAssets/session1.png" class="card-img-top " alt="Portfolio Live Session Thumbnail" >
+      <div class="card-body">
+        <h5 class="card-title d-flex align-items-center gap-2">
+          <span class="text-danger">🔴</span> Portfolio Creation Live Session
+        </h5>
+        <p class="card-text">Join us to learn how to build a stunning personal portfolio from scratch using HTML, CSS, and JavaScript!</p>
+        <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill animate__animated animate__pulse animate__infinite">Live Now</span>
+        <a href="https://forms.gle/EhFNf6EBGE3JgqWX9" class="btn btn-primary w-100 mt-2">Join Live Session</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- session 2 -->
+  <div class="col-md-6 col-lg-4 mb-4">
+    <div class="card session-card shadow-sm border-0 h-100">
+      <img src="btaAssets/webinar2bta.png" 
+           class="card-img-top " 
+           alt="Python Programming Session Thumbnail" 
+          >
+      
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title fw-semibold mb-2">
+            💻 Python Programming Basics
+          </h5>
+          <p class="card-text text-muted mb-3">
+            An interactive class introducing Python fundamentals with live code demos and a Q&A session.
+          </p>
+          <span class="badge bg-secondary px-3 py-1 rounded-pill mb-2">
+            ✅ Completed
+          </span>
+        </div>
+        
+        <a href="#" class="btn btn-outline-primary w-100 mt-auto">
+          ▶️ Watch Recording
+        </a>
+      </div>
+    </div>
+  </div>
+  
+
+   
+
+ 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

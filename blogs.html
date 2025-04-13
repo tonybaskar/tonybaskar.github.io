@@ -3,521 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Page</title>
-    <link rel="shortcut icon" type="x-icon" href="assets/logo.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: rgba(251, 248, 204, 1);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: darkblue;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            animation: fadeIn 2s ease-in-out, slideUp 2s ease-in-out;
-        }
-        header p {
-            font-size: 1rem;
-            margin: 5px 0 0;
-            animation: fadeIn 2.5s ease-in-out, slideUp 2.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-       /* Popup Styling */
-.popup {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(251, 248, 204, 1);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    width: 400px;
-    max-width: 90%;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -55%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-/* Popup Content */
-.popup-content {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: darkblue;
-}
-
-/* Close Button */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Input and Textarea Styling */
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-/* Submit Button */
-button {
-    background-color: darkblue;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: 0.3s;
-}
-button:hover {
-    background-color: #003366;
-}
-
-/* Responsive Styles */
-@media (max-width: 600px) {
-    .popup {
-        width: 90%;
-        height: auto;
-        padding: 15px;
-    }
-    .popup-content {
-        font-size: 14px;
-    }
-    input, textarea {
-        font-size: 14px;
-    }
-    button {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-
-@media (max-width: 400px) {
-    .popup {
-        width: 95%;
-        padding: 10px;
-    }
-    .close-btn {
-        font-size: 18px;
-    }
-}
-
-        .watermark {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-size: 0.8rem;
-            color: rgba(0, 0, 0, 0.5);
-        }
-        .blog-post {
-            border: 1px solid darkblue;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px auto;
-            background-color: white;
-            max-width: 800px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .blog-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: darkblue;
-        }
-        .blog-image {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-        }
-        .blog-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-        }
-        .blog-content {
-            font-size: 1rem;
-            color: #333;
-        }
-
-        .date {
-            display: block;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555; 
-            font-style: italic;
-            text-align: right; 
-            }
-
-
-     /* code container styling */
-
-    .code-section-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5em;
-    color: #2c3e50;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-left: 4px solid #3498db;
-    padding-left: 10px;
-    }
-
-    pre {
-        background-color: #f5f5f5; 
-        border: 1px solid #ddd; 
-        border-radius: 8px; 
-        padding: 16px;
-        overflow-x: auto; 
-        margin: 20px 0;
-    }
-
-    code {
-        font-family: "Courier New", Courier, monospace; 
-        font-size: 14px; 
-        line-height: 1.6;
-        color: #2c3e50;
-    }
-
-    
-    .code-keyword {
-        color: #2980b9; 
-        font-weight: bold; 
-    }
-
-    
-    .code-string {
-        color: #27ae60; 
-    }
-
-   
-    .code-comment {
-        color: #7f8c8d; 
-        font-style: italic; 
-    }
-
-        .category-btn, .bookmark-btn, .share-btn,.comment-btn {
-            padding: 10px 15px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: darkblue;
-            color: white;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        .category-btn:hover, .bookmark-btn:hover, .share-btn:hover {
-            background-color: #0056b3;
-        }
-        #darkModeToggle {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: darkblue;
-            color: white;
-            cursor: pointer;
-        }
-        #darkModeToggle:hover {
-            background-color: #0056b3;
-        }
-        #pagination button {
-            padding: 10px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: darkblue;
-            color: white;
-            cursor: pointer;
-        }
-        #pagination button:hover {
-            background-color: #0056b3;
-        }
- /* Scroll to Top Button */
-#scrollTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: darkblue;
-    color: white;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: opacity 0.3s, transform 0.3s;
-    opacity: 0;
-    transform: scale(0);
-}
-
-#scrollTopBtn:hover {
-    background: #0056b3;
-}
-
-#scrollTopBtn.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-        /* footer  styling*/
-        footer {
-            background: darkblue;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            position: relative;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .social-icons {
-            margin: 10px 0;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: white;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-        .social-icons a:hover {
-            color: lightblue;
-        }
-        .quotes {
-            margin: 10px 0;
-            font-style: italic;
-        }
-
-        /* dark-mode styles */
-        .dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .dark-mode .blog-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ecf0f1;
-        }
-
-        .dark-mode .blog-image {
-             width: 100%;
-             height: auto;
-             border-radius: 5px;
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
-             overflow: hidden;
-        }
-
-        .dark-mode .blog-image:hover {
-              transform: scale(1.05);
-              box-shadow: 0 8px 12px rgba(255, 255, 255, 0.3);
-        }
-
-        .dark-mode .blog-post {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-
-        .dark-mode .blog-content{
-            color:#E0E0E0;
-
-        }
-
-        .dark-mode .date{
-            color:#ffffff;
-
-        }
-       
-        /*  Code Container Styling */
-        .dark-mode .code-section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
-            color: #ecf0f1;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 4px solid #3498db;
-            padding-left: 10px;
-        }
-
-        .dark-mode pre {
-            background-color: #2c3e50;
-            border: 1px solid #34495e;
-            border-radius: 8px;
-            padding: 16px;
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        .dark-mode code {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #ecf0f1;
-        }
-
-        .dark-mode .code-keyword {
-            color: #3498db;
-            font-weight: bold;
-        }
-
-        .dark-mode .code-string {
-            color: #2ecc71;
-        }
-
-        .dark-mode .code-comment {
-            color: #95a5a6;
-            font-style: italic;
-        }
-
-        /* dark-mode styles for the footer */
-        
-        .dark-mode footer {
-            background: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            position: relative;
-        }
-
-        .dark-mode footer a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .dark-mode footer a:hover {
-            text-decoration: underline;
-        }
-
-        .dark-mode .social-icons {
-            margin: 10px 0;
-        }
-
-        .dark-mode .social-icons a {
-            margin: 0 10px;
-            color: #ecf0f1;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-
-        .dark-mode .social-icons a:hover {
-            color: #3498db;
-        }
-
-        .dark-mode .quotes {
-            margin: 10px 0;
-            font-style: italic;
-            color: #bdc3c7;
-        }
-
-
-       /* mediaqueries for responsive design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            .blog-post {
-                margin: 10px;
-                padding: 10px;
-            }
-        }
-        /* category Button */
-@media (max-width: 768px) {
-    .category-btn {
-        width: 45%; 
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .category-btn {
-        width: 100%; 
-        font-size: 14px;
-        padding: 10px;
-    }
-}
-    </style>
+    <title>BaskarTech Academy-BTA</title>
+    <link rel="shortcut icon" type="x-icon" href="assets/BtaLogo.png"/>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+  <!--Custom css  -->
+  <link rel="stylesheet" href="btaStyles.css">
 </head>
 <body>
-    <header>
-        <h1>Tony Baskar's Blog</h1>
-        <p>Sharing knowledge, code, and insights</p>
-    </header>
+   <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <img src="assets/BtaLogo.png" alt="Logo">
+        <span class="ms-2 text-white fw-bold">BTA</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home"><i class="fas fa-home me-1"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="btacourses.html"><i class="fas fa-book-open me-1"></i>Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="btaLS.html"><i class="fas fa-video me-1"></i>Live Sessions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="btaTeam.html"><i class="fas fa-users me-1"></i>Our Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bta-feedbacks.html"><i class="fas fa-comment-dots me-1"></i>Feedback</a>
+          </li>
+          
+          <li class="nav-item">
+            <button id="darkModeToggle">Toggle Dark Mode</button>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
     <div class="watermark">Tony Baskar's Blog</div>
-
-    <input 
-        type="text" 
-        id="searchBar" 
-        placeholder="Search blogs..." 
-        style="width: 100%; padding: 0.5rem; margin: 1.5rem 0; border: 1px solid darkblue; border-radius: 5px;">
-
-    <div style="margin-bottom: 1rem; text-align: center;">
-        <button class="category-btn" data-category="javascript">JavaScript</button>
-        <button class="category-btn" data-category="web-design">Web Design</button>
-        <button class="category-btn" data-category="scripting">Operating Systems</button>
-        <button class="category-btn" data-category="all">All</button>
+    
+    <!-- hero section -->
+     <!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="floating-shapes">
+      <span></span><span></span><span></span><span></span>
     </div>
+  
+    <div class="container position-relative">
+      <h1>Welcome to <span>BaskarTech Academy</span></h1>
+      <p>Empowering learners in tech – Web, Python, Java, SQL & more</p>
+      <a href="btacourses.html" class="btn btn-primary">
+        <i class="fas fa-laptop-code me-2"></i> Explore Courses
+      </a>
+      <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" target="_blank" class="btn btn-success">
+        <i class="fab fa-whatsapp me-2"></i> Join WhatsApp
+      </a>
+    </div>
+  </section>
+<br>
+    <!-- Search Input -->
+<div class="text-center px-3">
+    <input 
+      type="text" 
+      id="searchBar" 
+      placeholder="🔍 Search blogs by title, topic or tag..."
+      class="form-control"
+    >
+  </div>
+  <br>
+  
+  <!-- Filter Buttons -->
+  <div class="filters-wrapper">
+    <button class="category-btn active" data-category="all"><i class="fas fa-layer-group me-1"></i> All</button>
+    <button class="category-btn" data-category="javascript"><i class="fab fa-js-square me-1"></i> JavaScript</button>
+    <button class="category-btn" data-category="web-design"><i class="fas fa-paint-brush me-1"></i> Web Design</button>
+    <button class="category-btn" data-category="scripting"><i class="fas fa-terminal me-1"></i> Operating Systems</button>
+  </div>
 
-    <button id="darkModeToggle">Toggle Dark Mode</button>
+    
     
     <!-- Comment Popup -->
 <div id="commentPopup" class="popup">
@@ -538,9 +114,10 @@ button:hover {
         </form>
     </div>
 </div>
+
 <!-- blog about portfolio website creation -->
  <!-- Blog 2 - Portfolio Website Essentials -->
-
+<section id="contents">
 <div id="blogContainer">
     <div class="blog-post" data-category="web-development">
         <img src="./assets/project1.png" alt="Portfolio Website Essentials" class="blog-image">
@@ -1038,10 +615,9 @@ button:hover {
                         <button class="comment-btn" onclick="openCommentPopup()">Add Comment</button>
         </div>
     </div>
+</div>    
 </div>
-
-        
-    </div>
+</section>
 
     <!-- pagination -->
 
@@ -1050,6 +626,8 @@ button:hover {
     <!-- Scroll to Top Button -->
 
     <div id="scrollTopBtn">↑</div>
+
+    
 
 <!-- footer -->
     <footer>
@@ -1062,248 +640,13 @@ button:hover {
         <div class="quotes" id="quoteDisplay"></div>
     </footer>
 
-    <!-- scripts -->
-
-    <script>
-        //download the blog as pdf
-        document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".bookmark-btn").forEach(button => {
-        button.textContent = "Download";
-        button.addEventListener("click", function() {
-            generatePDF(this.closest(".blog-post"));
-        });
-    });
-});
-
-function generatePDF(blogPost) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    const marginLeft = 10;
-    let yPosition = 20;
-    const pageHeight = doc.internal.pageSize.height - 20;
-    
-    const blogTitle = blogPost.querySelector(".blog-title").textContent;
-    const blogContent = blogPost.querySelector(".blog-content").textContent;
-    const codeSections = blogPost.querySelectorAll("pre code");
-    let codeContent = "";
-    
-    codeSections.forEach(section => {
-        codeContent += section.innerText + "\n\n";
-    });
-    
-    // Add watermark
-    doc.setTextColor(200, 200, 200);
-    doc.setFontSize(30);
-    doc.text("Tony Baskar's Blog", 40, pageHeight / 2, { angle: 45, opacity: 0.3 });
-    
-    // Reset text color for actual content
-    doc.setTextColor(0, 0, 0);
-    
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.text(blogTitle, marginLeft, yPosition);
-    yPosition += 10;
-    
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(12);
-    let splitContent = doc.splitTextToSize(blogContent, 180);
-    yPosition = addTextToPDF(doc, splitContent, yPosition, marginLeft, pageHeight);
-    
-    if (codeContent) {
-        doc.setFont("courier", "bold");
-        doc.setFontSize(14);
-        doc.text("Code Snippets:", marginLeft, yPosition);
-        yPosition += 8;
-
-        doc.setFont("courier", "normal");
-        doc.setFontSize(10);
-        let splitCode = doc.splitTextToSize(codeContent, 180);
-        yPosition = addTextToPDF(doc, splitCode, yPosition, marginLeft, pageHeight);
-    }
-    
-    // Add creator's name and designation
-    doc.setFont("helvetica", "italic");
-    doc.setFontSize(10);
-    doc.text("Created by: Tony Baskar Y, Tech Enthusiast", marginLeft, doc.internal.pageSize.height - 10);
-    
-    doc.save(blogTitle.replace(/[^a-zA-Z0-9]/g, '_') + ".pdf");
-}
-
-function addTextToPDF(doc, textArray, yPosition, marginLeft, pageHeight) {
-    textArray.forEach(line => {
-        if (yPosition + 10 > pageHeight) {
-            doc.addPage();
-            yPosition = 20;
-        }
-        doc.text(line, marginLeft, yPosition);
-        yPosition += 6;
-    });
-    return yPosition;
-}
-
-
-        
-        // Search functionality
-        document.getElementById('searchBar').addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            const blogPosts = document.querySelectorAll('.blog-post');
-            blogPosts.forEach(post => {
-                const title = post.querySelector('.blog-title').textContent.toLowerCase();
-                const content = post.querySelector('.blog-content').textContent.toLowerCase();
-                if (title.includes(query) || content.includes(query)) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        });
-
-        // Category filter functionality
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const selectedCategory = button.dataset.category;
-                const blogPosts = document.querySelectorAll('.blog-post');
-                
-                blogPosts.forEach(post => {
-                    if (selectedCategory === 'all') {
-                        post.style.display = 'block';
-                    } else if (post.dataset.category === selectedCategory) {
-                        post.style.display = 'block';
-                    } else {
-                        post.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Bookmark button
-        const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
-        bookmarkButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                alert('Blog post downloaded!');
-                button.textContent = 'Downloaded';
-                button.disabled = true;
-                button.style.backgroundColor = '#666';
-            });
-        });
-
-        // Share buttons
-        const shareButtons = document.querySelectorAll('.share-btn');
-
-shareButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const platform = button.dataset.platform;
-        const blogPost = button.closest('.blog-post');
-        const blogTitle = blogPost.querySelector('.blog-title').textContent;
-        const blogLink = "https://tonybaskar.github.io/blogs.html";
-        const authorTag = "Posted by Tony Baskar Y";  
-
-        let shareUrl = '';
-
-        if (platform === 'twitter') {
-            const tweetText = `${blogTitle}\n\n${authorTag}\n\nRead more: ${blogLink}`;
-            shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-        } else if (platform === 'linkedin') {
-            const linkedInText = `${blogTitle}\n\n${authorTag}\n\nRead more: ${blogLink}`;
-            shareUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(blogLink)}&title=${encodeURIComponent(blogTitle)}&summary=${encodeURIComponent(linkedInText)}`;
-        }
-
-        window.open(shareUrl, '_blank');
-    });
-});
-
-
-        // add comment
-        function openCommentPopup() {
-    document.getElementById("commentPopup").style.display = "block";
-}
-
-// Close Comment Popup
-function closeCommentPopup() {
-    document.getElementById("commentPopup").style.display = "none";
-}
-
-        // Quotes for footer
-        const quotes = [
-            "The best way to predict the future is to invent it.",
-            "Code is like humor. When you have to explain it, it’s bad.",
-            "Simplicity is the soul of efficiency.",
-            "First, solve the problem. Then, write the code.",
-        ];
-        let quoteIndex = 0;
-
-        function displayQuote() {
-            const quoteDisplay = document.getElementById('quoteDisplay');
-            quoteDisplay.textContent = quotes[quoteIndex];
-            quoteIndex = (quoteIndex + 1) % quotes.length;
-        }
-
-        setInterval(displayQuote, 5000);
-        displayQuote();
-        document.addEventListener("DOMContentLoaded", function () {
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 200) {
-            scrollTopBtn.classList.add("show");
-        } else {
-            scrollTopBtn.classList.remove("show");
-        }
-    });
-
-    scrollTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-});
-
-
-        // Pagination script
-        let currentPage = 1;
-        const postsPerPage = 2;
-        const blogPosts = document.querySelectorAll('.blog-post');
-        const pagination = document.getElementById('pagination');
-
-        function displayBlogs(page) {
-            const start = (page - 1) * postsPerPage;
-            const end = start + postsPerPage;
-            blogPosts.forEach((post, index) => {
-                if (index >= start && index < end) {
-                    post.style.display = 'block';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-
-            const totalPages = Math.ceil(blogPosts.length / postsPerPage);
-            pagination.innerHTML = '';
-            for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.textContent = i;
-                btn.addEventListener('click', () => {
-                    currentPage = i;
-                    displayBlogs(currentPage);
-                });
-                if (i === currentPage) {
-                    btn.style.backgroundColor = '#0056b3';
-                    btn.style.color = 'white';
-                }
-                pagination.appendChild(btn);
-            }
-        }
-
-        // Dark mode toggle
-        document.getElementById('darkModeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-
-        displayBlogs(currentPage);
-    </script>
+   
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- pdf maker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+  
+    <!-- custom js -->
+    <script src="btaScript.js"></script>
 </body>
 </html>

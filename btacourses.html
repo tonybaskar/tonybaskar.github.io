@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BTA Courses | BaskarTech Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Animate.css  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff8dc; /* light yellow */
+      color: darkblue;
+    }
+
+    /* navbar styles */
+    .navbar {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand {
+    font-weight: 700;
+    color: darkblue !important;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: darkblue !important;
+    margin-right: 1rem;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .nav-link::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: darkblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+  .navbar-toggler .fa-bars,
+  .navbar-toggler .fa-times {
+    font-size: 1.5rem;
+    color: darkblue;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .fa-bars {
+    display: none;
+  }
+
+  .navbar-toggler[aria-expanded="false"] .fa-times {
+    display: none;
+  }
+
+  /* timer */
+  .countdown-box {
+  border: 2px dashed #ff4d4d;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 400px;
+  background-color: #fff3f3;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.count-label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: darkblue;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 77, 77, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); }
+}
+
+/* course cards */
+    .course-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid darkblue;
+      border-radius: 15px;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 139, 0.2);
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+      font-weight: 600;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* testimonial */
+    
+    
+  
+    .testimonial-title {
+      color: darkblue;
+      font-weight: 600;
+      font-size: 2rem;
+    }
+  
+    .testimonial-box {
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.5s ease-in-out;
+    }
+  
+    .testimonial-box:hover {
+      transform: scale(1.02);
+    }
+  
+    .testimonial-text {
+      color: darkblue;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-style: italic;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  
+    .blockquote-footer {
+      color: #0b3d91;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  
+    .quote-icon {
+      font-size: 2rem;
+      color: #0b3d91;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      opacity: 0.2;
+    }
+  
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      transition: transform 0.3s ease;
+    }
+  
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+      transform: scale(1.2);
+    }
+  
+    @media (max-width: 576px) {
+      .testimonial-text {
+        font-size: 1rem;
+      }
+  
+      .quote-icon {
+        font-size: 1.5rem;
+      }
+  
+      .testimonial-box {
+        padding: 1rem;
+      }
+    }
+  
+
+    /* mentors section */
+    .mentor-title {
+    color: darkblue;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  .instructor-card {
+    background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .instructor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .mentor-image-wrapper {
+    width: 130px;
+    height: 130px;
+    border: 4px solid darkblue;
+    border-radius: 50%;
+    padding: 5px;
+    transition: transform 0.4s ease;
+  }
+
+  .mentor-image-wrapper:hover {
+    transform: scale(1.05);
+  }
+
+  .mentor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-darkblue {
+    color: darkblue !important;
+  }
+
+  @media (max-width: 576px) {
+    .mentor-title {
+      font-size: 1.5rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+    }
+  }
+
+
+/* contact */
+    :root {
+  --darkblue: darkblue;
+}
+
+.text-darkblue {
+  color: var(--darkblue);
+}
+
+.btn-darkblue {
+  background-color: var(--darkblue);
+  color: white;
+  border: none;
+}
+
+.btn-darkblue:hover {
+  background-color: #000066;
+  color: #fff;
+}
+/* follow us */
+.social-icon {
+  transition: all 0.3s ease-in-out;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 139, 0.1);
+}
+
+.social-icon:hover {
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 139, 0.3);
+}
+
+
+  </style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">BaskarTech Academy</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+          </button>
+      
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="blogs.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#">Courses</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+   
+<!-- Upcoming Course Section -->
+<div class="container my-5 text-center">
+    <h2 class="text-darkblue fw-bold display-6 mb-3 animate__animated animate__fadeInDown">
+      🚀 Upcoming Course: <span class="text-primary">Programming Using Python</span>
+    </h2>
+  
+    <div id="countdown" class="countdown-box mx-auto my-4 animate__animated animate__fadeInUp">
+      <span class="count-label">Starts In:</span>
+      <div class="timer text-danger fw-bold fs-3" id="timer"></div>
+    </div>
+  
+    <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" class="btn btn-success btn-lg px-4 py-2 mt-3 animate__animated animate__bounceIn">
+      <i class="fas fa-sign-in-alt me-2"></i>Enroll Now
+    </a>
+  </div>
+  
+  
+  
+  <!-- Courses Section -->
+  <div class="container my-5">
+    <h2 class="section-heading"><i class="fas fa-chalkboard-teacher me-2"></i>Upcoming Courses</h2>
+    <div class="row g-4">
+      <!-- Upcoming Course Card -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card course-card p-3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Java Full Stack Bootcamp</h5>
+            <p class="card-text">Learn core Java, Spring Boot, REST API, MySQL, and front-end tools in this 4-week bootcamp.</p>
+            <p><i class="far fa-calendar-alt me-1"></i> Starts: May 10, 2025</p>
+            <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" 
+            class="btn btn-whatsapp me-2 mt-2">
+             <i class="fab fa-whatsapp me-1"></i> Learn Now
+            </a>
+            <a href="https://forms.gle/RMzeL7S2cM1b55nV9" 
+             class="btn btn-outline-primary mt-2" target="_blank">
+            <i class="fas fa-paper-plane me-1"></i> I'm Interested
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Another upcoming -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card course-card p-3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Web Development Workshop</h5>
+            <p class="card-text">An intensive weekend workshop to build modern responsive websites using HTML, CSS, Bootstrap, and JS.</p>
+            <p><i class="far fa-calendar-alt me-1"></i> Starts: April 20, 2025</p>
+            <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" 
+            class="btn btn-whatsapp me-2 mt-2">
+            <i class="fab fa-whatsapp me-1"></i> Learn Now
+            </a>
+            <a href="https://forms.gle/RMzeL7S2cM1b55nV9" 
+             class="btn btn-outline-primary mt-2" target="_blank">
+             <i class="fas fa-paper-plane me-1"></i> I'm Interested
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Courses -->
+    <h2 class="section-heading mt-5"><i class="fas fa-history me-2"></i>Past Courses</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card course-card p-3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Portfolio Website Creation</h5>
+            <p class="card-text">Basics of portfolios, HTML, CSS & frameworks taught with a hands-on session.</p>
+            <p><i class="fas fa-check-circle me-1 text-success"></i> Completed</p>
+            <p><strong>Participants:</strong> 20</p>
+            <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" class="btn btn-whatsapp mt-2"><i class="fab fa-whatsapp me-1"></i> Learn Now</a>
+       
+            <a href="https://forms.gle/RMzeL7S2cM1b55nV9" 
+            class="btn btn-outline-primary mt-2" target="_blank">
+            <i class="fas fa-paper-plane me-1"></i> I'm Interested
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card course-card p-3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Python Programming</h5>
+            <p class="card-text">Basics of Python with a mini To-Do GUI project. Ideal for beginners!</p>
+            <p><i class="fas fa-check-circle me-1 text-success"></i> Completed</p>
+            <p><strong>Participants:</strong> 20 out of 34 Registered</p>
+            <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" class="btn btn-whatsapp mt-2"><i class="fab fa-whatsapp me-1"></i> Learn Now</a>
+            <a href="https://forms.gle/RMzeL7S2cM1b55nV9" 
+            class="btn btn-outline-primary mt-2" target="_blank">
+            <i class="fas fa-paper-plane me-1"></i> I'm Interested
+            </a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+ <!-- Testimonials Carousel -->
+<div class="container my-5">
+    <h3 class="text-center mb-4 animate__animated animate__fadeInDown testimonial-title">What Our Learners Say</h3>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner shadow-lg rounded bg-light p-4 position-relative">
+        
+        <!-- Carousel Items -->
+        <div class="carousel-item active text-center">
+          <div class="testimonial-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"Nice session, with step-by-step explanation on the page. Good initiative 🤝🏻"</p>
+            <footer class="blockquote-footer mt-2">Thejaswini</footer>
+          </div>
+        </div>
+  
+        <div class="carousel-item text-center">
+          <div class="testimonial-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"Thank you for your wonderful session ✨"</p>
+            <footer class="blockquote-footer mt-2">Priya</footer>
+          </div>
+        </div>
+  
+        <div class="carousel-item text-center">
+          <div class="testimonial-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"I attended the meeting for the last 30 minutes due to some issue. But today's session was very clear with a live demo 💯"</p>
+            <footer class="blockquote-footer mt-2">Shalini</footer>
+          </div>
+        </div>
+  
+        <div class="carousel-item text-center">
+          <div class="testimonial-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"Thank you so much for explaining how to develop a portfolio. I learned something new from this class—like Bootstrap. Thanks Baskar ❤️ Keep rocking 💯"</p>
+            <footer class="blockquote-footer mt-2">Prem Kumar</footer>
+          </div>
+        </div>
+  
+        <div class="carousel-item text-center">
+          <div class="testimonial-box">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">"The session was very good. I understood everything you taught. The explanations were clear and easy to follow."</p>
+            <footer class="blockquote-footer mt-2">Akash David Kumar</footer>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2 shadow-sm"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2 shadow-sm"></span>
+      </button>
+    </div>
+  </div>
+  
+
+  <!-- Mentor Section Carousel -->
+<div class="container my-5">
+    <h3 class="text-center mb-4 mentor-title animate__animated animate__fadeInDown">Meet Your Mentors</h3>
+    <div id="mentorCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+      <div class="carousel-inner shadow p-4 rounded bg-light">
+  
+        <!-- Mentor 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center">
+            <div class="card text-center shadow-lg border-0 p-4 instructor-card">
+              <div class="mentor-image-wrapper mx-auto mb-3">
+                <img src="btaAssets/tony.jpg" alt="Tony Baskar" class="rounded-circle mentor-image shadow">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-darkblue fw-bold mb-2">Tony Baskar Y</h5>
+                <p class="card-text text-muted">🚀 Tech Enthusiast & Tech Educator<br>💡 Passionate about Web Dev, JavaScript, Python, SQL & more.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Mentor 2 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="card text-center shadow-lg border-0 p-4 instructor-card">
+              <div class="mentor-image-wrapper mx-auto mb-3">
+                <img src="btaAssets/sanjay.jpg" alt="Sanjay Kumar D" class="rounded-circle mentor-image shadow">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-darkblue fw-bold mb-2">Sanjay Kumar D</h5>
+                <p class="card-text text-muted">👨‍💻 Backend Specialist & Logical Thinker<br>🧠 Known for clear explanations and live coding sessions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Mentor 3 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center">
+            <div class="card text-center shadow-lg border-0 p-4 instructor-card">
+              <div class="mentor-image-wrapper mx-auto mb-3">
+                <img src="btaAssets/hari.jpeg" alt="Hari P" class="rounded-circle mentor-image shadow">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-darkblue fw-bold mb-2">Hari P</h5>
+                <p class="card-text text-muted">🎨 UI/UX Designer & Front-End Developer<br>✨ Focused on creative, accessible, and responsive designs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#mentorCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mentorCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+      </button>
+    </div>
+  </div>
+  
+  
+
+  <!-- Contact Section -->
+<section id="contact" class="py-5" style="background-color: #fdfde3;">
+    <div class="container">
+      <h2 class="text-center mb-4 text-darkblue fw-bold">Get in Touch</h2>
+      <p id="caption" class="text-center text-muted mb-4" style="transition: all 0.3s ease;">We’d love to hear from you!</p>
+  
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action="https://formspree.io/f/xjkylygl" method="post" class="p-4 rounded shadow-sm bg-white">
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold">Name</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user text-darkblue"></i></span>
+                <input type="text" class="form-control" id="name" placeholder="Your full name" name="name">
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-envelope text-darkblue"></i></span>
+                <input type="email" class="form-control" id="email" placeholder="your@email.com" name="email">
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label for="message" class="form-label fw-semibold">Message</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-comment-dots text-darkblue"></i></span>
+                <textarea class="form-control" id="message" rows="4" placeholder="Type your message here..." name="message"></textarea>
+              </div>
+            </div>
+  
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-darkblue px-4 py-2">Send Message</button>
+            </div>
+          </form>
+          <!-- Follow Us Section -->
+<div class="text-center mt-5 py-4 rounded" style="background: linear-gradient(135deg, #f0f8ff, #e6f0ff); box-shadow: 0 0 20px rgba(0,0,139,0.1);">
+    <h5 class="fw-bold text-darkblue mb-4">✨ Follow us on Social Media ✨</h5>
+    <div class="d-flex justify-content-center gap-4">
+  
+      <!-- WhatsApp -->
+      <a href="https://chat.whatsapp.com/HNlVQTlXMXOC6ClcWMHCaG" 
+         target="_blank" 
+         class="social-icon text-success" 
+         data-bs-toggle="tooltip" 
+         data-bs-placement="top" 
+         title="Join us on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+      </a>
+  
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/baskartech_academy/" 
+         target="_blank" 
+         class="social-icon text-danger" 
+         data-bs-toggle="tooltip" 
+         data-bs-placement="top" 
+         title="Follow on Instagram">
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+  
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@BaskarTechAcademy" 
+         target="_blank" 
+         class="social-icon text-danger" 
+         data-bs-toggle="tooltip" 
+         data-bs-placement="top" 
+         title="Subscribe on YouTube">
+        <i class="fab fa-youtube fa-2x"></i>
+      </a>
+  
+    </div>
+  </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-3 mt-5 border-top">
+    <p class="mb-0 text-darkblue">© 2025 BaskarTech Academy | Empowering Freshers in Tech</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    // timer
+    
+    const targetDate = new Date("2025-04-16T18:00:00").getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "Course Started!";
+        return;
+      }
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML = `⏳ Starts in ${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+
+
+
+    const caption = document.getElementById('caption');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+  
+    nameInput.addEventListener('focus', () => {
+      caption.textContent = "Tell us your name so we know how to greet you!";
+    });
+  
+    emailInput.addEventListener('focus', () => {
+      caption.textContent = "Drop your best email — we’ll get back quickly!";
+    });
+  
+    messageInput.addEventListener('focus', () => {
+      caption.textContent = "What’s your query? Let’s talk!";
+    });
+  
+    nameInput.addEventListener('blur', () => {
+      caption.textContent = "We’d love to hear from you!";
+    });
+  
+    emailInput.addEventListener('blur', () => {
+      caption.textContent = "We’d love to hear from you!";
+    });
+  
+    messageInput.addEventListener('blur', () => {
+      caption.textContent = "We’d love to hear from you!";
+    });
+    // follow us
+
+
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+
+  </script>
+  
+</body>
+</html>
