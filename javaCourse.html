@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Programming Course | BaskarTech Academy</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+  :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+        }
+        
+        .navbar-custom {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-custom.scrolled {
+            background: var(--dark-color);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-image {
+         height: 40px; 
+         width: auto;
+         transition: all 0.3s ease;
+        }
+
+        .logo-image:hover {
+          transform: scale(1.05);
+         opacity: 0.9;
+        }
+
+        /* For mobile responsiveness */
+    @media (max-width: 768px) {
+    .logo-image {
+        height: 30px;
+    }
+    }
+        
+        .nav-link {
+            color: var(--light-color) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+        
+        .nav-link i {
+            margin-right: 5px;
+        }
+        
+        .dropdown-menu {
+            background-color: var(--dark-color);
+            border: none;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .dropdown-item {
+            color: var(--light-color);
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            color: var(--light-color);
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .badge-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.6rem;
+            background: var(--accent-color);
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 250px;
+        }
+        
+        .search-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding-left: 35px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            width: 300px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background: var(--dark-color);
+                padding: 1rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+            }
+            
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+            
+            .search-box {
+                margin-top: 1rem;
+                max-width: 100%;
+            }
+        }
+
+    /* hero section */
+    .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: lightyellow;
+  color: darkblue;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+  background-size: 50px 50px;
+  animation: animateBackground 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes animateBackground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #ffcc00;
+  color: #1c1c3c;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e6b800;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* course overview */
+/* body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9ff;
+        } */
+        
+        .course-overview {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #425d86 0%, #93df54 100%);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: #f0f0f0;
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .module-card {
+            background: lightyellow;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: darkblue;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .module-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .module-body {
+            padding: 20px;
+        }
+        
+        .module-days {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .topics-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .topics-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .topics-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .final-project {
+            background: linear-gradient(135deg, #41517c);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(211, 204, 207, 0.3);
+            margin-top: 30px;
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .module-card {
+                margin-bottom: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* meet your mentor */
+        #mentor-section {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    background: lightyellow;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .mentor-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .mentor-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+  }
+
+  .mentor-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .mentor-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 5px solid #007bff;
+  }
+
+  .mentor-bio {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .mentor-bio h2 span {
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  .mentor-bio p {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .social-icons a {
+    color: #007bff;
+    font-size: 22px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #0056b3;
+    transform: scale(1.2);
+  }
+
+  
+
+  @media (max-width: 768px) {
+    .mentor-img {
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+/* calendar */
+.calendar-section {
+            padding: 80px 0;
+            background-color: lightyellow;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: darkblue;
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .calendar-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .schedule-highlights {
+            background: linear-gradient(135deg, var(--primary), #2575fc);
+            color:darkblue;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+        
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .schedule-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            width: 25px;
+            text-align: center;
+        }
+        
+        iframe {
+            border: none;
+            border-radius: 8px;
+            min-height: 500px;
+        }
+        
+        .note-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+        /* ask mentor section */
+        .ask-mentor-section {
+  padding: 40px 20px;
+  background: lightyellow;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  margin-top: 50px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.ask-mentor-section h2 {
+  font-size: 2rem;
+  color: darkblue;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ask-mentor-section p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: darkblue;
+}
+
+.mentor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #f39c12;
+  outline: none;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #2980b9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1c5980;
+}
+
+#form-msg {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .mentor-form {
+    width: 100%;
+  }
+}
+
+        
+  </style>
+</head>
+<body>
+<!-- navbar -->
+<div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" :class="{'scrolled': isScrolled}">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="btaAssets/BtaLogo.png" alt="BaskarTech Academy Logo" class="logo-image">
+            </a>
+            
+            <button class="navbar-toggler" type="button" @click="toggleMenu" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" :class="{'show': menuOpen}">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="blogs.html" :class="{'active': activeLink === 'home'}" @click="setActive('home')">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview" :class="{'active': activeLink === 'overview'}" @click="setActive('overview')">
+                            <i class="fas fa-chalkboard"></i> Overview
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="quizDropdown" role="button" @click="toggleDropdown('quiz')">
+                            <i class="fas fa-question-circle"></i> Quiz
+                            <span class="badge badge-notification" v-if="quizNotifications > 0">{{ quizNotifications }}</span>
+                        </a>
+                        <ul class="dropdown-menu" :class="{'show': dropdownOpen.quiz}">
+                            <li><a class="dropdown-item" href="btaquiz.html" @click="setActive('quiz')">Take Quiz</a></li>
+
+                            <li><a class="dropdown-item" href="btaquiz.html" @click="setActive('practice')">Practice Tests</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#calendar" :class="{'active': activeLink === 'calendar'}" @click="setActive('calendar')">
+                            <i class="fas fa-calendar-alt"></i> Calendar
+                            <span class="badge badge-notification" v-if="calendarEvents > 0">{{ calendarEvents }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ask-mentor" :class="{'active': activeLink === 'contact'}" @click="setActive('contact')">
+                            <i class="fas fa-envelope"></i> Ask Mentor
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input class="form-control search-input" type="search" placeholder="Search..." 
+                           v-model="searchQuery" @focus="expandSearch" @blur="shrinkSearch">
+                </div>
+                
+                <div class="ms-3 d-flex">
+                    <button class="btn btn-outline-light btn-sm rounded-pill me-2" @click="toggleTheme">
+                        <i :class="themeIcon"></i>
+                    </button>
+                
+                </div> -->
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- hero section -->
+<section class="hero">
+    <div class="hero-content">
+      <h1>Master Java Programming</h1>
+      <p>Join our 30-day comprehensive course starting this Monday</p>
+      <a href="https://forms.gle/7UUsLwrZz578eW6F8" class="cta-button">Enroll Now</a>
+    </div>
+  </section>
+  
+
+
+
+     <!-- Course Overview Section -->
+     <section id="overview" class="course-overview">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Java Programming Course Structure</h2>
+            
+            <div class="row">
+                <!-- Module 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-play-circle module-icon"></i>
+                            <span>Module 1: Introduction to Java</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 1–2</div>
+                            <ul class="topics-list">
+                                <li>History & Features of Java</li>
+                                <li>Installing JDK & IDE Setup</li>
+                                <li>First Java Program (Hello World)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Module 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-code module-icon"></i>
+                            <span>Module 2: Basics of Java</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 3–5</div>
+                            <ul class="topics-list">
+                                <li>Variables & Data Types</li>
+                                <li>Operators & Expressions</li>
+                                <li>Input & Output Handling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Module 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-project-diagram module-icon"></i>
+                            <span>Module 3: Control Statements</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 6–8</div>
+                            <ul class="topics-list">
+                                <li>if, switch statements</li>
+                                <li>for, while, do-while loops</li>
+                                <li>Break & Continue</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Module 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-layer-group module-icon"></i>
+                            <span>Module 4: Arrays & Strings</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 9–11</div>
+                            <ul class="topics-list">
+                                <li>Single & Multi-dimensional Arrays</li>
+                                <li>String Methods</li>
+                                <li>StringBuffer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Module 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-cube module-icon"></i>
+                            <span>Module 5: OOP Basics</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 12–15</div>
+                            <ul class="topics-list">
+                                <li>Classes & Objects</li>
+                                <li>Constructors & this keyword</li>
+                                <li>Inheritance & super keyword</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Module 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <i class="fas fa-shapes module-icon"></i>
+                            <span>Module 6: Polymorphism</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="module-days">Day 16–18</div>
+                            <ul class="topics-list">
+                                <li>Method Overloading/Overriding</li>
+                                <li>Access Modifiers</li>
+                                <li>Getters & Setters</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+                    <!-- Module 7 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="module-card">
+                            <div class="module-header" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+                                <i class="fas fa-shield-alt module-icon"></i>
+                                <span>Module 7: Abstraction & Interfaces</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 19–20</div>
+                                <ul class="topics-list">
+                                    <li>Abstract Classes</li>
+                                    <li>Interfaces</li>
+                                    <li>Functional Interfaces (Java 8+)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Module 8 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="module-card">
+                            <div class="module-header" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                                <i class="fas fa-exclamation-triangle module-icon"></i>
+                                <span>Module 8: Exception Handling</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 21–22</div>
+                                <ul class="topics-list">
+                                    <li>Try-Catch-Finally</li>
+                                    <li>Checked vs Unchecked</li>
+                                    <li>Custom Exceptions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Module 9 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="module-card">
+                            <div class="module-header" style="background: linear-gradient(135deg, #f46b45 0%, #eea849 100%);">
+                                <i class="fas fa-layer-group module-icon"></i>
+                                <span>Module 9: Collections Framework</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 23–25</div>
+                                <ul class="topics-list">
+                                    <li>List, Set, Map</li>
+                                    <li>Iterators</li>
+                                    <li>Generics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Module 10 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="module-card">
+                            <div class="module-header" style="background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);">
+                                <i class="fas fa-file-alt module-icon"></i>
+                                <span>Module 10: File Handling</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 26–27</div>
+                                <ul class="topics-list">
+                                    <li>Reading/Writing Files</li>
+                                    <li>Serialization</li>
+                                    <li>Deserialization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Module 11 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="module-card">
+                            <div class="module-header" style="background: linear-gradient(135deg, #c31432 0%, #240b36 100%);">
+                                <i class="fas fa-window-maximize module-icon"></i>
+                                <span>Module 11: GUI Development</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 28–29</div>
+                                <ul class="topics-list">
+                                    <li>Swing/JavaFX UI</li>
+                                    <li>Event Handling</li>
+                                    <li>Button Clicks & Forms</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            
+            <!-- Final Project Highlight -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="final-project text-center">
+                        <i class="fas fa-rocket project-icon"></i>
+                        <h3>Final Project: Student Record Management System</h3>
+                        <p>Apply all concepts learned to build a functional Java application with GUI, file handling, and CRUD operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- meet your mentor -->
+    <section id="mentor-section" class="text-center">
+        <div id="particles-js"></div> <!-- Particle Background -->
+      
+        <div class="container mentor-content">
+          <h1 class="animate__animated animate__fadeInDown mb-5">Meet Your Mentor 👨‍🏫</h1>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="mentor-card animate__animated animate__zoomIn">
+                <img src="btaAssets/tony.jpg" alt="Tony Baskar Y" class="mentor-img">
+                <div class="mentor-bio">
+                  <h2><span id="typewriter"></span></h2>
+                  <p>
+                    🏆 <strong>NPTEL Topper</strong> - Programming in Java <br>
+                    🎖️ <strong>Elite + Silver Certificate</strong> Holder <br>
+                    📚 Passionate Java Instructor & Full Stack Developer <br>
+                   
+                  </p>
+      
+                  <div class="social-icons my-3">
+                    <a href="https://www.linkedin.com/in/tony-baskar-y-55a2282a7/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/tony_baskar01" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tonybaskar.github.io/" target="_blank">
+                        <i class="fas fa-globe"></i>
+                      </a>
+                    <a href="mailto:tonybaskar83@gmail.com"><i class="fas fa-envelope"></i></a>
+                  </div>
+      
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+  <!-- calendar -->
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section">
+        <div class="container">
+            <h2 class="section-title">Live Session Schedule</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="calendar-container">
+                        <h4><i class="fas fa-calendar-alt me-2"></i>Course Calendar</h4>
+                        <p class="text-muted mb-4">30-day program starting next Monday (Monday-Friday only)</p>
+                        
+                        <!-- Google Calendar Embed -->
+                        <iframe src="https://calendar.google.com/calendar/embed?src=63782a35d35d1c825eada214c043a2dcd788e58336723be8a8a18e3508341a09%40group.calendar.google.com&ctz=Asia%2FKolkata" 
+                                width="100%" frameborder="0" scrolling="no"></iframe>
+                        
+                        <div class="note-box">
+                            <p><strong>Note:</strong> All sessions are recorded and available for review within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="schedule-highlights">
+                        <h4><i class="fas fa-clock me-2"></i>Schedule Details</h4>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-icon"><i class="fas fa-play"></i></div>
+                            <div>Start Date: Next Monday</div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-icon"><i class="fas fa-calendar-day"></i></div>
+                            <div>30 Sessions (Weekdays Only)</div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-icon"><i class="fas fa-clock"></i></div>
+                            <div>7:00 PM - 8:30 PM (IST)</div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-icon"><i class="fas fa-video"></i></div>
+                            <div>Live on Google Meet</div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>Q&A Support: 30 mins after session</div>
+                        </div>
+                        
+                        <hr style="border-color: rgba(255,255,255,0.2);">
+                        
+                        <a href="https://calendar.google.com/calendar/embed?src=63782a35d35d1c825eada214c043a2dcd788e58336723be8a8a18e3508341a09%40group.calendar.google.com&ctz=Asia%2FKolkata" 
+                           class="btn btn-light btn-sm rounded-pill" target="_blank">
+                           <i class="fas fa-plus me-1"></i> Add to Google Calendar
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-white rounded shadow-sm">
+                        <h5><i class="fas fa-book me-2"></i>Upcoming Modules</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Week 1: Java Basics</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Week 2: OOP Concepts</li>
+                            <li class="mb-2"><i class="fas fa-arrow-alt-circle-right text-primary me-2"></i>Week 3: Advanced Java</li>
+                            <li><i class="far fa-circle text-muted me-2"></i>Week 4: Project Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+  <section id="ask-mentor" class="ask-mentor-section">
+    <h2><i class="fas fa-question-circle"></i> Ask Your Mentor</h2>
+    <p>If you have any doubts during the course, feel free to drop your question below. We’ll get back to you shortly!</p>
+    
+    <form action="https://formspree.io/f/xdkeqedp" method="POST" class="mentor-form" id="mentorForm">
+      <div class="form-group">
+        <label for="name"><i class="fas fa-user"></i> Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="question"><i class="fas fa-comment-dots"></i> Your Question</label>
+        <textarea id="question" name="question" rows="5" placeholder="Type your question here..." required></textarea>
+      </div>
+  
+      <button type="submit" class="submit-btn">Submit Question</button>
+      <p id="form-msg"></p>
+    </form>
+  </section>
+  
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
+        
+        createApp({
+            setup() {
+                const isScrolled = ref(false);
+                const menuOpen = ref(false);
+                const dropdownOpen = ref({
+                    quiz: false
+                });
+                const activeLink = ref('home');
+                const quizNotifications = ref(3);
+                const calendarEvents = ref(2);
+                const searchQuery = ref('');
+                const darkTheme = ref(false);
+                const searchExpanded = ref(false);
+                
+                const themeIcon = ref('fas fa-moon');
+                
+                const handleScroll = () => {
+                    isScrolled.value = window.scrollY > 50;
+                };
+                
+                const toggleMenu = () => {
+                    menuOpen.value = !menuOpen.value;
+                };
+                
+                const toggleDropdown = (menu) => {
+                    dropdownOpen.value[menu] = !dropdownOpen.value[menu];
+                };
+                
+                const setActive = (link) => {
+                    activeLink.value = link;
+                    menuOpen.value = false;
+                };
+                
+                const expandSearch = () => {
+                    searchExpanded.value = true;
+                };
+                
+                const shrinkSearch = () => {
+                    searchExpanded.value = false;
+                };
+                
+                const toggleTheme = () => {
+                    darkTheme.value = !darkTheme.value;
+                    themeIcon.value = darkTheme.value ? 'fas fa-sun' : 'fas fa-moon';
+                    document.body.style.backgroundColor = darkTheme.value ? '#121212' : '#f8f9fa';
+                    document.body.style.color = darkTheme.value ? '#ffffff' : '#212529';
+                };
+                
+                // Initialize scroll event listener
+                window.addEventListener('scroll', handleScroll);
+                
+                return {
+                    isScrolled,
+                    menuOpen,
+                    dropdownOpen,
+                    activeLink,
+                    quizNotifications,
+                    calendarEvents,
+                    searchQuery,
+                    darkTheme,
+                    searchExpanded,
+                    themeIcon,
+                    toggleMenu,
+                    toggleDropdown,
+                    setActive,
+                    expandSearch,
+                    shrinkSearch,
+                    toggleTheme
+                };
+            }
+        }).mount('#app');
+
+        // meet your mentor
+
+          // Typewriter effect
+  var typed = new Typed('#typewriter', {
+    strings: ["Tony Baskar Y", "Your Java Mentor 👨‍💻", "Topper - NPTEL Programming in Java"],
+    typeSpeed: 60,
+    backSpeed: 30,
+    loop: true
+  });
+
+  // Particles.js background
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 50 },
+      "color": { "value": "#007bff" },
+      "shape": { "type": "circle" },
+      "opacity": {
+        "value": 0.3,
+        "random": true
+      },
+      "size": {
+        "value": 5,
+        "random": true
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 120,
+        "color": "#007bff",
+        "opacity": 0.2,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": { "enable": true, "mode": "grab" }
+      },
+      "modes": {
+        "grab": { "distance": 150, "line_linked": { "opacity": 0.4 } }
+      }
+    },
+    "retina_detect": true
+  });
+
+    //   ask mentor section
+  const form = document.getElementById('mentorForm');
+  const msg = document.getElementById('form-msg');
+
+  form.addEventListener('submit', function(e) {
+    if (!form.checkValidity()) {
+      msg.textContent = "❗ Please fill all required fields correctly.";
+      msg.style.color = 'red';
+      e.preventDefault();
+    } else {
+      msg.textContent = "✅ Sending your question...";
+      msg.style.color = 'green';
+    }
+  });
+
+
+  </script>
+</body>
+</html>
