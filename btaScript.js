@@ -29,7 +29,7 @@ codeSections.forEach(section => {
 // Add watermark
 doc.setTextColor(200, 200, 200);
 doc.setFontSize(30);
-doc.text("Tony Baskar's Blog", 40, pageHeight / 2, { angle: 45, opacity: 0.3 });
+doc.text("baskartech Academy", 40, pageHeight / 2, { angle: 45, opacity: 0.3 });
 
 // Reset text color for actual content
 doc.setTextColor(0, 0, 0);
@@ -171,11 +171,12 @@ document.getElementById("commentPopup").style.display = "none";
 
     // Quotes for footer
     const quotes = [
-        "The best way to predict the future is to invent it.",
-        "Code is like humor. When you have to explain it, it’s bad.",
-        "Simplicity is the soul of efficiency.",
-        "First, solve the problem. Then, write the code.",
-    ];
+        "Learning never exhausts the mind. – Leonardo da Vinci",
+        "Technology is best when it brings people together.",
+        "Push yourself, because no one else is going to do it for you.",
+        "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.",
+        "Code your dreams into reality 💻✨"
+      ];
     let quoteIndex = 0;
 
     function displayQuote() {
