@@ -621,7 +621,8 @@
             <div class="collapse navbar-collapse" :class="{'show': menuOpen}">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="blogs.html" :class="{'active': activeLink === 'home'}" @click="setActive('home')">
+                        <a class="nav-link" href="blogs.htm
+                          l" :class="{'active': activeLink === 'home'}" @click="setActive('home')">
                             <i class="fas fa-home"></i> Home
                         </a>
                     </li>
@@ -690,21 +691,24 @@
             <div class="row">
                 <!-- Module 1 -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="module-card">
-                        <div class="module-header">
-                            <i class="fas fa-play-circle module-icon"></i>
-                            <span>Module 1: Introduction to Java</span>
+                    <a href="moduleDetails.html" class="text-decoration-none text-dark">
+                        <div class="module-card">
+                            <div class="module-header">
+                                <i class="fas fa-play-circle module-icon"></i>
+                                <span>Module 1: Introduction to Java</span>
+                            </div>
+                            <div class="module-body">
+                                <div class="module-days">Day 1–2</div>
+                                <ul class="topics-list">
+                                    <li>History & Features of Java</li>
+                                    <li>Installing JDK & IDE Setup</li>
+                                    <li>First Java Program (Hello World)</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="module-body">
-                            <div class="module-days">Day 1–2</div>
-                            <ul class="topics-list">
-                                <li>History & Features of Java</li>
-                                <li>Installing JDK & IDE Setup</li>
-                                <li>First Java Program (Hello World)</li>
-                            </ul>
-                        </div>
-                    </div>
+                    </a>
                 </div>
+                
                 
                 <!-- Module 2 -->
                 <div class="col-md-6 col-lg-4">
