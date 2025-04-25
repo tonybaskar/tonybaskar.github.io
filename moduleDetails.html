@@ -17,59 +17,55 @@
     }
 
     .module-box {
-  background: #f0f0f0;
-  border-radius: 20px;
-  padding: 30px 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
+      background: #f0f0f0;
+      border-radius: 20px;
+      padding: 30px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
 
-.module-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
-}
+    .module-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+    }
 
-.icon-circle {
-  font-size: 2.5rem;
-  color: #fff;
-  padding: 20px;
-  border-radius: 50%;
-  background: #28a745;
-  margin-bottom: 15px;
-  transition: background 0.3s;
-  animation: bounce 1s infinite alternate;
-}
+    .icon-circle {
+      font-size: 2.5rem;
+      color: #fff;
+      padding: 20px;
+      border-radius: 50%;
+      background: #28a745;
+      margin-bottom: 15px;
+      transition: background 0.3s;
+      animation: bounce 1s infinite alternate;
+    }
 
-.icon-circle:hover {
-  background: #218838;
-}
+    .icon-circle:hover {
+      background: #218838;
+    }
 
-.btn-glow {
-  background: linear-gradient(45deg, #ff8c00, #ffa500);
-  color: white;
-  border: none;
-  transition: all 0.3s ease;
-  border-radius: 50px;
-  margin: 8px 0;
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  font-weight: 500;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
-}
+    .btn-glow {
+      background: linear-gradient(45deg, #ff8c00, #ffa500);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+      border-radius: 50px;
+      margin: 8px 0;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
+    }
 
-.btn-glow:hover {
-  background: linear-gradient(45deg, #ffa500, #ff8c00);
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(255, 140, 0, 0.5);
-}
+    .btn-glow:hover {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(255, 140, 0, 0.5);
+    }
 
-
-
-
- 
     .back-btn {
       transition: transform 0.3s ease;
     }
@@ -100,94 +96,128 @@
       background: #007bff;
       border-radius: 50%;
     }
+
     @keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-6px);
-  }
-}
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-6px);
+      }
+    }
 
-@media (max-width: 576px) {
-  .btn-glow {
-    font-size: 0.85rem;
-    padding: 8px 0;
-  }
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .section-heading {
+        text-align: center;
+        font-size: 1.5rem;
+      }
 
-/* responsive  */
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-    padding: 10px;
-  }
+      .module-box {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+      }
 
-  .module-box {
-    padding: 20px 15px;
-    margin-bottom: 20px;
-  }
+      .icon-circle {
+        font-size: 2rem;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
 
-  .icon-circle {
-    font-size: 2rem;
-    padding: 15px;
-    margin-bottom: 10px;
-  }
+      .btn-glow {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        width: 100%;
+      }
 
-  .btn-glow {
-    font-size: 0.9rem;
-    padding: 8px 0;
-    width: 100%;
-  }
+      .timeline-style {
+        padding-left: 15px;
+        margin-top: 30px;
+      }
 
-  .timeline-style {
-    padding-left: 15px;
-    margin-top: 30px;
-  }
+      .timeline-style li {
+        font-size: 0.95rem;
+      }
 
-  .timeline-style li {
-    font-size: 0.95rem;
-  }
+      .timeline-style li::before {
+        left: -12px;
+        width: 8px;
+        height: 8px;
+      }
 
-  .timeline-style li::before {
-    left: -12px;
-    width: 8px;
-    height: 8px;
-  }
+      .video-container {
+        margin-bottom: 20px;
+      }
+    }
 
-  .section-heading {
-    text-align: center;
-    font-size: 1.5rem;
-  }
+    /* Mobile design */
+    @media (max-width: 480px) {
+      .module-box {
+        padding: 15px 10px;
+      }
 
-  .back-btn {
-    font-size: 0.9rem;
-  }
-}
+      .icon-circle {
+        font-size: 1.8rem;
+        padding: 12px;
+      }
 
-@media (max-width: 480px) {
-  .module-box {
-    padding: 15px 10px;
-  }
+      .btn-glow {
+        font-size: 0.85rem;
+      }
 
-  .icon-circle {
-    font-size: 1.8rem;
-    padding: 12px;
-  }
+      .timeline-style li {
+        font-size: 0.9rem;
+      }
 
-  .btn-glow {
-    font-size: 0.85rem;
-  }
+      .section-heading {
+        font-size: 1.3rem;
+      }
+    }
 
-  .timeline-style li {
-    font-size: 0.9rem;
-  }
+    /* Creative Video Section */
+    .video-container {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #e0f7fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
 
-  .section-heading {
-    font-size: 1.3rem;
-  }
-}
+    .video-container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+    }
 
+    .video-container .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: #fff;
+      background-color: rgba(0, 123, 255, 0.7);
+      padding: 20px;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .video-container .play-btn:hover {
+      background-color: #007bff;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
@@ -196,6 +226,19 @@
     <div class="text-center section-heading">
       <h2 class="fw-bold text-primary mb-2"><i class="fas fa-code me-2"></i>Module 1: Introduction to Java</h2>
       <p class="lead text-muted">Start your Java journey with essential concepts and hands-on practice.</p>
+    </div>
+
+    <!-- Video Section -->
+    <div class="row justify-content-center">
+      <div class="col-md-8 mb-4">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/QLBB_EQhxN8?si=AfJWh-RYE9Z1PWkK" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <a href="https://youtu.be/QLBB_EQhxN8?si=DpZs9UVYX4LJ5_Nk" class="play-btn">
+            <i class="fas fa-play"></i>
+          </a>
+        </div>
+        <p class="text-center mt-3 text-muted">Watch the recorded class session for Module 1 and dive deeper into Java.</p>
+      </div>
     </div>
 
     <div class="row justify-content-center mt-5">
