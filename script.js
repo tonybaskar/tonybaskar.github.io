@@ -316,6 +316,79 @@ function viewCode(projectId) {
     }
 }
 
+// freelance service
+
+// Scroll Reveal
+ScrollReveal().reveal('.freelance-title', {
+  origin: 'top',
+  distance: '50px',
+  duration: 1000,
+  delay: 200,
+  reset: true
+});
+
+ScrollReveal().reveal('.freelance-card', {
+  origin: 'bottom',
+  distance: '40px',
+  duration: 800,
+  delay: 200,
+  interval: 150,
+  reset: false
+});
+
+ScrollReveal().reveal('.freelance-btn', {
+  origin: 'bottom',
+  distance: '40px',
+  duration: 800,
+  delay: 800,
+  reset: true
+});
+
+// Typed.js
+var typed = new Typed("#typed-text", {
+  strings: ["Freelance Services", "Websites, Posters, Apps & More"],
+  typeSpeed: 60,
+  backSpeed: 30,
+  backDelay: 1500,
+  loop: true
+});
+
+// Particles.js
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 40 },
+    color: { value: "#003366" },
+    shape: { type: "circle" },
+    opacity: { value: 0.5 },
+    size: { value: 3 },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#003366",
+      opacity: 0.4,
+      width: 1
+    },
+    move: {
+      enable: true,
+      speed: 3
+    }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: { enable: true, mode: "grab" },
+      onclick: { enable: true, mode: "push" }
+    },
+    modes: {
+      grab: { distance: 140, line_linked: { opacity: 0.6 } },
+      push: { particles_nb: 4 }
+    }
+  },
+  retina_detect: true
+});
+
+
+
 
 // tonybaskar's portfolio script for the certificate section
 document.addEventListener('DOMContentLoaded', () => {
