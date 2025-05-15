@@ -11,6 +11,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
   <style>
   :root {
             --primary-color: #3a86ff;
@@ -161,6 +164,42 @@
                 max-width: 100%;
             }
         }
+
+    /* Resources Section */
+    @keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out both;
+}
+.animate-fade-in-down {
+  animation: fade-in-down 1s ease-out both;
+}
+.animate-slide-up {
+  animation: slide-up 1.2s ease-out both;
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------- */
 
     /* hero section */
     .hero {
@@ -679,6 +718,38 @@
     </div>
   </section>
   
+<!-- Resources Section -->
+<section id="resources" class="bg-gradient-to-r from-yellow-100 to-blue-100 py-16 px-6 font-poppins text-blue-900 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-6 animate-fade-in-down">📚 Resources Hub</h2>
+    <p class="text-lg mb-10 animate-fade-in-up">Here you can find all the books, example programs, and materials I've taught during regular online sessions.</p>
+
+    <!-- Resource Card -->
+    <div class="grid md:grid-cols-2 gap-8 animate-slide-up">
+      <div class="bg-white/90 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 border border-blue-200 backdrop-blur-sm">
+        <h3 class="text-2xl font-semibold mb-2">📘 Java:The Complete Reference Book</h3>
+        <p class="mb-4">Download the curated notes and examples that cover all core Java concepts.</p>
+        <a href="#" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Download Book</a>
+      </div>
+      <div class="bg-white/90 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 border border-blue-200 backdrop-blur-sm">
+        <h3 class="text-2xl font-semibold mb-2">💻 Source Code Files</h3>
+        <p class="mb-4">Access all the programs I've taught in our sessions — neatly categorized and downloadable.</p>
+        <a href="#" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Download Programs</a>
+      </div>
+    </div>
+
+    <!-- Full Resources Page -->
+    <div class="mt-12 animate-fade-in-up">
+      <a href="#overview" class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold px-6 py-3 rounded-full shadow-lg transition">
+        📂 Explore All Resources
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating Animation Icons -->
+  <img src="btaAssets/book_icon.png" class="absolute top-10 left-10 w-12 animate-float-slow opacity-20" alt="floating book">
+  <img src="btaAssets/code_icon.jpg" class="absolute bottom-10 right-10 w-12 animate-float-slow opacity-20" alt="floating code">
+</section>
 
 
 
@@ -791,6 +862,7 @@
                 
                 <!-- Module 6 -->
                 <div class="col-md-6 col-lg-4">
+                    <a href="module6Details.html" class="text-decoration-none text-dark">
                     <div class="module-card">
                         <div class="module-header">
                             <i class="fas fa-shapes module-icon"></i>
@@ -805,6 +877,7 @@
                             </ul>
                         </div>
                     </div>
+                     </a>
                 </div>
                
                     <!-- Module 7 -->
