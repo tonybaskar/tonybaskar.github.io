@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <!-- Tailwind CSS via CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+
 
   <style>
   :root {
@@ -165,39 +165,7 @@
             }
         }
 
-    /* Resources Section */
-    @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
 
-@keyframes fade-in-down {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-up {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 1s ease-out both;
-}
-.animate-fade-in-down {
-  animation: fade-in-down 1s ease-out both;
-}
-.animate-slide-up {
-  animation: slide-up 1.2s ease-out both;
-}
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
 
 /* -------------------------------------------------------- */
 
@@ -640,9 +608,7 @@
     width: 100%;
   }
 }
-
-        
-  </style>
+</style>
 </head>
 <body>
 <!-- navbar -->
@@ -662,6 +628,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="blogs.html" :class="{'active': activeLink === 'home'}" @click="setActive('home')">
                             <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources" :class="{'active': activeLink === 'overview'}" @click="setActive('home')">
+                            <i class="fas fa-book"></i> Resources Hub
                         </a>
                     </li>
                     <li class="nav-item">
@@ -719,36 +690,50 @@
   </section>
   
 <!-- Resources Section -->
-<section id="resources" class="bg-gradient-to-r from-yellow-100 to-blue-100 py-16 px-6 font-poppins text-blue-900 relative overflow-hidden">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-4xl font-bold mb-6 animate-fade-in-down">📚 Resources Hub</h2>
-    <p class="text-lg mb-10 animate-fade-in-up">Here you can find all the books, example programs, and materials I've taught during regular online sessions.</p>
+<!-- Particles Container -->
+<div id="particles-js" style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
 
-    <!-- Resource Card -->
-    <div class="grid md:grid-cols-2 gap-8 animate-slide-up">
-      <div class="bg-white/90 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 border border-blue-200 backdrop-blur-sm">
-        <h3 class="text-2xl font-semibold mb-2">📘 Java:The Complete Reference Book</h3>
-        <p class="mb-4">Download the curated notes and examples that cover all core Java concepts.</p>
-        <a href="#" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Download Book</a>
+<!-- Resources Section -->
+<section id="resources" class="position-relative text-center py-5" style="background: linear-gradient(to right, #fef9c3, #dbeafe); z-index: 1; font-family: 'Poppins', sans-serif;">
+  <div class="container position-relative" style="z-index: 2;">
+    <h2 class="display-5 fw-bold mb-3 animate__animated animate__fadeInDown">📚 Resources Hub</h2>
+    <p class="lead mb-5 animate__animated animate__fadeInUp">Access books, source code, and materials from our regular online sessions.</p>
+
+    <div class="row g-4 justify-content-center animate__animated animate__fadeInUp">
+      <!-- Book Card -->
+      <div class="col-md-6 col-lg-5">
+        <div class="card h-100 shadow-lg border-0 hover-shadow-lg">
+          <div class="card-body p-4">
+            <h5 class="card-title"><i class="fas fa-book-open text-primary me-2"></i>Java: The Complete Reference</h5>
+            <p class="card-text">Download curated notes and examples covering all core Java concepts.</p>
+            <a href="#" class="btn btn-primary mt-3 rounded-pill">
+              <i class="fas fa-download me-2"></i>Download Book
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="bg-white/90 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition transform hover:scale-105 border border-blue-200 backdrop-blur-sm">
-        <h3 class="text-2xl font-semibold mb-2">💻 Source Code Files</h3>
-        <p class="mb-4">Access all the programs I've taught in our sessions — neatly categorized and downloadable.</p>
-        <a href="#" class="inline-block bg-blue-700 text-white px-5 py-2 rounded-full hover:bg-blue-900 transition">Download Programs</a>
+
+      <!-- Program Files Card -->
+      <div class="col-md-6 col-lg-5">
+        <div class="card h-100 shadow-lg border-0 hover-shadow-lg">
+          <div class="card-body p-4">
+            <h5 class="card-title"><i class="fas fa-code text-success me-2"></i>Source Code Files</h5>
+            <p class="card-text">Get all the programs taught in sessions, neatly categorized and downloadable.</p>
+            <a href="#" class="btn btn-success mt-3 rounded-pill">
+              <i class="fas fa-download me-2"></i>Download Programs
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Full Resources Page -->
-    <div class="mt-12 animate-fade-in-up">
-      <a href="#overview" class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold px-6 py-3 rounded-full shadow-lg transition">
-        📂 Explore All Resources
+    <!-- Link to Full Resource Page -->
+    <div class="mt-5 animate__animated animate__fadeInUp">
+      <a href="#overview" class="btn btn-warning text-dark fw-semibold rounded-pill px-4 py-2 shadow">
+        <i class="fas fa-folder-open me-2"></i>Explore All Resources
       </a>
     </div>
   </div>
-
-  <!-- Floating Animation Icons -->
-  <img src="btaAssets/book_icon.png" class="absolute top-10 left-10 w-12 animate-float-slow opacity-20" alt="floating book">
-  <img src="btaAssets/code_icon.jpg" class="absolute bottom-10 right-10 w-12 animate-float-slow opacity-20" alt="floating code">
 </section>
 
 
@@ -1119,7 +1104,7 @@
       <p id="form-msg"></p>
     </form>
   </section>
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
@@ -1196,6 +1181,45 @@
                 };
             }
         }).mount('#app');
+
+        //resource hub section animation
+        
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 40 },
+      "color": { "value": "#1e3a8a" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.2 },
+      "size": { "value": 4 },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#1e3a8a",
+        "opacity": 0.2,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "direction": "none",
+        "random": true,
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" }
+      },
+      "modes": {
+        "repulse": { "distance": 100 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+
+
 
         // meet your mentor
 
