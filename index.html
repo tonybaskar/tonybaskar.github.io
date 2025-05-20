@@ -65,10 +65,15 @@
 }
 
 .freelance-card i {
-  font-size: 2.7rem;
-  color: #ff6600;
+  color:#ff6600;
+  font-size: 2.5rem;
   margin-bottom: 10px;
+  transition: transform 0.5s ease;
 }
+.freelance-card:hover i {
+  transform: rotateY(360deg);
+}
+
 
 .freelance-card h3 {
   margin-top: 10px;
@@ -85,6 +90,19 @@
 .freelance-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+.freelance-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: radial-gradient(circle, rgba(0,150,255,0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.freelance-card:hover::after {
+  opacity: 1;
 }
 
 .freelance-btn {
@@ -556,8 +574,19 @@
     </section>
 
     <!-- freelance services -->
-        <!-- Particles container -->
+    <!-- Particles container -->
 <div id="particles-js"></div>
+<!-- modal box -->
+ <div id="popup-message" class="popup">
+  <div class="popup-content">
+    <p>🎉Thanks for showing interest! Let’s collaborate — reach out via the contact section.</p>
+    <div class="popup-buttons">
+      <button onclick="redirectToContact()">Go to Contact</button>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+</div>
+
 
 <section id="freelance" class="freelance-section">
   <h2 class="freelance-title">

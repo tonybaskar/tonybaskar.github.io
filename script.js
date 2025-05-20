@@ -344,6 +344,7 @@ ScrollReveal().reveal('.freelance-btn', {
   reset: true
 });
 
+
 // Typed.js
 var typed = new Typed("#typed-text", {
   strings: ["Freelance Services", "Websites, Posters, Apps & More"],
@@ -387,7 +388,27 @@ particlesJS("particles-js", {
   retina_detect: true
 });
 
+//freelance card popup
+  const cards = document.querySelectorAll('.freelance-card');
+  const popup = document.getElementById('popup-message');
 
+  
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      popup.classList.add('active');
+    });
+  });
+
+ 
+  function closePopup() {
+    popup.classList.remove('active');
+  }
+
+
+  function redirectToContact() {
+    popup.classList.remove('active');
+    document.getElementById('Contact').scrollIntoView({ behavior: 'smooth' });
+  }
 
 
 // tonybaskar's portfolio script for the certificate section

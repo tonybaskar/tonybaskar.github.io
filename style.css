@@ -311,9 +311,6 @@ html {
     color: darkblue;
 }
 
-
-
-
 .title {
     font-family: "Poppins", sans-serif;
     font-size: 3rem;
@@ -595,9 +592,6 @@ button:active {
     margin-bottom: 30px;
      
 }
-
-
-
 .skills_container {
     display: flex;
     flex-wrap: wrap;
@@ -605,7 +599,6 @@ button:active {
     justify-content: space-between;
     
 }
-
 .skill {
     background-color: #fff;
     padding: 20px;
@@ -810,8 +803,6 @@ button:active {
     transition: border-color 0.3s ease;
 }
 
-
-
 .project:hover {
     transform: scale(1.05) rotate(3deg) translateY(-5px);
 }
@@ -901,7 +892,61 @@ button:active {
     }
 }
 
-/* freelance services */
+/* freelance card pop up */
+.popup {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup.active {
+  display: flex; 
+}
+
+.popup-content {
+  background: lightyellow;
+  padding: 25px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 80%;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.popup-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.popup button {
+  padding: 10px 20px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.popup button:hover {
+  background: #0056b3;
+}
+
+
+
+
 
 
 /* tonybaskar's portfolio certificates section old try */
