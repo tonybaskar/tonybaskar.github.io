@@ -14,145 +14,11 @@
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    <!-- particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="mediaqueries.css"/> 
 
-    <style>
-/* Particles Background */
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(251, 248, 204, 1);
-  z-index: -1;
-  top: 0;
-  left: 0;
-}
-
-/* Freelance Section */
-.freelance-section {
-  position: relative;
-  padding: 60px 20px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  color: #003366;
-  overflow: hidden;
-}
-
-.freelance-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  min-height: 50px;
-}
-
-.freelance-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.freelance-card {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 25px;
-  width: 250px;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-.freelance-card i {
-  color:#ff6600;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  transition: transform 0.5s ease;
-}
-.freelance-card:hover i {
-  transform: rotateY(360deg);
-}
-
-
-.freelance-card h3 {
-  margin-top: 10px;
-  font-size: 1.3rem;
-  color: #003366;
-}
-
-.freelance-card p {
-  font-size: 0.95rem;
-  margin-top: 8px;
-  color: #444;
-}
-
-.freelance-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-}
-.freelance-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 15px;
-  background: radial-gradient(circle, rgba(0,150,255,0.3), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.freelance-card:hover::after {
-  opacity: 1;
-}
-
-.freelance-btn {
-  display: inline-block;
-  margin-top: 45px;
-  padding: 12px 28px;
-  background-color: #003366;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.freelance-btn:hover {
-  background-color: #0055aa;
-}
-
-@media (max-width: 768px) {
-  .freelance-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
-
    
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id= G-HVQ1XPN538"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', ' G-HVQ1XPN538');
-</script>
-
-</head>
-<body>
-<!-- tonybaskar's portfolio section -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tony Baskar's Portfolio</title>
-    <!-- Font Awesome Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -184,26 +50,10 @@
 
    
 
-    <!-- tonybaskar's portfolio Announcement section-->
- 
-<section id="announcement">
-    <div class="announcement-container">
-       
-        <p class="announcement-text">
-            <span class="icon">📢</span>
-            "Open to Work" <br> Actively Seeking Opportunities.
-        </p>
-        
-        <div class="announcement-buttons">
-            <a href="#Projects" class="btn browse-work">Browse My Work</a>
-            <a href="mailto:tonybaskar83@gmail.com" class="btn hire-me">Hire Me</a>
-            <!-- <a href="blogs.html" class="btn view-blogs">View My Blogs</a> -->
-        </div>
-    </div>
-</section>
+<br><br><br><br><br><br>
     
 <!-- tonybaskar's portfolio  profile section -->
-    <section id="profile">
+  <section id="profile">
         <div class="section__text">
             <p class="section__text1">Hello i'm Tony Baskar,</p>
             <h1 class="title">Tech Enthusiast</h1>
@@ -212,8 +62,12 @@
                 <button class="resButton" onclick="window.open('/assets/TONY BASKAR Y.pdf')">Resume</button> 
             </div>
             <div id="social-container">
-                <img src="assets/linkedin.jpeg" alt="Tony Baskar's Linkedin Profile" class="icon" onclick="location.href='https://www.linkedin.com/in/tony-baskar-y-55a2282a7/'"/>
-                <img src="assets/github.jpeg" alt="Tony Baskar's github Profile" class="icon" onclick="location.href='https://github.com/tonybaskar'"/>
+                <a href="https://www.linkedin.com/in/tony-baskar-y-55a2282a7/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin social-icon"></i>
+                </a>
+                <a href="https://github.com/tonybaskar" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github-square social-icon"></i>
+                </a>
             </div>
         </div>
         <div class="section__pic-container">
@@ -221,203 +75,267 @@
         </div>
     </section>
 
-    <!-- tonybaskar's portfolio about section -->
-    <section id="About">
-        <h1 class="title_about"> About Me</h1>
+        <!-- tonybaskar's portfolio about section -->
+        <section id="About">
+        <h1 class="title_about">About Me</h1>
         <div class="about_description">
-            <p> Hi, I'm Tony Baskar Y, a recent B.Sc. Computer Science graduate with a passion for technology and innovation. I am eager to apply my academic knowledge and technical skills in a dynamic and forward-thinking environment. As a fresher, I am enthusiastic about starting my career with a reputed company where I can contribute to projects, grow professionally, and make a meaningful impact. I'm driven by a curiosity to learn and a commitment to excellence in everything I do.</p>
+            <p>
+            Hi, I'm Tony Baskar Y, a B.Sc. Computer Science graduate passionate about
+            technology and innovation. I am currently working as a
+            <b>Technical Trainer</b> and pursuing my <b>MCA</b> at <b>IGNOU</b> to
+            enhance my technical knowledge. I aim to contribute to innovative
+            projects, grow professionally, and make a meaningful impact in the tech
+            industry.
+            </p>
         </div>
+
         <div class="about_details_container">
             <div class="details_container">
-                <img src="assets/experience.png" alt="experience icon" class="aicon"/>
-                <h3>Experience</h3>
-                <p>Fresher <br> Seeking for job</p>
+            <img src="assets/experience.png" alt="experience icon" class="aicon" />
+            <h3>Experience</h3>
+            <p>Technical Trainer<br />Mentoring coding enthusiasts</p>
             </div>
             <div class="details_container">
-                <img src="assets/education.png" alt="education icon" class="aicon"/>
-                <h3>Education</h3>
-                <p> B.Sc Computer Science</p>
+            <img src="assets/education.png" alt="education icon" class="aicon" />
+            <h3>Education</h3>
+            <p>B.Sc Computer Science<br />MCA (Pursuing) - IGNOU</p>
             </div>
         </div>
-        <div class="timeline">
-            <div class="timeline_entry">
-                <div class="timeline_box">
-                    <span class="dot"></span>
-                    <div class="timeline_content">
-                        <h3>2019-2020: Academic Excellence</h3>
-                        <p>In 2019-2020, I successfully completed my <b>10th standard</b>, achieving an impressive <b>92%</b> overall. This year was marked by my dedication to academics, where I consistently performed at a high level. My hard work and commitment were recognized with numerous certificates of achievement, reflecting my passion for learning and my drive to excel. This period was foundational in shaping my academic journey, laying the groundwork for my future studies in Computer Science.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline_entry">
-                <div class="timeline_box">
-                    <span class="dot"></span>
-                    <div class="timeline_content">
-                        <h3>2020-2022: Building Strong Foundations</h3>
-                        <p>From 2020 to 2022, I completed my<b> 11th and 12th standard</b> with an overall percentage of <b>74.5%</b>. During these years, I honed my ability to quickly grasp and understand complex concepts, a skill that has proven invaluable in my academic pursuits. My determination to succeed and my ability to adapt to new challenges laid a strong foundation for my further studies in Computer Science.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline_entry">
-                <div class="timeline_box">
-                    <span class="dot"></span>
-                    <div class="timeline_content">
-                        <h3>2022 - Present: Pursuing Excellence in Computer Science</h3>
-                        <p>Since 2022, I have been <b>pursuing a B.Sc. in Computer Science</b> , maintaining a commendable CGPA of <b>8.57</b>. My dedication and academic performance have been recognized with the prestigious Gold Medal from Sacred Heart College Autonomous. This ongoing journey has provided me with extensive knowledge and practical skills, preparing me for a successful career in technology.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="arrow-container">
-            <a href="#Skills">
-                <img src="assets/arrow.png" alt="Navigate to Skills" class="arrow-icon"onclick="scrollToSkills()"/>
-            </a>
-        </div>
-    </section>
 
-    <!-- tonybaskar's portfolio Skills section -->
+      <!-- Timeline Cards -->
+  <div class="timeline_cards">
+    <div class="timeline_card">
+      <i class="fas fa-school timeline_icon"></i>
+      <h3>2019-2020: Academic Excellence</h3>
+      <p>
+        Completed <b>10th standard</b> with <b>92%</b>. Recognized for consistent
+        academic performance and awarded multiple achievement certificates.
+      </p>
+    </div>
 
-    <section id="Skills">
-        <div class="title_skills">My Skills</div>
-        
-        <div class="skills_container">
-            <div class="skill">
-                <img src="assets/java2.png" alt="Java" class="skill-icon">
-                <h3>Java</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="80%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
+    <div class="timeline_card">
+      <i class="fas fa-school timeline_icon"></i>
+      <h3>2020-2022: Strong Foundations</h3>
+      <p>
+        Completed <b>11th & 12th standard</b> with <b>74.5%</b>. Developed strong
+        analytical and problem-solving skills.
+      </p>
+    </div>
+
+    <div class="timeline_card">
+      <i class="fas fa-graduation-cap timeline_icon"></i>
+      <h3>2022-2025: Computer Science Journey</h3>
+      <p>
+        Graduated with <b>B.Sc. in Computer Science</b> (CGPA: 8.57). Awarded
+        <b>Gold Medal</b> for academic excellence from Sacred Heart College
+        Autonomous.
+      </p>
+    </div>
+
+    <div class="timeline_card">
+      <i class="fas fa-chalkboard-teacher timeline_icon"></i>
+      <h3>2025-Present: Trainer & Higher Studies</h3>
+      <p>
+        Working as a <b>Technical Trainer</b> while pursuing <b>MCA</b> at <b>IGNOU</b>
+        to enhance advanced computing skills.
+      </p>
+    </div>
+  </div>
+
+  <div class="arrow-container">
+    <a href="#Skills">
+      <img
+        src="assets/arrow.png"
+        alt="Navigate to Skills"
+        class="arrow-icon"
+        onclick="scrollToSkills()"
+      />
+    </a>
+  </div>
+</section>
+
+<!-- tonybaskar's portfolio Skills section -->
+
+<section id="Skills">
+    <div class="title_skills">My Skills</div>
+    
+    <div class="skills_container">
+        <!-- Java -->
+        <div class="skill">
+            <i class="fab fa-java skill-icon"></i>
+            <h3>Java</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="80%"></div>
                 </div>
-            </div>
-            <div class="skill">
-                <img src="assets/php.jpeg" alt="Php" class="skill-icon">
-                <h3>Php</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="95%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/html.jpeg" alt="Html" class="skill-icon">
-                <h3>Html</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="95%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/css.jpeg" alt="Css" class="skill-icon">
-                <h3>Css</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="95%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/bootstrap.png" alt="bootstrap" class="skill-icon">
-                <h3>Bootstrap</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="50%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/js1.jpeg" alt="JavaScript" class="skill-icon">
-                <h3>JavaScript</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="85%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/sql.jpeg" alt="SQL" class="skill-icon">
-                <h3>SQL</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="75%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/c.jpeg" alt="C" class="skill-icon">
-                <h3>C</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="85%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/plsql.jpeg" alt="PL/SQL" class="skill-icon">
-                <h3>PL/SQL</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="75%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/figma.jpeg" alt="Figma" class="skill-icon">
-                <h3>Figma</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="70%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/canva.jpeg" alt="Canva" class="skill-icon">
-                <h3>Canva</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="85%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/msoffice.jpeg" alt="MS Office" class="skill-icon">
-                <h3>MS Office</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="80%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
-            </div>
-            <div class="skill">
-                <img src="assets/fullstack.webp" alt="Full Stack Development" class="skill-icon">
-                <h3>Full Stack Development</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-bar">
-                        <div class="skill-level" data-skill="70%"></div>
-                    </div>
-                    <span class="skill-percentage">0%</span>
-                </div>
+                <span class="skill-percentage">0%</span>
             </div>
         </div>
-        <div class="arrow-container">
-            <a href="#Achievements">
-                <img src="assets/arrow.png" alt="Navigate to achievements" class="arrow-icon"onclick="scrollToAchievements()"/>
-            </a>
+
+        <!-- PHP -->
+        <div class="skill">
+            <i class="fab fa-php skill-icon"></i>
+            <h3>PHP</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="95%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
         </div>
-    </section>
+
+        <!-- HTML -->
+        <div class="skill">
+            <i class="fab fa-html5 skill-icon"></i>
+            <h3>HTML</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="95%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- CSS -->
+        <div class="skill">
+            <i class="fab fa-css3-alt skill-icon"></i>
+            <h3>CSS</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="95%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- Bootstrap -->
+        <div class="skill">
+            <i class="fab fa-bootstrap skill-icon"></i>
+            <h3>Bootstrap</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="50%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="skill">
+            <i class="fab fa-js skill-icon"></i>
+            <h3>JavaScript</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="85%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- SQL -->
+        <div class="skill">
+            <i class="fas fa-database skill-icon"></i>
+            <h3>SQL</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="75%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- C -->
+        <div class="skill">
+            <i class="fas fa-code skill-icon"></i>
+            <h3>C</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="85%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- PL/SQL -->
+        <div class="skill">
+            <i class="fas fa-database skill-icon"></i>
+            <h3>PL/SQL</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="75%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- Figma -->
+        <div class="skill">
+            <i class="fab fa-figma skill-icon"></i>
+            <h3>Figma</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="70%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- Canva -->
+        <div class="skill">
+            <i class="fas fa-paint-brush skill-icon"></i>
+            <h3>Canva</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="85%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- MS Office -->
+        <div class="skill">
+            <i class="fas fa-file-word skill-icon"></i>
+            <h3>MS Office</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="80%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- Full Stack Development -->
+        <div class="skill">
+            <i class="fas fa-laptop-code skill-icon"></i>
+            <h3>Full Stack Development</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="70%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- React -->
+        <div class="skill">
+            <i class="fab fa-react skill-icon"></i>
+            <h3>React</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="75%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="arrow-container">
+        <a href="#Achievements">
+            <img src="assets/arrow.png" alt="Navigate to achievements" class="arrow-icon" onclick="scrollToAchievements()"/>
+        </a>
+    </div>
+</section>
+
     
 <!-- tonybaskar's portfolio achievements section -->
         <section id="Achievements">
@@ -567,68 +485,12 @@
             </div>
         </div>
         <div class="arrow-container">
-            <a href="#freelance">
+            <a href="#certificates">
                 <img src="assets/arrow.png" alt="Navigate to freelance service" class="arrow-icon"onclick="scrollToCertificates()"/>
             </a>
         </div>
     </section>
 
-    <!-- freelance services -->
-    <!-- Particles container -->
-<div id="particles-js"></div>
-<!-- modal box -->
- <div id="popup-message" class="popup">
-  <div class="popup-content">
-    <p>🎉Thanks for showing interest! Let’s collaborate — reach out via the contact section.</p>
-    <div class="popup-buttons">
-      <button onclick="redirectToContact()">Go to Contact</button>
-      <button onclick="closePopup()">Close</button>
-    </div>
-  </div>
-</div>
-
-
-<section id="freelance" class="freelance-section">
-  <h2 class="freelance-title">
-    <span id="typed-text"></span>
-  </h2>
-
-  <div class="freelance-cards">
-    <!-- Each card as before -->
-    <div class="freelance-card">
-      <i class="fas fa-globe"></i>
-      <h3>Website Development</h3>
-      <p>Responsive and SEO-friendly websites tailored to your goals.</p>
-    </div>
-    <div class="freelance-card">
-      <i class="fas fa-palette"></i>
-      <h3>Poster Designing</h3>
-      <p>Visually appealing posters for events, ads, and branding.</p>
-    </div>
-    <div class="freelance-card">
-      <i class="fas fa-camera-retro"></i>
-      <h3>Photo Editing</h3>
-      <p>Creative edits and touch-ups to make your photos stand out.</p>
-    </div>
-    <div class="freelance-card">
-      <i class="fas fa-mobile-alt"></i>
-      <h3>App Development</h3>
-      <p>Clean, functional Android apps built using Java & XML.</p>
-    </div>
-    <div class="freelance-card">
-      <i class="fas fa-file-alt"></i>
-      <h3>Resume Making</h3>
-      <p>Modern, ATS-friendly resumes to elevate your job search.</p>
-    </div>
-  </div>
-
-  <a href="#Contact" class="freelance-btn">Let's Work Together</a>
-    <div class="arrow-container">
-            <a href="#Certificates">
-                <img src="assets/arrow.png" alt="Navigate to Certificates" class="arrow-icon"onclick="scrollToCertificates()"/>
-            </a>
-        </div>
-</section>
 
     
     <!-- tonyBaskar's Portfolio certificates section -->
@@ -719,7 +581,7 @@
                 <!-- tonybaskar's Portfolio contact form -->
 
                 <div class="contact-right">
-                    <h2 style="text-align:center; color: #002B5B;text-transform: uppercase;">Message</h2>
+                    <h2 class="sub-title">Message</h2>
                     <form action="https://formspree.io/f/xyzgoqay" class="contactForm" method="post"> 
                     <!-- <form id="contactForm" class="contactForm" > -->
                         <label for="Name">Name</label>
@@ -740,21 +602,8 @@
                     </div>
                 </div>
 
-                <!-- tonybaskar's Portfolio  Chatbot Section -->
         
-            <div class="chatbot-container">
-            <div id="chatbot">
-                <div class="chatbot-header">
-                    <h3>Ask Me About Tony!</h3>
-                </div>
-                <div id="chatbot-messages" class="chatbot-messages"></div>
-                <div class="chatbot-input">
-                    <input type="text" id="chatbot-input" placeholder="Type your question here..." />
-                    <button id="chatbot-send">Send</button>
-                </div>
-            </div>
-            </div>
-            </div>
+
             </div>
         </div>
         <div class="arrow-container">
@@ -768,7 +617,7 @@
 
 
     <section class="testimonials-section" id="Testimonials">
-        <h2 style="color: #002B5B;text-transform: uppercase;font-weight: bold;">Feedbacks</h2>
+        <h2 class="sub-title">Feedbacks</h2>
         <div class="carousel">
           <div class="carousel-inner" id="carouselInner">
             <div class="carousel-item">

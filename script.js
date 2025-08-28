@@ -3,7 +3,7 @@
 // script for the role
 document.addEventListener("DOMContentLoaded", function () {
     const titleElement = document.querySelector(".title");
-    const text = "Tech Enthusiast";
+    const text = "Technical Trainer";
     let index = 0;
 
     function typeEffect() {
@@ -19,13 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // glow effect for the profile section
-window.addEventListener("scroll", function () {
-    let profileSection = document.getElementById("profile");
-    let scrollPosition = window.scrollY;
+// window.addEventListener("scroll", function () {
+//     let profileSection = document.getElementById("profile");
+//     let scrollPosition = window.scrollY;
     
-    let glowIntensity = Math.min(scrollPosition / 5, 50); 
-    profileSection.style.boxShadow = `0px 0px ${glowIntensity}px rgba(255, 215, 0, 0.6)`;
-});
+//     let glowIntensity = Math.min(scrollPosition / 5, 50); 
+//     profileSection.style.boxShadow = `0px 0px ${glowIntensity}px rgba(255, 215, 0, 0.6)`;
+// });
 
 // section_text1
 
@@ -40,17 +40,17 @@ window.addEventListener("load", function () {
 
 //tonybaskar's portfolio script for the announcement section
 
-document.addEventListener("DOMContentLoaded", () => {
-    const announcementText = document.querySelector(".announcement-text");
-    announcementText.style.opacity = 0;
-    announcementText.style.transform = "translateY(20px)";
+// document.addEventListener("DOMContentLoaded", () => {
+//     const announcementText = document.querySelector(".announcement-text");
+//     announcementText.style.opacity = 0;
+//     announcementText.style.transform = "translateY(20px)";
     
-    setTimeout(() => {
-        announcementText.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-        announcementText.style.opacity = 1;
-        announcementText.style.transform = "translateY(0)";
-    }, 500);
-});
+//     setTimeout(() => {
+//         announcementText.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+//         announcementText.style.opacity = 1;
+//         announcementText.style.transform = "translateY(0)";
+//     }, 500);
+// });
 
 // tonybaskar's portfolio script for  hamburger menu toggle open and close
 
@@ -318,75 +318,75 @@ function viewCode(projectId) {
 
 // freelance service
 
-// Scroll Reveal
-ScrollReveal().reveal('.freelance-title', {
-  origin: 'top',
-  distance: '50px',
-  duration: 1000,
-  delay: 200,
-  reset: true
-});
+// // Scroll Reveal
+// ScrollReveal().reveal('.freelance-title', {
+//   origin: 'top',
+//   distance: '50px',
+//   duration: 1000,
+//   delay: 200,
+//   reset: true
+// });
 
-ScrollReveal().reveal('.freelance-card', {
-  origin: 'bottom',
-  distance: '40px',
-  duration: 800,
-  delay: 200,
-  interval: 150,
-  reset: false
-});
+// ScrollReveal().reveal('.freelance-card', {
+//   origin: 'bottom',
+//   distance: '40px',
+//   duration: 800,
+//   delay: 200,
+//   interval: 150,
+//   reset: false
+// });
 
-ScrollReveal().reveal('.freelance-btn', {
-  origin: 'bottom',
-  distance: '40px',
-  duration: 800,
-  delay: 800,
-  reset: true
-});
+// ScrollReveal().reveal('.freelance-btn', {
+//   origin: 'bottom',
+//   distance: '40px',
+//   duration: 800,
+//   delay: 800,
+//   reset: true
+// });
 
 
-// Typed.js
-var typed = new Typed("#typed-text", {
-  strings: ["Freelance Services", "Websites, Posters, Apps & More"],
-  typeSpeed: 60,
-  backSpeed: 30,
-  backDelay: 1500,
-  loop: true
-});
+// // Typed.js
+// var typed = new Typed("#typed-text", {
+//   strings: ["Freelance Services", "Websites, Posters, Apps & More"],
+//   typeSpeed: 60,
+//   backSpeed: 30,
+//   backDelay: 1500,
+//   loop: true
+// });
 
-// Particles.js
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 40 },
-    color: { value: "#003366" },
-    shape: { type: "circle" },
-    opacity: { value: 0.5 },
-    size: { value: 3 },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: "#003366",
-      opacity: 0.4,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 3
-    }
-  },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: { enable: true, mode: "grab" },
-      onclick: { enable: true, mode: "push" }
-    },
-    modes: {
-      grab: { distance: 140, line_linked: { opacity: 0.6 } },
-      push: { particles_nb: 4 }
-    }
-  },
-  retina_detect: true
-});
+// // Particles.js
+// particlesJS("particles-js", {
+//   particles: {
+//     number: { value: 40 },
+//     color: { value: "#003366" },
+//     shape: { type: "circle" },
+//     opacity: { value: 0.5 },
+//     size: { value: 3 },
+//     line_linked: {
+//       enable: true,
+//       distance: 150,
+//       color: "#003366",
+//       opacity: 0.4,
+//       width: 1
+//     },
+//     move: {
+//       enable: true,
+//       speed: 3
+//     }
+//   },
+//   interactivity: {
+//     detect_on: "canvas",
+//     events: {
+//       onhover: { enable: true, mode: "grab" },
+//       onclick: { enable: true, mode: "push" }
+//     },
+//     modes: {
+//       grab: { distance: 140, line_linked: { opacity: 0.6 } },
+//       push: { particles_nb: 4 }
+//     }
+//   },
+//   retina_detect: true
+// });
 
 //freelance card popup
   const cards = document.querySelectorAll('.freelance-card');
