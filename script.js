@@ -242,173 +242,72 @@ VanillaTilt.init(document.querySelectorAll(".achievement"), {
 
 
 // tonybaskar's portfolio script for project section
-document.addEventListener('DOMContentLoaded', function() {
-    const projectSections = document.querySelectorAll('.project');
-    console.log('Projects found:', projectSections.length); 
-
-    const options = {
-        threshold: 0.3
-    };
-
-    const projectObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                console.log('Animating:', entry.target); 
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
+// Project URLs mapping
+        const projectUrls = {
+            project1: {
+                project: "https://digitalmarkentrysystembts.netlify.app/",
+                code: "https://github.com/tonybaskar/smart-mark-entry-system/"
+            },
+            project2: {
+                project: "https://tonybaskar.github.io/",
+                code: "https://github.com/tonybaskar/tonybaskar.github.io"
+            },
+            project3: {
+                project: "https://tonybaskar.github.io/CIneHavenTB/home.html",
+                code: "https://github.com/tonybaskar/CIneHavenTB"
+            },
+            project4: {
+                project: "",
+                code: ""
+            },
+            project5: {
+                project: "",
+                code: ""
+            },
+            project6: {
+                project: "",
+                code: ""
             }
+        };
+
+        
+        function handleProjectButtonClick(event) {
+            const button = event.currentTarget;
+            const projectId = button.getAttribute('data-project-id');
+            const buttonType = button.getAttribute('data-type');
+            
+          
+            const url = projectUrls[projectId]?.[buttonType];
+            
+            if (url) {
+               
+                window.open(url, '_blank');
+            } else {
+                console.error('URL not found for:', projectId, buttonType);
+                alert('Project link not available at the moment.');
+            }
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const viewProjectButtons = document.querySelectorAll('.view-project-btn');
+            viewProjectButtons.forEach(button => {
+                button.addEventListener('click', handleProjectButtonClick);
+            });
+
+          
+            const viewCodeButtons = document.querySelectorAll('.view-code-btn');
+            viewCodeButtons.forEach(button => {
+                button.addEventListener('click', handleProjectButtonClick);
+            });
+
+          
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.removeAttribute('onclick');
+            });
         });
-    }, options);
-
-    projectSections.forEach(section => {
-        projectObserver.observe(section);
-    });
-});
-
-// view project and view code button
-
-function viewProject(projectId) {
-    switch (projectId) {
-        case 'project1':
-            window.open("https://tonybaskar.github.io", "_blank"); 
-            break;
-        case 'project2':
-            window.open("https://tonybaskar.github.io/CIneHavenTB/home.html", "_blank"); 
-            break;
-        case 'project3':
-            // window.open("#", "_blank"); 
-            alert("Project will be Linked soon...");
-        case 'project4':
-            // window.open("#", "_blank"); 
-            alert("Project will be Linked soon...");
-            break;
-        case 'project5':
-            // window.open("#", "_blank"); 
-            alert("Project will be Linked soon...");
-            break;
-        default:
-            alert("Project not found!");
-    }
-}
-
-function viewCode(projectId) {
-    switch (projectId) {
-        case 'project1':
-            window.open("https://github.com/tonybaskar/tonybaskar.github.io", "_blank"); 
-            break;
-        case 'project2':
-            window.open("https://github.com/tonybaskar/CIneHavenTB", "_blank"); 
-            break;
-        case 'project3':
-            // window.open("#", "_blank"); 
-            alert("Code will Be linked soon...");
-            break;
-        case 'project4':
-            // window.open("#", "_blank"); 
-            alert("Code will Be linked soon...");
-            break;
-        case 'project5':
-            // window.open("#", "_blank");
-            alert("Code will Be linked soon...");
-            break;
-        default:
-            alert("Code not found!");
-    }
-}
-
-// freelance service
-
-// // Scroll Reveal
-// ScrollReveal().reveal('.freelance-title', {
-//   origin: 'top',
-//   distance: '50px',
-//   duration: 1000,
-//   delay: 200,
-//   reset: true
-// });
-
-// ScrollReveal().reveal('.freelance-card', {
-//   origin: 'bottom',
-//   distance: '40px',
-//   duration: 800,
-//   delay: 200,
-//   interval: 150,
-//   reset: false
-// });
-
-// ScrollReveal().reveal('.freelance-btn', {
-//   origin: 'bottom',
-//   distance: '40px',
-//   duration: 800,
-//   delay: 800,
-//   reset: true
-// });
-
-
-// // Typed.js
-// var typed = new Typed("#typed-text", {
-//   strings: ["Freelance Services", "Websites, Posters, Apps & More"],
-//   typeSpeed: 60,
-//   backSpeed: 30,
-//   backDelay: 1500,
-//   loop: true
-// });
-
-// // Particles.js
-// particlesJS("particles-js", {
-//   particles: {
-//     number: { value: 40 },
-//     color: { value: "#003366" },
-//     shape: { type: "circle" },
-//     opacity: { value: 0.5 },
-//     size: { value: 3 },
-//     line_linked: {
-//       enable: true,
-//       distance: 150,
-//       color: "#003366",
-//       opacity: 0.4,
-//       width: 1
-//     },
-//     move: {
-//       enable: true,
-//       speed: 3
-//     }
-//   },
-//   interactivity: {
-//     detect_on: "canvas",
-//     events: {
-//       onhover: { enable: true, mode: "grab" },
-//       onclick: { enable: true, mode: "push" }
-//     },
-//     modes: {
-//       grab: { distance: 140, line_linked: { opacity: 0.6 } },
-//       push: { particles_nb: 4 }
-//     }
-//   },
-//   retina_detect: true
-// });
-
-//freelance card popup
-  const cards = document.querySelectorAll('.freelance-card');
-  const popup = document.getElementById('popup-message');
-
-  
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      popup.classList.add('active');
-    });
-  });
-
- 
-  function closePopup() {
-    popup.classList.remove('active');
-  }
-
-
-  function redirectToContact() {
-    popup.classList.remove('active');
-    document.getElementById('Contact').scrollIntoView({ behavior: 'smooth' });
-  }
 
 
 // tonybaskar's portfolio script for the certificate section
@@ -451,51 +350,70 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // tonybaskar's portfolio script for contact section
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const name = this.Name.value.trim();
-    const email = this.Email.value.trim();
-    const message = this.Message.value.trim();
 
-    if (validateForm(name, email, message)) {
-        showModal(`Your Message has been received , ${name}`);
-        this.reset();
-    } else {
-        showModal('Please fill out all fields correctly.');
-    }
-});
-
-function validateForm(name, email, message) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const namePattern = /^[A-Za-z\s]+$/; 
-
-    return (
-        namePattern.test(name) &&
-        emailPattern.test(email) &&
-        message.length > 10
-    );
-}
-
-function showModal(message) {
-    const modal = document.getElementById('modal');
-    const modalMessage = document.getElementById('modalMessage');
-    const closeButton = document.querySelector('.close-button');
-
-    modalMessage.textContent = message;
-    modal.style.display = 'block';
-
-    closeButton.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const modal = document.getElementById('modal');
+            const modalMessage = document.getElementById('modalMessage');
+            const closeButton = document.querySelector('.close-button');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+              
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+            
+                setTimeout(function() {
+                   
+                    modalMessage.textContent = "Thank you for your message! I'll get back to you soon.";
+                    modal.style.display = 'flex';
+                    
+                   
+                    contactForm.reset();
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+            
+           
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+               
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+           
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+        
+        // Function to scroll to testimonials section
+        function scrollToTestimonials() {
+            const testimonialsSection = document.getElementById('Testimonials');
+            if (testimonialsSection) {
+                testimonialsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
-    });
-}
-
-
 
 
 
