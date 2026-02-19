@@ -210,7 +210,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//  for impact section counter animation
 
+const counters = document.querySelectorAll('.counter');
+let counterStarted = false;
+
+function startCounterAnimation() {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const increment = target / 200;
+
+        const updateCounter = () => {
+            const current = +counter.innerText;
+            if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(updateCounter, 10);
+            } else {
+                counter.innerText = target + "+";
+            }
+        };
+        updateCounter();
+    });
+}
+
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom >= 0;
+}
+
+window.addEventListener('scroll', () => {
+    const section = document.querySelector('.impact-section');
+    if (isInViewport(section) && !counterStarted) {
+        startCounterAnimation();
+        counterStarted = true;
+    }
+});
 
 // tonybaskar's portfolio script for achievement section
 document.addEventListener('DOMContentLoaded', function () {

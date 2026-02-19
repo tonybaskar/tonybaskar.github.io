@@ -173,6 +173,42 @@
                 <span class="skill-percentage">0%</span>
             </div>
         </div>
+        <!-- python -->
+        <div class="skill">
+            <i class="fab fa-python skill-icon"></i>
+            <h3>Python</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="90%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!--  ai and machine learning -->
+
+        <div class="skill">
+            <i class="fas fa-brain skill-icon"></i>
+            <h3>AI & ML</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="86%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
+
+        <!-- computer vision -->
+        <div class="skill">
+            <i class="fas fa-camera skill-icon"></i>
+            <h3>Computer Vision</h3>
+            <div class="skill-bar-container">
+                <div class="skill-bar">
+                    <div class="skill-level" data-skill="70%"></div>
+                </div>
+                <span class="skill-percentage">0%</span>
+            </div>
+        </div>
 
         <!-- PHP -->
         <div class="skill">
@@ -331,6 +367,29 @@
         </div>
     </div>
 
+    <!--  IMPACT SECTION -->
+     
+    <div class="impact-section">
+
+    <div class="impact-card">
+    <div class="impact-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+    <h2 class="counter" data-target="5">0</h2>
+    <p>Workshops Conducted</p>
+    </div>
+
+    <div class="impact-card">
+    <div class="impact-icon"><i class="fas fa-user-graduate"></i></div>
+    <h2 class="counter" data-target="500">0</h2>
+    <p>Students Mentored</p>
+    </div>
+
+    <div class="impact-card">
+    <div class="impact-icon"><i class="fas fa-calendar-check"></i></div>
+    <h2 class="counter" data-target="18">0</h2>
+    <p>Events Organized</p>
+    </div>
+    </div>
+
     <div class="arrow-container">
         <a href="#Achievements">
             <img src="assets/arrow.png" alt="Navigate to achievements" class="arrow-icon" onclick="scrollToAchievements()"/>
@@ -343,6 +402,19 @@
         <section id="Achievements">
             <div class="title_achievements">Achievements</div>
             <div class="achievements_container">
+
+                <div class="achievement">
+                <img src="assets/workshopRP.png" alt="Resource Person | National Level Figma Workshop" class="achievement-icon">
+                <div class="achievement-content">
+                    <h3>🎤 National Level Resource Person – Figma Workshop | Sacred Heart College (Autonomous)</h3>
+                    <span class="achievement-date">📅 06/02/2026</span>
+                    <p>
+                        I served as a Resource Person for a National Level Workshop on Figma organized by the Department of Computer Science, Sacred Heart College (Autonomous). During this session, I delivered hands-on training on UI/UX design principles, Figma tools, prototyping, and real-time collaborative design workflows. The workshop empowered participants with practical industry-level design knowledge, strengthening their understanding of modern interface design and digital product development.
+                    </p>
+                </div>
+            </div>
+
+
                 <div class="achievement">
                     <img src="assets/javaDebugging.jpg" alt="1st Place | Java Debugging" class="achievement-icon">
                     <div class="achievement-content">
@@ -427,6 +499,41 @@
         <!--  tonybaskar's portfolio projects section -->
     <section id="Projects">
        <div class="title_projects">Projects</div>
+       <div class="project featured-project">
+    <div class="project-image-container">
+        <!-- Autoplay muted video preview -->
+        <video width="100%" height="auto" autoplay muted loop playsinline>
+            <source src="assets/drowsiness.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="project-info">
+        <h3>Advanced Drowsiness Detection System</h3>
+        <p>
+            An AI-powered Computer Vision system built using Python, OpenCV, MediaPipe Face Mesh, 
+            CustomTkinter, Matplotlib, and Pyttsx3 to detect driver drowsiness in real-time. 
+            The system tracks facial landmarks, calculates Eye Aspect Ratio (EAR), triggers 
+            voice alerts when fatigue is detected, visualizes live EAR graphs, and logs events 
+            automatically for monitoring and analysis.
+        </p>
+
+        <div class="tech-stack">
+            <span class="tech-item"><i class="fab fa-python"></i> Python</span>
+            <span class="tech-item"><i class="fas fa-camera"></i> OpenCV</span>
+            <span class="tech-item"><i class="fas fa-user"></i> MediaPipe Face Mesh</span>
+            <span class="tech-item"><i class="fas fa-window-maximize"></i> CustomTkinter</span>
+            <span class="tech-item"><i class="fas fa-chart-line"></i> Matplotlib</span>
+            <span class="tech-item"><i class="fas fa-volume-up"></i> Pyttsx3</span>
+        </div>
+
+        <div class="project-buttons">
+            <button class="view-code-btn" data-project-id="project5" data-type="code">
+                <i class="fab fa-github"></i> View Code
+            </button>
+        </div>
+    </div>
+</div>
+
         <div class="project featured-project">
             <div class="project-image-container">
                 <img src="assets/dmesProject.png" alt="Mark Entry System" class="project-image">
