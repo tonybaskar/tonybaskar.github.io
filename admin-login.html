@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — bAsKaR.</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+    }
+
+    .login-wrap {
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem 1.5rem;
+    }
+
+    .login-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+    }
+
+    .login-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--teal);
+      letter-spacing: -.03em;
+      display: block;
+      text-align: center;
+      margin-bottom: .25rem;
+    }
+
+    .login-logo span {
+      color: var(--teal-light);
+    }
+
+    .login-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+      margin-bottom: 2rem;
+    }
+
+    .login-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--txt);
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .lf {
+      margin-bottom: 1.25rem;
+    }
+
+    .lf label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: .45rem;
+    }
+
+    .lf input {
+      width: 100%;
+      padding: .85rem 1rem;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(0, 180, 216, .15);
+      border-radius: 12px;
+      color: var(--txt);
+      font-size: .95rem;
+      font-family: inherit;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+
+    .lf input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0, 180, 216, .12);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: .9rem;
+      margin-top: .5rem;
+      background: var(--grad);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+    }
+
+    .login-btn:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .login-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .login-err {
+      margin-top: 1rem;
+      padding: .75rem 1rem;
+      background: rgba(239, 68, 68, .1);
+      border: 1px solid rgba(239, 68, 68, .3);
+      border-radius: 10px;
+      color: #fca5a5;
+      font-size: .83rem;
+      text-align: center;
+      display: none;
+    }
+
+    .login-back {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .login-back a {
+      color: var(--teal);
+      font-size: .85rem;
+      text-decoration: none;
+    }
+
+    .login-back a:hover {
+      text-decoration: underline;
+    }
+
+    .glow-bg {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+    }
+
+    .glow-bg.g1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 180, 216, .08) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .glow-bg.g2 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 150, 199, .06) 0%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow-bg g1"></div>
+  <div class="glow-bg g2"></div>
+  <div class="login-wrap" style="position:relative;z-index:1">
+    <div class="login-card">
+      <span class="login-logo">bAsKaR<span>.</span></span>
+      <p class="login-sub">Portfolio Admin Panel</p>
+      <h1 class="login-title">Sign In</h1>
+      <div class="lf">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@example.com" autocomplete="email" />
+      </div>
+      <div class="lf">
+        <label>Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <button class="login-btn" id="loginBtn">Sign In →</button>
+      <div class="login-err" id="loginErr"></div>
+    </div>
+    <div class="login-back"><a href="index.html">← Back to Portfolio</a></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuppeRmubP-wmggKGQHohkIpUMfJrSIEw",
+      authDomain: "baskar-portfolio-01.firebaseapp.com",
+      projectId: "baskar-portfolio-01",
+      storageBucket: "baskar-portfolio-01.firebasestorage.app",
+      messagingSenderId: "419892432323",
+      appId: "1:419892432323:web:c185c92ddc458427c10176"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // If already logged in, redirect
+    onAuthStateChanged(auth, user => {
+      if (user) window.location.replace('admin.html');
+    });
+
+    const btn = document.getElementById('loginBtn');
+    const email = document.getElementById('loginEmail');
+    const pass = document.getElementById('loginPass');
+    const err = document.getElementById('loginErr');
+
+    function showErr(msg) { err.textContent = msg; err.style.display = 'block'; }
+    function hideErr() { err.style.display = 'none'; }
+
+    async function doLogin() {
+      hideErr();
+      const e = email.value.trim();
+      const p = pass.value;
+      if (!e || !p) { showErr('Please enter email and password.'); return; }
+      btn.disabled = true; btn.textContent = 'Signing in...';
+      try {
+        await signInWithEmailAndPassword(auth, e, p);
+        window.location.replace('admin.html');
+      } catch (ex) {
+        const msgs = {
+          'auth/user-not-found': 'No account found with this email.',
+          'auth/wrong-password': 'Incorrect password.',
+          'auth/invalid-email': 'Invalid email address.',
+          'auth/too-many-requests': 'Too many attempts. Try again later.',
+          'auth/invalid-credential': 'Invalid email or password.',
+        };
+        showErr(msgs[ex.code] || 'Login failed. Check credentials.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Sign In →';
+      }
+    }
+
+    btn.addEventListener('click', doLogin);
+    [email, pass].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); }));
+  </script>
+</body>
+
+</html>

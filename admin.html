@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Admin Dashboard — bAsKaR.</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0f1e;
+      color: #e2eaf8;
+      overflow-x: hidden;
+      min-height: 100vh
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none
+    }
+
+    input,
+    textarea,
+    select {
+      font-family: inherit
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0f1e
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #00b4d8;
+      border-radius: 2px
+    }
+
+    ::selection {
+      background: rgba(0, 180, 216, .3);
+      color: #fff
+    }
+
+    :root {
+      --bg: #0a0f1e;
+      --bg2: #0d1526;
+      --bg3: #111c35;
+      --glass: rgba(13, 21, 38, .75);
+      --glass-b: rgba(0, 180, 216, .14);
+      --teal: #00b4d8;
+      --teal2: #48cae4;
+      --teal-d: #0096c7;
+      --txt: #e2eaf8;
+      --muted: #7a90b8;
+      --dim: #3a4a68;
+      --grad: linear-gradient(135deg, #00b4d8, #48cae4);
+      --red: #f87171;
+      --green: #4ade80;
+      --yellow: #fbbf24;
+      --purple: #a78bfa;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+    }
+
+    .admin-wrap {
+      display: flex;
+      min-height: 100vh
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border-right: 1px solid var(--glass-b);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+      overflow-y: auto
+    }
+
+    .sidebar-head {
+      padding: 1.4rem 1.25rem;
+      border-bottom: 1px solid var(--glass-b);
+      flex-shrink: 0
+    }
+
+    .sidebar-logo {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--teal);
+      letter-spacing: -.03em
+    }
+
+    .sidebar-logo span {
+      color: var(--teal2)
+    }
+
+    .sidebar-user {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: .2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: .75rem 0
+    }
+
+    .nav-section {
+      padding: .3rem 1.25rem .1rem;
+      font-size: .62rem;
+      font-weight: 700;
+      color: var(--dim);
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .65rem 1.25rem;
+      font-size: .86rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .18s;
+      border-left: 3px solid transparent;
+      user-select: none
+    }
+
+    .nav-item:hover {
+      color: var(--txt);
+      background: rgba(0, 180, 216, .06)
+    }
+
+    .nav-item.active {
+      color: var(--teal);
+      background: rgba(0, 180, 216, .1);
+      border-left-color: var(--teal)
+    }
+
+    .nav-item .ni-icon {
+      font-size: .95rem;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--teal);
+      color: #0a0f1e;
+      font-size: .6rem;
+      font-weight: 800;
+      padding: .1rem .4rem;
+      border-radius: 100px;
+      min-width: 18px;
+      text-align: center
+    }
+
+    .nav-badge.red {
+      background: var(--red);
+      color: #fff
+    }
+
+    .sidebar-foot {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--glass-b);
+      flex-shrink: 0
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: .6rem 1rem;
+      background: rgba(248, 113, 113, .1);
+      border: 1px solid rgba(248, 113, 113, .2);
+      border-radius: var(--radius);
+      color: var(--red);
+      font-size: .83rem;
+      font-weight: 600;
+      transition: all .2s
+    }
+
+    .logout-btn:hover {
+      background: rgba(248, 113, 113, .2)
+    }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: 240px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh
+    }
+
+    .topbar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--glass-b);
+      padding: .85rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 90
+    }
+
+    .topbar-burger {
+      display: none;
+      padding: .3rem;
+      color: var(--txt);
+      font-size: 1.3rem;
+      background: none;
+      border: none;
+      cursor: pointer
+    }
+
+    .topbar-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--txt)
+    }
+
+    .topbar-sub {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-left: .4rem
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: .75rem
+    }
+
+    .topbar-view {
+      font-size: .78rem;
+      padding: .42rem .95rem;
+      background: rgba(0, 180, 216, .1);
+      border: 1px solid rgba(0, 180, 216, .25);
+      border-radius: var(--radius);
+      color: var(--teal);
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .topbar-view:hover {
+      background: rgba(0, 180, 216, .2)
+    }
+
+    .topbar-notif {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--glass-b);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all .2s
+    }
+
+    .topbar-notif:hover {
+      border-color: var(--teal)
+    }
+
+    .notif-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 7px;
+      height: 7px;
+      background: var(--red);
+      border-radius: 50%;
+      border: 1.5px solid var(--bg2);
+      display: none
+    }
+
+    .notif-dot.show {
+      display: block
+    }
+
+    .topbar-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .82rem;
+      color: #0a0f1e;
+      flex-shrink: 0
+    }
+
+    .page-content {
+      flex: 1;
+      padding: 1.6rem;
+      overflow-y: auto
+    }
+
+    /* ── PANELS ── */
+    .panel {
+      display: none;
+      animation: fadeIn .25s ease
+    }
+
+    .panel.active {
+      display: block
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      gap: .75rem;
+      flex-wrap: wrap
+    }
+
+    .card-title {
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--txt)
+    }
+
+    .card-sub {
+      font-size: .77rem;
+      color: var(--muted);
+      margin-top: .12rem
+    }
+
+    /* ── STATS ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.4rem
+    }
+
+    .stat-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      transition: border-color .2s, transform .2s
+    }
+
+    .stat-card:hover {
+      border-color: rgba(0, 180, 216, .3);
+      transform: translateY(-2px)
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .si-t {
+      background: rgba(0, 180, 216, .15)
+    }
+
+    .si-g {
+      background: rgba(74, 222, 128, .1)
+    }
+
+    .si-y {
+      background: rgba(251, 191, 36, .1)
+    }
+
+    .si-r {
+      background: rgba(248, 113, 113, .1)
+    }
+
+    .si-p {
+      background: rgba(167, 139, 250, .1)
+    }
+
+    .stat-val {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--txt);
+      line-height: 1
+    }
+
+    .stat-lbl {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .18rem
+    }
+
+    .stat-delta {
+      font-size: .68rem;
+      color: var(--green);
+      margin-top: .15rem
+    }
+
+    /* ── TABLE ── */
+    .tbl-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius)
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .84rem
+    }
+
+    thead th {
+      padding: .7rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, .025);
+      border-bottom: 1px solid var(--glass-b)
+    }
+
+    tbody td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      color: var(--txt);
+      vertical-align: middle
+    }
+
+    tbody tr:hover td {
+      background: rgba(0, 180, 216, .04)
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none
+    }
+
+    .td-img {
+      width: 52px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 7px;
+      background: var(--bg3)
+    }
+
+    .td-truncate {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .td-badge {
+      display: inline-block;
+      padding: .18rem .55rem;
+      border-radius: 100px;
+      font-size: .69rem;
+      font-weight: 700
+    }
+
+    .td-badge.new {
+      background: rgba(0, 180, 216, .15);
+      color: var(--teal)
+    }
+
+    .td-badge.read {
+      background: rgba(255, 255, 255, .06);
+      color: var(--muted)
+    }
+
+    .td-badge.starred {
+      background: rgba(251, 191, 36, .1);
+      color: var(--yellow)
+    }
+
+    .td-badge.scheduled {
+      background: rgba(167, 139, 250, .12);
+      color: var(--purple)
+    }
+
+    .btn-icon-sm {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      transition: all .15s;
+      cursor: pointer;
+      border: none
+    }
+
+    .btn-icon-sm.edit {
+      background: rgba(0, 180, 216, .1);
+      color: var(--teal)
+    }
+
+    .btn-icon-sm.del {
+      background: rgba(248, 113, 113, .1);
+      color: var(--red)
+    }
+
+    .btn-icon-sm.view {
+      background: rgba(74, 222, 128, .1);
+      color: var(--green)
+    }
+
+    .btn-icon-sm.star {
+      background: rgba(251, 191, 36, .1);
+      color: var(--yellow)
+    }
+
+    .btn-icon-sm.drag {
+      background: rgba(255, 255, 255, .06);
+      color: var(--dim);
+      cursor: grab
+    }
+
+    .btn-icon-sm:hover {
+      filter: brightness(1.3);
+      transform: scale(1.08)
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .modal {
+      background: var(--bg2);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 580px;
+      max-height: 92vh;
+      overflow-y: auto;
+      transform: translateY(20px) scale(.97);
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .modal-overlay.open .modal {
+      transform: none
+    }
+
+    .modal-head {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--glass-b);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--bg2);
+      z-index: 1
+    }
+
+    .modal-head h3 {
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--txt)
+    }
+
+    .modal-close {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .06);
+      color: var(--txt);
+      font-size: .95rem;
+      transition: background .15s;
+      cursor: pointer
+    }
+
+    .modal-close:hover {
+      background: rgba(248, 113, 113, .2);
+      color: var(--red)
+    }
+
+    .modal-body {
+      padding: 1.4rem
+    }
+
+    .mf {
+      margin-bottom: 1rem
+    }
+
+    .mf label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: .38rem
+    }
+
+    .mf input,
+    .mf textarea,
+    .mf select {
+      width: 100%;
+      padding: .75rem 1rem;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(0, 180, 216, .14);
+      border-radius: var(--radius);
+      color: var(--txt);
+      font-size: .88rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: vertical
+    }
+
+    .mf input:focus,
+    .mf textarea:focus,
+    .mf select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0, 180, 216, .1)
+    }
+
+    .mf select option {
+      background: var(--bg2)
+    }
+
+    .mf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem
+    }
+
+    .modal-foot {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--glass-b);
+      display: flex;
+      justify-content: flex-end;
+      gap: .7rem;
+      position: sticky;
+      bottom: 0;
+      background: var(--bg2)
+    }
+
+    .btn-cancel {
+      padding: .6rem 1.2rem;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 600;
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .btn-cancel:hover {
+      color: var(--txt);
+      border-color: rgba(255, 255, 255, .2)
+    }
+
+    .btn-save {
+      padding: .6rem 1.4rem;
+      background: var(--grad);
+      border-radius: var(--radius);
+      color: #0a0f1e;
+      font-size: .83rem;
+      font-weight: 800;
+      transition: all .18s;
+      cursor: pointer
+    }
+
+    .btn-save:hover {
+      opacity: .88;
+      transform: translateY(-1px)
+    }
+
+    .btn-save:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none
+    }
+
+    /* ── DRAG-DROP UPLOAD ZONE ── */
+    .upload-zone {
+      border: 2px dashed rgba(0, 180, 216, .3);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all .25s;
+      background: rgba(0, 180, 216, .03);
+      position: relative;
+    }
+
+    .upload-zone:hover,
+    .upload-zone.drag-over {
+      border-color: var(--teal);
+      background: rgba(0, 180, 216, .08)
+    }
+
+    .upload-zone input[type=file] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%
+    }
+
+    .upload-icon {
+      font-size: 2.2rem;
+      margin-bottom: .6rem;
+      display: block
+    }
+
+    .upload-label {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.5
+    }
+
+    .upload-label strong {
+      color: var(--teal)
+    }
+
+    .upload-types {
+      font-size: .72rem;
+      color: var(--dim);
+      margin-top: .3rem
+    }
+
+    .img-preview-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg3);
+      margin-top: .75rem
+    }
+
+    .img-preview-wrap img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      display: block
+    }
+
+    .img-preview-wrap video {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      display: block
+    }
+
+    .preview-remove {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(248, 113, 113, .9);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: .8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .upload-progress {
+      height: 4px;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: .6rem;
+      display: none
+    }
+
+    .upload-progress-fill {
+      height: 100%;
+      background: var(--grad);
+      border-radius: 2px;
+      width: 0;
+      transition: width .2s ease
+    }
+
+    .upload-status {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .4rem;
+      text-align: center;
+      min-height: 1.1em
+    }
+
+    /* ── OR DIVIDER ── */
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: .75rem 0
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--glass-b)
+    }
+
+    .or-divider span {
+      font-size: .72rem;
+      color: var(--dim);
+      font-weight: 600;
+      letter-spacing: .05em
+    }
+
+    /* ── CHAR COUNTER ── */
+    .mf-char {
+      position: relative
+    }
+
+    .char-count {
+      position: absolute;
+      bottom: .6rem;
+      right: .7rem;
+      font-size: .68rem;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      pointer-events: none
+    }
+
+    .char-count.warn {
+      color: var(--yellow)
+    }
+
+    .char-count.over {
+      color: var(--red)
+    }
+
+    /* ── PRIMARY BTN ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      padding: .6rem 1.2rem;
+      background: var(--grad);
+      border-radius: var(--radius);
+      color: #0a0f1e;
+      font-size: .82rem;
+      font-weight: 800;
+      transition: all .18s;
+      cursor: pointer
+    }
+
+    .btn-primary:hover {
+      opacity: .88;
+      transform: translateY(-1px)
+    }
+
+    .btn-sm {
+      padding: .4rem .85rem;
+      font-size: .78rem
+    }
+
+    /* ── ANALYTICS ── */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .chart-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem
+    }
+
+    .chart-bar-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem
+    }
+
+    .chart-bar-label {
+      font-size: .75rem;
+      color: var(--muted);
+      min-width: 90px;
+      text-align: right
+    }
+
+    .chart-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, .07);
+      border-radius: 4px;
+      overflow: hidden
+    }
+
+    .chart-bar-fill {
+      height: 100%;
+      background: var(--grad);
+      border-radius: 4px;
+      transition: width 1s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .chart-bar-val {
+      font-size: .72rem;
+      color: var(--teal);
+      font-family: 'JetBrains Mono', monospace;
+      min-width: 28px
+    }
+
+    .device-row {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap
+    }
+
+    .device-chip {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem .9rem;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--glass-b);
+      border-radius: 10px;
+      font-size: .8rem
+    }
+
+    .device-chip span {
+      color: var(--muted)
+    }
+
+    .device-chip strong {
+      color: var(--txt)
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: .2rem .55rem;
+      border-radius: 100px;
+      background: rgba(167, 139, 250, .12);
+      color: var(--purple);
+      border: 1px solid rgba(167, 139, 250, .2)
+    }
+
+    /* ── DRAG REORDER ── */
+    .sortable-list {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .sortable-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .7rem .9rem;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius);
+      transition: all .2s;
+      cursor: default
+    }
+
+    .sortable-item.dragging {
+      opacity: .4;
+      border-color: var(--teal);
+      background: rgba(0, 180, 216, .06)
+    }
+
+    .sortable-item.drag-target {
+      border-color: var(--teal2);
+      background: rgba(0, 180, 216, .1)
+    }
+
+    .drag-handle {
+      cursor: grab;
+      color: var(--dim);
+      font-size: 1rem;
+      flex-shrink: 0;
+      user-select: none
+    }
+
+    .drag-handle:active {
+      cursor: grabbing
+    }
+
+    .si-thumb {
+      width: 40px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--bg3);
+      flex-shrink: 0
+    }
+
+    .si-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .si-name {
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--txt);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .si-meta {
+      font-size: .71rem;
+      color: var(--muted)
+    }
+
+    .si-actions {
+      display: flex;
+      gap: .35rem;
+      flex-shrink: 0
+    }
+
+    /* ── MSG DETAIL ── */
+    .msg-detail {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem
+    }
+
+    .msg-meta {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap
+    }
+
+    .msg-meta span {
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    .msg-meta strong {
+      color: var(--txt)
+    }
+
+    .msg-body {
+      background: rgba(255, 255, 255, .03);
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-size: .88rem;
+      line-height: 1.75;
+      color: var(--txt);
+      white-space: pre-wrap;
+      border: 1px solid var(--glass-b)
+    }
+
+    /* ── SWITCH ── */
+    .switch-wrap {
+      display: flex;
+      align-items: center;
+      gap: .75rem
+    }
+
+    .switch {
+      position: relative;
+      width: 40px;
+      height: 22px
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, .1);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: .2s
+    }
+
+    .slider:before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: .2s
+    }
+
+    .switch input:checked+.slider {
+      background: var(--teal)
+    }
+
+    .switch input:checked+.slider:before {
+      transform: translateX(18px)
+    }
+
+    /* ── PROFILE FORM ── */
+    .pf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem
+    }
+
+    /* ── QUICK DRAFT ── */
+    .quick-draft {
+      background: rgba(0, 180, 216, .05);
+      border: 1px dashed rgba(0, 180, 216, .2);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      margin-bottom: 1rem
+    }
+
+    .quick-draft-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem
+    }
+
+    /* ── EXPORT BTN ── */
+    .btn-export {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      padding: .4rem .85rem;
+      background: rgba(74, 222, 128, .1);
+      border: 1px solid rgba(74, 222, 128, .2);
+      border-radius: var(--radius);
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 600;
+      transition: all .2s;
+      cursor: pointer
+    }
+
+    .btn-export:hover {
+      background: rgba(74, 222, 128, .18)
+    }
+
+    /* ── TOAST ── */
+    #toast-rack {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      pointer-events: none
+    }
+
+    .toast {
+      background: var(--bg3);
+      border: 1px solid var(--glass-b);
+      border-radius: var(--radius);
+      padding: .7rem 1rem;
+      font-size: .83rem;
+      color: var(--txt);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      min-width: 230px;
+      animation: slideIn .3s cubic-bezier(.34, 1.56, .64, 1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
+      pointer-events: all
+    }
+
+    .toast.success .t-ic {
+      color: var(--green)
+    }
+
+    .toast.error .t-ic {
+      color: var(--red)
+    }
+
+    .toast.info .t-ic {
+      color: var(--teal)
+    }
+
+    .toast.warn .t-ic {
+      color: var(--yellow)
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    /* ── EMPTY ── */
+    .empty {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted)
+    }
+
+    .empty-icon {
+      font-size: 2.2rem;
+      margin-bottom: .65rem
+    }
+
+    .empty p {
+      font-size: .87rem
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      .sidebar {
+        transform: translateX(-100%)
+      }
+
+      .sidebar.open {
+        transform: translateX(0)
+      }
+
+      .main {
+        margin-left: 0
+      }
+
+      .topbar-burger {
+        display: block
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .mf-row {
+        grid-template-columns: 1fr
+      }
+
+      .analytics-grid {
+        grid-template-columns: 1fr
+      }
+
+      .pf-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:600px) {
+      .page-content {
+        padding: 1rem
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .overlay-mob {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      z-index: 99
+    }
+
+    .overlay-mob.open {
+      display: block
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay-mob" id="sideOverlay"></div>
+  <div class="admin-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-logo">bAsKaR<span>.</span></div>
+        <div class="sidebar-user" id="adminEmail">Loading...</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Main</div>
+        <div class="nav-item active" data-panel="dashboard"><span class="ni-icon">📊</span>Dashboard</div>
+        <div class="nav-section">Content</div>
+        <div class="nav-item" data-panel="projects"><span class="ni-icon">🚀</span>Projects</div>
+        <div class="nav-item" data-panel="achievements"><span class="ni-icon">🏆</span>Achievements</div>
+        <div class="nav-item" data-panel="skills"><span class="ni-icon">⚡</span>Skills</div>
+        <div class="nav-section">Inbox</div>
+        <div class="nav-item" data-panel="messages"><span class="ni-icon">✉️</span>Messages<span class="nav-badge red"
+            id="unreadBadge" style="display:none">0</span></div>
+        <div class="nav-section">Analytics</div>
+        <div class="nav-item" data-panel="analytics"><span class="ni-icon">📈</span>Analytics</div>
+        <div class="nav-section">Site</div>
+        <div class="nav-item" data-panel="profile"><span class="ni-icon">👤</span>Profile Info</div>
+        <div class="nav-item" data-panel="settings"><span class="ni-icon">⚙️</span>Settings</div>
+      </nav>
+      <div class="sidebar-foot">
+        <button class="logout-btn" id="logoutBtn">Sign Out →</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="topbar">
+        <button class="topbar-burger" id="topbarBurger">☰</button>
+        <div>
+          <div class="topbar-title" id="topbarTitle">Dashboard</div>
+          <div class="topbar-sub" id="topbarSub">Welcome back</div>
+        </div>
+        <div class="topbar-right">
+          <a href="index.html" target="_blank" class="topbar-view">View Site ↗</a>
+          <div class="topbar-notif" id="topbarNotif" title="New messages">🔔<div class="notif-dot" id="notifDot"></div>
+          </div>
+          <div class="topbar-avatar" id="adminAvatar">T</div>
+        </div>
+      </div>
+
+      <div class="page-content">
+
+        <!-- DASHBOARD -->
+        <div class="panel active" id="panel-dashboard">
+          <div class="stats-row" id="statsRow">
+            <div class="stat-card">
+              <div class="stat-icon si-t">🚀</div>
+              <div>
+                <div class="stat-val" id="st-proj">–</div>
+                <div class="stat-lbl">Projects</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-g">🏆</div>
+              <div>
+                <div class="stat-val" id="st-ach">–</div>
+                <div class="stat-lbl">Achievements</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-y">✉️</div>
+              <div>
+                <div class="stat-val" id="st-msg">–</div>
+                <div class="stat-lbl">Messages</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-r">🔴</div>
+              <div>
+                <div class="stat-val" id="st-unread">–</div>
+                <div class="stat-lbl">Unread</div>
+                <div class="stat-delta" id="st-unread-d"></div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-p">⚡</div>
+              <div>
+                <div class="stat-val" id="st-skills">–</div>
+                <div class="stat-lbl">Custom Skills</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <div class="card-title">Recent Messages</div>
+                  <div class="card-sub">Latest contact submissions</div>
+                </div><button class="btn-export" onclick="exportMessages()">⬇ CSV</button>
+              </div>
+              <div id="dash-msgs"></div>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <div class="card-title">Quick Actions</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:.55rem">
+                <button class="btn-primary" onclick="openPanel('projects');setTimeout(()=>openProjModal(),120)">＋ Add
+                  Project</button>
+                <button class="btn-primary" onclick="openPanel('achievements');setTimeout(()=>openAchModal(),120)">＋ Add
+                  Achievement</button>
+                <button class="btn-primary" onclick="openPanel('messages')">📥 View Messages</button>
+                <button class="btn-primary" onclick="openPanel('analytics')">📈 View Analytics</button>
+                <button class="btn-primary" onclick="openPanel('profile')">✏️ Edit Profile</button>
+              </div>
+            </div>
+          </div>
+          <!-- Quick Draft -->
+          <div class="quick-draft">
+            <div class="quick-draft-title">✍️ Quick Note (private, not published)</div>
+            <textarea id="quickNote" rows="3"
+              style="width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-b);border-radius:var(--radius);color:var(--txt);padding:.7rem;font-size:.85rem;resize:none;outline:none"
+              placeholder="Jot down ideas for your next project or achievement..."></textarea>
+            <button class="btn-primary btn-sm" style="margin-top:.5rem" id="saveNoteBtn">Save Note</button>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Recent Projects</div><button class="btn-primary btn-sm"
+                onclick="openPanel('projects');setTimeout(()=>openProjModal(),120)">＋ Add</button>
+            </div>
+            <div class="tbl-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Preview</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-proj-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="panel" id="panel-projects">
+          <div class="card" style="margin-bottom:1rem">
+            <div class="card-head">
+              <div>
+                <div class="card-title">All Projects</div>
+                <div class="card-sub" id="proj-count-sub">Loading...</div>
+              </div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <button class="btn-export" onclick="exportData('projects')">⬇ Export</button>
+                <button class="btn-primary" id="addProjBtn">＋ Add Project</button>
+              </div>
+            </div>
+            <div class="sortable-list" id="projSortList"></div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="panel" id="panel-achievements">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">All Achievements</div>
+                <div class="card-sub" id="ach-count-sub">Loading...</div>
+              </div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <button class="btn-export" onclick="exportData('achievements')">⬇ Export</button>
+                <button class="btn-primary" id="addAchBtn">＋ Add Achievement</button>
+              </div>
+            </div>
+            <div class="sortable-list" id="achSortList"></div>
+          </div>
+        </div>
+
+        <!-- MESSAGES -->
+        <div class="panel" id="panel-messages">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Contact Messages</div>
+                <div class="card-sub" id="msg-count-sub">Loading...</div>
+              </div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <button class="btn-export" onclick="exportMessages()">⬇ CSV</button>
+                <button class="btn-primary btn-sm" id="markAllReadBtn">✓ Mark All Read</button>
+              </div>
+            </div>
+            <div class="tbl-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="msgTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANALYTICS -->
+        <div class="panel" id="panel-analytics">
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon si-t">👁</div>
+              <div>
+                <div class="stat-val" id="an-visits">–</div>
+                <div class="stat-lbl">Total Visits</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-g">📨</div>
+              <div>
+                <div class="stat-val" id="an-msgs">–</div>
+                <div class="stat-lbl">Messages Received</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-y">📊</div>
+              <div>
+                <div class="stat-val" id="an-read-rate">–</div>
+                <div class="stat-lbl">Read Rate</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-p">⭐</div>
+              <div>
+                <div class="stat-val" id="an-starred">–</div>
+                <div class="stat-lbl">Starred Messages</div>
+              </div>
+            </div>
+          </div>
+          <div class="analytics-grid">
+            <div class="card">
+              <div class="card-head">
+                <div class="card-title">Content Breakdown</div>
+              </div>
+              <div class="chart-bar-wrap" id="contentChart"></div>
+            </div>
+            <div class="card">
+              <div class="card-head">
+                <div class="card-title">Message Activity</div>
+              </div>
+              <div class="chart-bar-wrap" id="msgChart"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Device Info</div>
+              <div class="card-sub">Current session</div>
+            </div>
+            <div class="device-row" id="deviceInfo"></div>
+          </div>
+        </div>
+
+        <!-- PROFILE -->
+        <div class="panel" id="panel-profile">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Profile Information</div>
+              <div class="card-sub">Updates appear live on portfolio</div>
+            </div>
+            <div class="pf-grid">
+              <div class="mf"><label>Full Name</label><input type="text" id="pf-name" placeholder="Tony Baskar Y" />
+              </div>
+              <div class="mf"><label>Tagline</label><input type="text" id="pf-tagline" placeholder="Tech Enthusiast" />
+              </div>
+              <div class="mf"><label>Email</label><input type="email" id="pf-email"
+                  placeholder="tonybaskar83@gmail.com" /></div>
+              <div class="mf"><label>Phone</label><input type="tel" id="pf-phone" placeholder="+91 9894547420" /></div>
+              <div class="mf mf-char" style="grid-column:1/-1"><label>Bio (About section)</label><textarea id="pf-bio"
+                  rows="4" placeholder="Your bio..." maxlength="300"></textarea><span class="char-count"
+                  id="bio-count">0/300</span></div>
+              <div class="mf"><label>GitHub URL</label><input type="url" id="pf-github" /></div>
+              <div class="mf"><label>LinkedIn URL</label><input type="url" id="pf-linkedin" /></div>
+              <div class="mf"><label>Instagram URL</label><input type="url" id="pf-instagram" /></div>
+              <div class="mf"><label>Twitter / X URL</label><input type="url" id="pf-twitter" /></div>
+              <div class="mf"><label>Workshops Conducted</label><input type="number" id="pf-workshops"
+                  placeholder="5" /></div>
+              <div class="mf"><label>Students Mentored</label><input type="number" id="pf-students" placeholder="100" />
+              </div>
+              <div class="mf"><label>Events Organized</label><input type="number" id="pf-events" placeholder="10" />
+              </div>
+              <div class="mf"><label>Resume PDF URL</label><input type="url" id="pf-resume" placeholder="https://..." />
+              </div>
+            </div>
+            <button class="btn-primary" id="savePfBtn" style="margin-top:1.25rem">Save Profile →</button>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="panel" id="panel-skills">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <div class="card-title">Manage Skills</div>
+                <div class="card-sub">Custom skills added here appear on portfolio</div>
+              </div>
+              <button class="btn-primary" id="addSkillBtn">＋ Add Skill</button>
+            </div>
+            <div id="skillsAdmin"></div>
+          </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="panel" id="panel-settings">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title">Site Settings</div>
+              <div class="card-sub">Changes apply live to portfolio</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:1.2rem">
+              <div class="switch-wrap"><label class="switch"><input type="checkbox" id="sw-available" checked /><span
+                    class="slider"></span></label><span style="font-size:.88rem;color:var(--txt)">Show "Available for
+                  Opportunities" badge</span></div>
+              <div class="switch-wrap"><label class="switch"><input type="checkbox" id="sw-testimonials" checked /><span
+                    class="slider"></span></label><span style="font-size:.88rem;color:var(--txt)">Show Testimonials
+                  section</span></div>
+              <div class="switch-wrap"><label class="switch"><input type="checkbox" id="sw-hireme" checked /><span
+                    class="slider"></span></label><span style="font-size:.88rem;color:var(--txt)">Show "Contact Me"
+                  button in hero</span></div>
+              <hr style="border-color:var(--glass-b)" />
+              <div class="mf"><label>Site Meta Title</label><input type="text" id="st-meta-title"
+                  placeholder="Tony Baskar Y — Tech Enthusiast" /></div>
+              <div class="mf"><label>Meta Description</label><textarea id="st-meta-desc" rows="2"
+                  placeholder="Portfolio description..."></textarea></div>
+              <button class="btn-primary" id="saveSettingsBtn">Save Settings →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="projModal">
+    <div class="modal" style="max-width:640px">
+      <div class="modal-head">
+        <h3 id="projModalTitle">Add Project</h3><button class="modal-close" onclick="closeModal('projModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="mf-row">
+          <div class="mf"><label>Title *</label><input id="pm-title" type="text" placeholder="Project name" /></div>
+          <div class="mf"><label>Category *</label><select id="pm-cat">
+              <option value="Web">Web</option>
+              <option value="AI">AI / CV</option>
+              <option value="UI">UI/UX</option>
+              <option value="Backend">Backend</option>
+              <option value="Mobile">Mobile</option>
+            </select></div>
+        </div>
+        <div class="mf mf-char"><label>Description *</label><textarea id="pm-desc" rows="3"
+            placeholder="Brief description..." maxlength="300"></textarea><span class="char-count"
+            id="pm-desc-count">0/300</span></div>
+        <div class="mf"><label>Tech Stack (comma-separated)</label><input id="pm-tech" type="text"
+            placeholder="Python, OpenCV, HTML, CSS" /></div>
+        <div class="mf"><label>Media Type</label><select id="pm-media-type" onchange="toggleMediaType()">
+            <option value="image">Image</option>
+            <option value="video">Video URL</option>
+          </select></div>
+        <!-- Image Upload Zone -->
+        <div id="pm-upload-section">
+          <div class="mf"><label>Upload Image</label>
+            <div class="upload-zone" id="pm-drop-zone">
+              <input type="file" id="pm-file-input" accept="image/*" onchange="handleFileSelect('pm','project')" />
+              <span class="upload-icon">🖼️</span>
+              <div class="upload-label"><strong>Click to upload</strong> or drag &amp; drop</div>
+              <div class="upload-types">PNG, JPG, WebP • Max 5MB</div>
+            </div>
+            <div class="upload-progress" id="pm-upload-progress">
+              <div class="upload-progress-fill" id="pm-upload-fill"></div>
+            </div>
+            <div class="upload-status" id="pm-upload-status"></div>
+            <div id="pm-preview-wrap" class="img-preview-wrap" style="display:none">
+              <img id="pm-preview-img" src="" alt="Preview" />
+              <button class="preview-remove" onclick="removePreview('pm')" title="Remove image">✕</button>
+            </div>
+          </div>
+          <div class="or-divider"><span>OR PASTE URL</span></div>
+          <div class="mf"><label>Image URL</label><input id="pm-media" type="url" placeholder="https://..."
+              oninput="syncUrlToPreview('pm')" /></div>
+        </div>
+        <!-- Video URL section -->
+        <div id="pm-video-section" style="display:none">
+          <div class="mf"><label>Video URL *</label><input id="pm-video-url" type="url"
+              placeholder="https://.../video.mp4" /></div>
+        </div>
+        <div class="mf-row">
+          <div class="mf"><label>Live URL (optional)</label><input id="pm-live" type="url" placeholder="https://..." />
+          </div>
+          <div class="mf"><label>Code URL (optional)</label><input id="pm-code" type="url"
+              placeholder="https://github.com/..." /></div>
+        </div>
+        <div class="mf-row">
+          <div class="mf"><label>Publish Date (optional)</label><input id="pm-publish" type="date"
+              title="Leave blank to publish immediately" /></div>
+          <div class="mf"><label>Status</label><select id="pm-status">
+              <option value="published">Published</option>
+              <option value="draft">Draft (hidden)</option>
+            </select></div>
+        </div>
+        <input type="hidden" id="pm-id" />
+      </div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal('projModal')">Cancel</button>
+        <button class="btn-save" id="saveProjBtn">Save Project</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENT MODAL -->
+  <div class="modal-overlay" id="achModal">
+    <div class="modal" style="max-width:640px">
+      <div class="modal-head">
+        <h3 id="achModalTitle">Add Achievement</h3><button class="modal-close"
+          onclick="closeModal('achModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="mf-row">
+          <div class="mf"><label>Title *</label><input id="am-title" type="text" placeholder="Achievement title" />
+          </div>
+          <div class="mf"><label>Badge Label</label><input id="am-badge" type="text" placeholder="🏆 1st Place" /></div>
+        </div>
+        <div class="mf mf-char"><label>Description *</label><textarea id="am-desc" rows="3"
+            placeholder="Describe this achievement..." maxlength="300"></textarea><span class="char-count"
+            id="am-desc-count">0/300</span></div>
+        <div class="mf"><label>Upload Image</label>
+          <div class="upload-zone" id="am-drop-zone">
+            <input type="file" id="am-file-input" accept="image/*" onchange="handleFileSelect('am','achievement')" />
+            <span class="upload-icon">🏆</span>
+            <div class="upload-label"><strong>Click to upload</strong> or drag &amp; drop</div>
+            <div class="upload-types">PNG, JPG, WebP • Max 5MB</div>
+          </div>
+          <div class="upload-progress" id="am-upload-progress">
+            <div class="upload-progress-fill" id="am-upload-fill"></div>
+          </div>
+          <div class="upload-status" id="am-upload-status"></div>
+          <div id="am-preview-wrap" class="img-preview-wrap" style="display:none">
+            <img id="am-preview-img" src="" alt="Preview" />
+            <button class="preview-remove" onclick="removePreview('am')" title="Remove">✕</button>
+          </div>
+        </div>
+        <div class="or-divider"><span>OR PASTE URL</span></div>
+        <div class="mf-row">
+          <div class="mf"><label>Image URL</label><input id="am-img" type="url" placeholder="https://..."
+              oninput="syncUrlToPreview('am')" /></div>
+          <div class="mf"><label>Date (optional)</label><input id="am-date" type="text" placeholder="DD/MM/YYYY" />
+          </div>
+        </div>
+        <input type="hidden" id="am-id" />
+      </div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal('achModal')">Cancel</button>
+        <button class="btn-save" id="saveAchBtn">Save Achievement</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILL MODAL -->
+  <div class="modal-overlay" id="skillModal">
+    <div class="modal" style="max-width:440px">
+      <div class="modal-head">
+        <h3 id="skillModalTitle">Add Skill</h3><button class="modal-close" onclick="closeModal('skillModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="mf-row">
+          <div class="mf"><label>Skill Name *</label><input id="skm-name" type="text" placeholder="React" /></div>
+          <div class="mf"><label>Icon Emoji</label><input id="skm-icon" type="text" placeholder="⚛️" maxlength="4" />
+          </div>
+        </div>
+        <div class="mf">
+          <label>Proficiency: <span id="skm-pct-label">80</span>%</label>
+          <input id="skm-pct" type="range" min="1" max="100" value="80" style="width:100%;accent-color:var(--teal)"
+            oninput="document.getElementById('skm-pct-label').textContent=this.value" />
+        </div>
+        <input type="hidden" id="skm-id" />
+      </div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal('skillModal')">Cancel</button>
+        <button class="btn-save" id="saveSkillBtn">Save Skill</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MESSAGE MODAL -->
+  <div class="modal-overlay" id="msgModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Message Detail</h3><button class="modal-close" onclick="closeModal('msgModal')">✕</button>
+      </div>
+      <div class="msg-detail" id="msgDetailBody"></div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal('msgModal')">Close</button>
+        <button class="btn-save" id="replyMsgBtn">Reply via Email →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRM -->
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal" style="max-width:380px">
+      <div class="modal-head">
+        <h3>Confirm Delete</h3><button class="modal-close" onclick="closeModal('deleteModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--muted);font-size:.88rem" id="deleteMsg">Are you sure? This cannot be undone.</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-cancel" onclick="closeModal('deleteModal')">Cancel</button>
+        <button class="btn-save" id="confirmDeleteBtn" style="background:var(--red);color:#fff">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-rack"></div>
+
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    /* Cloudinary used for image uploads — no Firebase Storage needed */
+
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuppeRmubP-wmggKGQHohkIpUMfJrSIEw",
+      authDomain: "baskar-portfolio-01.firebaseapp.com",
+      projectId: "baskar-portfolio-01",
+      storageBucket: "baskar-portfolio-01.firebasestorage.app",
+      messagingSenderId: "419892432323",
+      appId: "1:419892432323:web:c185c92ddc458427c10176"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    /* Cloudinary config */
+    const CLOUDINARY_CLOUD = "dlxwdi37q";
+    const CLOUDINARY_PRESET = "portfolio_unsigned";
+
+    /* ── AUTH GUARD ── */
+    onAuthStateChanged(auth, user => {
+      if (!user) { window.location.replace('admin-login.html'); return; }
+      document.getElementById('adminEmail').textContent = user.email;
+      document.getElementById('adminAvatar').textContent = user.email[0].toUpperCase();
+      initAll();
+    });
+    document.getElementById('logoutBtn').addEventListener('click', () =>
+      signOut(auth).then(() => window.location.replace('admin-login.html'))
+    );
+
+    /* ── TOAST ── */
+    window.toast = (msg, type = 'info', dur = 3500) => {
+      const rack = document.getElementById('toast-rack');
+      const el = document.createElement('div');
+      el.className = `toast ${type}`;
+      el.innerHTML = `<span class="t-ic">${{ success: '✓', error: '✕', info: 'ℹ', warn: '⚠' }[type] || 'ℹ'}</span><span>${msg}</span>`;
+      rack.appendChild(el);
+      setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(40px)'; el.style.transition = '.3s'; setTimeout(() => el.remove(), 300); }, dur);
+    };
+
+    /* ── MODALS ── */
+    window.openModal = id => document.getElementById(id).classList.add('open');
+    window.closeModal = id => document.getElementById(id).classList.remove('open');
+    document.querySelectorAll('.modal-overlay').forEach(m =>
+      m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); })
+    );
+
+    /* ── NAV ── */
+    const panelMeta = {
+      dashboard: ['Dashboard', 'Overview of your portfolio'],
+      projects: ['Projects', 'Add & manage projects — drag to reorder'],
+      achievements: ['Achievements', 'Track milestones & wins'],
+      messages: ['Messages', 'Contact form responses'],
+      analytics: ['Analytics', 'Portfolio performance'],
+      profile: ['Profile Info', 'Update personal information'],
+      skills: ['Skills', 'Manage skill listing'],
+      settings: ['Settings', 'Site preferences'],
+    };
+    window.openPanel = id => {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.panel === id));
+      const p = document.getElementById(`panel-${id}`);
+      if (p) p.classList.add('active');
+      const [title, sub] = panelMeta[id] || [id, ''];
+      document.getElementById('topbarTitle').textContent = title;
+      document.getElementById('topbarSub').textContent = sub;
+      closeSidebar();
+    };
+    document.querySelectorAll('.nav-item[data-panel]').forEach(item =>
+      item.addEventListener('click', () => openPanel(item.dataset.panel))
+    );
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sideOverlay').classList.remove('open');
+    }
+    document.getElementById('topbarBurger').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('sideOverlay').classList.toggle('open');
+    });
+    document.getElementById('sideOverlay').addEventListener('click', closeSidebar);
+    document.getElementById('topbarNotif').addEventListener('click', () => openPanel('messages'));
+
+    /* ── UPLOAD STATE ── */
+    const uploadedUrls = { pm: null, am: null };
+    const uploadedPaths = { pm: null, am: null };
+
+    /* ─────────────────────────────────────────
+       IMAGE UPLOAD — Firebase Storage
+    ───────────────────────────────────────── */
+    window.handleFileSelect = (prefix, type) => {
+      const file = document.getElementById(`${prefix}-file-input`).files[0];
+      if (!file) return;
+      if (file.size > 10 * 1024 * 1024) { toast('File too large. Max 10MB.', 'error'); return; }
+      uploadToCloudinary(prefix, file);
+    };
+
+    async function uploadToCloudinary(prefix, file) {
+      const statusEl = document.getElementById(`${prefix}-upload-status`);
+      const progressEl = document.getElementById(`${prefix}-upload-progress`);
+      const fillEl = document.getElementById(`${prefix}-upload-fill`);
+      const previewEl = document.getElementById(`${prefix}-preview-wrap`);
+      const previewImg = document.getElementById(`${prefix}-preview-img`);
+      const urlInput = document.getElementById(prefix === 'pm' ? 'pm-media' : 'am-img');
+
+      if (!CLOUDINARY_CLOUD || CLOUDINARY_CLOUD === 'YOUR_CLOUD_NAME') {
+        toast('Set your Cloudinary cloud name in admin.html first!', 'error', 6000);
+        return;
+      }
+
+      statusEl.textContent = 'Uploading to Cloudinary...';
+      progressEl.style.display = 'block';
+      fillEl.style.width = '10%';
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', CLOUDINARY_PRESET);
+      formData.append('folder', 'portfolio');
+
+      try {
+        // Fake progress animation while uploading
+        let fakeProgress = 10;
+        const fakeInterval = setInterval(() => {
+          fakeProgress = Math.min(fakeProgress + 8, 85);
+          fillEl.style.width = fakeProgress + '%';
+          statusEl.textContent = `Uploading... ${fakeProgress}%`;
+        }, 300);
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`,
+          { method: 'POST', body: formData }
+        );
+
+        clearInterval(fakeInterval);
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error?.message || 'Upload failed');
+        }
+
+        const data = await res.json();
+        const url = data.secure_url;
+
+        uploadedUrls[prefix] = url;
+        uploadedPaths[prefix] = data.public_id;   // Cloudinary public_id for deletion
+        if (urlInput) urlInput.value = url;
+        previewImg.src = url;
+        previewEl.style.display = 'block';
+        fillEl.style.width = '100%';
+        progressEl.style.display = 'none';
+        statusEl.textContent = '✓ Uploaded successfully!';
+        toast('Image uploaded to Cloudinary!', 'success');
+
+      } catch (err) {
+        progressEl.style.display = 'none';
+        statusEl.textContent = '✗ ' + err.message;
+        toast('Upload failed: ' + err.message, 'error');
+      }
+    }
+
+    window.removePreview = prefix => {
+      uploadedUrls[prefix] = null;
+      uploadedPaths[prefix] = null;
+      document.getElementById(`${prefix}-preview-wrap`).style.display = 'none';
+      document.getElementById(`${prefix}-preview-img`).src = '';
+      document.getElementById(`${prefix}-upload-status`).textContent = '';
+      const urlInput = document.getElementById(prefix === 'pm' ? 'pm-media' : 'am-img');
+      if (urlInput) urlInput.value = '';
+      const fi = document.getElementById(`${prefix}-file-input`);
+      if (fi) fi.value = '';
+    };
+
+    window.syncUrlToPreview = prefix => {
+      const urlInput = document.getElementById(prefix === 'pm' ? 'pm-media' : 'am-img');
+      const url = urlInput.value.trim();
+      const wrap = document.getElementById(`${prefix}-preview-wrap`);
+      const img = document.getElementById(`${prefix}-preview-img`);
+      if (url && (url.startsWith('http') || url.startsWith('/'))) {
+        img.src = url;
+        wrap.style.display = 'block';
+        uploadedUrls[prefix] = url;
+      } else {
+        wrap.style.display = 'none';
+        uploadedUrls[prefix] = null;
+      }
+    };
+
+    /* drag & drop zones */
+    ['pm', 'am'].forEach(prefix => {
+      const zone = document.getElementById(`${prefix}-drop-zone`);
+      if (!zone) return;
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault(); zone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) uploadImage(prefix, file, prefix === 'pm' ? 'project' : 'achievement');
+        else toast('Please drop an image file.', 'warn');
+      });
+    });
+
+    /* toggle video/image section */
+    window.toggleMediaType = () => {
+      const t = document.getElementById('pm-media-type').value;
+      document.getElementById('pm-upload-section').style.display = t === 'image' ? '' : 'none';
+      document.getElementById('pm-video-section').style.display = t === 'video' ? '' : 'none';
+    };
+
+    /* char counters */
+    function initCharCounter(textareaId, counterId) {
+      const ta = document.getElementById(textareaId);
+      const cnt = document.getElementById(counterId);
+      if (!ta || !cnt) return;
+      const max = parseInt(ta.getAttribute('maxlength') || '300');
+      ta.addEventListener('input', () => {
+        const len = ta.value.length;
+        cnt.textContent = `${len}/${max}`;
+        cnt.className = 'char-count' + (len > max * .9 ? (len >= max ? ' over' : ' warn') : '');
+      });
+    }
+    initCharCounter('pf-bio', 'bio-count');
+    initCharCounter('pm-desc', 'pm-desc-count');
+    initCharCounter('am-desc', 'am-desc-count');
+
+    /* ─────────────────────────────────────────
+       INIT ALL
+    ───────────────────────────────────────── */
+    function initAll() {
+      setupDashboard();
+      setupProjects();
+      setupAchievements();
+      setupMessages();
+      setupAnalytics();
+      setupProfile();
+      setupSkills();
+      setupSettings();
+      setupQuickNote();
+    }
+
+    /* ─────────────────────────────────────────
+       DASHBOARD
+    ───────────────────────────────────────── */
+    let _prevUnread = 0;
+    function setupDashboard() {
+      onSnapshot(collection(db, 'projects'), s => { document.getElementById('st-proj').textContent = s.size; renderDashProjects(s.docs); });
+      onSnapshot(collection(db, 'achievements'), s => document.getElementById('st-ach').textContent = s.size);
+      onSnapshot(collection(db, 'skills'), s => document.getElementById('st-skills').textContent = s.size);
+      onSnapshot(collection(db, 'messages'), s => {
+        const unread = s.docs.filter(d => !d.data().read).length;
+        document.getElementById('st-msg').textContent = s.size;
+        document.getElementById('st-unread').textContent = unread;
+        document.getElementById('st-unread-d').textContent = unread ? `${unread} new` : 'All caught up ✓';
+        const badge = document.getElementById('unreadBadge');
+        badge.textContent = unread; badge.style.display = unread ? '' : 'none';
+        document.getElementById('notifDot').classList.toggle('show', unread > 0);
+        // New message notification
+        if (unread > _prevUnread && _prevUnread !== 0) toast(`📩 New message received!`, 'info', 5000);
+        _prevUnread = unread;
+        renderDashMessages(s.docs.sort((a, b) => (b.data().createdAt?.seconds || 0) - (a.data().createdAt?.seconds || 0)).slice(0, 5));
+      });
+    }
+
+    function renderDashProjects(docs) {
+      const b = document.getElementById('dash-proj-body');
+      if (!b) return;
+      b.innerHTML = docs.slice(0, 6).map(d => {
+        const p = d.data();
+        const scheduled = p.publishDate && new Date(p.publishDate) > new Date();
+        return `<tr>
+      <td>${p.mediaUrl && p.mediaType === 'image' ? `<img src="${p.mediaUrl}" class="td-img"/>` : p.mediaType === 'video' ? '🎬' : '–'}</td>
+      <td class="td-truncate">${p.title || '–'}</td>
+      <td><span class="td-badge new">${p.category || 'Web'}</span></td>
+      <td>${scheduled ? `<span class="schedule-badge">⏰ ${p.publishDate}</span>` : `<span class="td-badge new">${p.status === 'draft' ? 'Draft' : 'Live'}</span>`}</td>
+      <td><button class="btn-icon-sm edit" onclick="editProject('${d.id}')">✏</button> <button class="btn-icon-sm del" onclick="confirmDelete('${d.id}','projects')">🗑</button></td>
+    </tr>`;
+      }).join('') || '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🚀</div><p>No projects yet</p></div></td></tr>';
+    }
+
+    function renderDashMessages(docs) {
+      const el = document.getElementById('dash-msgs');
+      if (!el) return;
+      if (!docs.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><p>No messages yet</p></div>'; return; }
+      el.innerHTML = docs.map(d => {
+        const m = d.data();
+        const ts = m.createdAt?.toDate?.()?.toLocaleDateString() || '–';
+        return `<div style="display:flex;align-items:center;gap:.7rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer" onclick="openMsgDetail('${d.id}')">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;color:#0a0f1e">${(m.name || '?')[0].toUpperCase()}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:.83rem;font-weight:${m.read ? 400 : 700};color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${m.name || 'Unknown'}</div>
+        <div style="font-size:.73rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${m.subject || m.message?.slice(0, 40) || '–'}</div>
+      </div>
+      <span style="font-size:.68rem;color:var(--dim);flex-shrink:0">${ts}</span>
+      ${!m.read ? '<span style="width:7px;height:7px;background:var(--teal);border-radius:50%;flex-shrink:0"></span>' : ''}
+    </div>`;
+      }).join('');
+    }
+
+    /* ─────────────────────────────────────────
+       PROJECTS — sortable list
+    ───────────────────────────────────────── */
+    let allProjects = {};
+    window.openProjModal = (id = null) => {
+      document.getElementById('projModalTitle').textContent = id ? 'Edit Project' : 'Add Project';
+      ['pm-title', 'pm-desc', 'pm-tech', 'pm-media', 'pm-live', 'pm-code', 'pm-id', 'pm-video-url'].forEach(i => { const el = document.getElementById(i); if (el) el.value = ''; });
+      document.getElementById('pm-cat').value = 'Web';
+      document.getElementById('pm-media-type').value = 'image';
+      document.getElementById('pm-status').value = 'published';
+      document.getElementById('pm-publish').value = '';
+      removePreview('pm'); toggleMediaType();
+      uploadedUrls.pm = null; uploadedPaths.pm = null;
+      if (id && allProjects[id]) {
+        const p = allProjects[id];
+        document.getElementById('pm-title').value = p.title || '';
+        document.getElementById('pm-desc').value = p.description || '';
+        document.getElementById('pm-tech').value = (p.tech || []).join(', ');
+        document.getElementById('pm-cat').value = p.category || 'Web';
+        document.getElementById('pm-media-type').value = p.mediaType || 'image';
+        document.getElementById('pm-status').value = p.status || 'published';
+        document.getElementById('pm-publish').value = p.publishDate || '';
+        document.getElementById('pm-id').value = id;
+        if (p.mediaType === 'video') { document.getElementById('pm-video-url').value = p.mediaUrl || ''; }
+        else { document.getElementById('pm-media').value = p.mediaUrl || ''; uploadedUrls.pm = p.mediaUrl || null; syncUrlToPreview('pm'); }
+        toggleMediaType();
+      }
+      openModal('projModal');
+    };
+    window.editProject = id => openProjModal(id);
+
+    function setupProjects() {
+      document.getElementById('addProjBtn').addEventListener('click', () => openProjModal());
+      onSnapshot(query(collection(db, 'projects'), orderBy('order', 'asc')), snap => {
+        // fallback order by createdAt if no order field
+        allProjects = {};
+        snap.docs.forEach(d => allProjects[d.id] = { ...d.data(), _id: d.id });
+        document.getElementById('proj-count-sub').textContent = `${snap.size} project${snap.size === 1 ? '' : 's'}`;
+        renderProjList(snap.docs);
+      }, () => {
+        onSnapshot(query(collection(db, 'projects'), orderBy('createdAt', 'desc')), snap => {
+          allProjects = {};
+          snap.docs.forEach(d => allProjects[d.id] = { ...d.data(), _id: d.id });
+          document.getElementById('proj-count-sub').textContent = `${snap.size} project${snap.size === 1 ? '' : 's'}`;
+          renderProjList(snap.docs);
+        });
+      });
+
+      document.getElementById('saveProjBtn').addEventListener('click', async () => {
+        const title = document.getElementById('pm-title').value.trim();
+        const desc = document.getElementById('pm-desc').value.trim();
+        if (!title || !desc) { toast('Title and description required.', 'error'); return; }
+        const btn = document.getElementById('saveProjBtn'); btn.disabled = true; btn.textContent = 'Saving...';
+        const mediaType = document.getElementById('pm-media-type').value;
+        const mediaUrl = mediaType === 'video'
+          ? document.getElementById('pm-video-url').value.trim()
+          : (uploadedUrls.pm || document.getElementById('pm-media').value.trim());
+        const data = {
+          title, description: desc,
+          tech: document.getElementById('pm-tech').value.split(',').map(t => t.trim()).filter(Boolean),
+          category: document.getElementById('pm-cat').value,
+          mediaType, mediaUrl,
+          liveUrl: document.getElementById('pm-live').value.trim(),
+          codeUrl: document.getElementById('pm-code').value.trim(),
+          status: document.getElementById('pm-status').value,
+          publishDate: document.getElementById('pm-publish').value || null,
+          storagePath: uploadedPaths.pm || null,
+        };
+        const id = document.getElementById('pm-id').value;
+        try {
+          if (id) await updateDoc(doc(db, 'projects', id), { ...data, updatedAt: serverTimestamp() });
+          else await addDoc(collection(db, 'projects'), { ...data, createdAt: serverTimestamp(), order: Date.now() });
+          toast(id ? 'Project updated!' : 'Project added!', 'success');
+          closeModal('projModal');
+        } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+        finally { btn.disabled = false; btn.textContent = 'Save Project'; }
+      });
+    }
+
+    function renderProjList(docs) {
+      const list = document.getElementById('projSortList');
+      if (!docs.length) { list.innerHTML = '<div class="empty"><div class="empty-icon">🚀</div><p>No projects yet. Add your first!</p></div>'; return; }
+      list.innerHTML = docs.map(d => {
+        const p = d.data();
+        const scheduled = p.publishDate && new Date(p.publishDate) > new Date();
+        return `<div class="sortable-item" draggable="true" data-id="${d.id}" data-type="projects">
+      <span class="drag-handle" title="Drag to reorder">⠿</span>
+      ${p.mediaUrl && p.mediaType === 'image' ? `<img src="${p.mediaUrl}" class="si-thumb"/>` : `<div class="si-thumb" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem">${p.mediaType === 'video' ? '🎬' : '📁'}</div>`}
+      <div class="si-info">
+        <div class="si-name">${p.title || '–'}</div>
+        <div class="si-meta"><span class="td-badge new" style="font-size:.65rem">${p.category || 'Web'}</span>${p.tech ? (' · ' + (p.tech || []).slice(0, 3).join(', ')) : ''}</div>
+      </div>
+      ${scheduled ? `<span class="schedule-badge">⏰ ${p.publishDate}</span>` : `<span class="td-badge ${p.status === 'draft' ? 'read' : 'new'}">${p.status === 'draft' ? 'Draft' : 'Live'}</span>`}
+      <div class="si-actions">
+        <button class="btn-icon-sm edit" onclick="editProject('${d.id}')" title="Edit">✏</button>
+        <button class="btn-icon-sm del"  onclick="confirmDelete('${d.id}','projects','${p.storagePath || ''}')" title="Delete">🗑</button>
+      </div>
+    </div>`;
+      }).join('');
+      initDragSort(list, 'projects');
+    }
+
+    /* ─────────────────────────────────────────
+       ACHIEVEMENTS — sortable list
+    ───────────────────────────────────────── */
+    let allAchs = {};
+    window.openAchModal = (id = null) => {
+      document.getElementById('achModalTitle').textContent = id ? 'Edit Achievement' : 'Add Achievement';
+      ['am-title', 'am-badge', 'am-desc', 'am-img', 'am-date', 'am-id'].forEach(i => { const el = document.getElementById(i); if (el) el.value = ''; });
+      removePreview('am');
+      uploadedUrls.am = null; uploadedPaths.am = null;
+      if (id && allAchs[id]) {
+        const a = allAchs[id];
+        document.getElementById('am-title').value = a.title || '';
+        document.getElementById('am-badge').value = a.badge || '';
+        document.getElementById('am-desc').value = a.description || '';
+        document.getElementById('am-img').value = a.imageUrl || '';
+        document.getElementById('am-date').value = a.date || '';
+        document.getElementById('am-id').value = id;
+        uploadedUrls.am = a.imageUrl || null;
+        syncUrlToPreview('am');
+      }
+      openModal('achModal');
+    };
+    window.editAch = id => openAchModal(id);
+
+    function setupAchievements() {
+      document.getElementById('addAchBtn').addEventListener('click', () => openAchModal());
+      onSnapshot(query(collection(db, 'achievements'), orderBy('createdAt', 'desc')), snap => {
+        allAchs = {};
+        snap.docs.forEach(d => allAchs[d.id] = { ...d.data(), _id: d.id });
+        document.getElementById('ach-count-sub').textContent = `${snap.size} achievement${snap.size === 1 ? '' : 's'}`;
+        const list = document.getElementById('achSortList');
+        if (!snap.size) { list.innerHTML = '<div class="empty"><div class="empty-icon">🏆</div><p>No achievements yet.</p></div>'; return; }
+        list.innerHTML = snap.docs.map(d => {
+          const a = d.data();
+          return `<div class="sortable-item" draggable="true" data-id="${d.id}" data-type="achievements">
+        <span class="drag-handle">⠿</span>
+        ${a.imageUrl ? `<img src="${a.imageUrl}" class="si-thumb"/>` : `<div class="si-thumb" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem">🏆</div>`}
+        <div class="si-info">
+          <div class="si-name">${a.title || '–'}</div>
+          <div class="si-meta">${a.badge || ''}${a.date ? ' · ' + a.date : ''}</div>
+        </div>
+        <div class="si-actions">
+          <button class="btn-icon-sm edit" onclick="editAch('${d.id}')" title="Edit">✏</button>
+          <button class="btn-icon-sm del"  onclick="confirmDelete('${d.id}','achievements','${a.storagePath || ''}')" title="Delete">🗑</button>
+        </div>
+      </div>`;
+        }).join('');
+        initDragSort(list, 'achievements');
+      });
+
+      document.getElementById('saveAchBtn').addEventListener('click', async () => {
+        const title = document.getElementById('am-title').value.trim();
+        const desc = document.getElementById('am-desc').value.trim();
+        if (!title || !desc) { toast('Title and description required.', 'error'); return; }
+        const btn = document.getElementById('saveAchBtn'); btn.disabled = true; btn.textContent = 'Saving...';
+        const imageUrl = uploadedUrls.am || document.getElementById('am-img').value.trim();
+        const data = {
+          title, description: desc,
+          badge: document.getElementById('am-badge').value.trim(),
+          imageUrl,
+          date: document.getElementById('am-date').value.trim(),
+          storagePath: uploadedPaths.am || null,
+        };
+        const id = document.getElementById('am-id').value;
+        try {
+          if (id) await updateDoc(doc(db, 'achievements', id), { ...data, updatedAt: serverTimestamp() });
+          else await addDoc(collection(db, 'achievements'), { ...data, createdAt: serverTimestamp() });
+          toast(id ? 'Achievement updated!' : 'Achievement added!', 'success');
+          closeModal('achModal');
+        } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+        finally { btn.disabled = false; btn.textContent = 'Save Achievement'; }
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       DRAG & DROP REORDER
+    ───────────────────────────────────────── */
+    function initDragSort(list, colName) {
+      let dragEl = null;
+      list.querySelectorAll('.sortable-item').forEach(item => {
+        item.addEventListener('dragstart', e => {
+          dragEl = item; item.classList.add('dragging');
+          e.dataTransfer.effectAllowed = 'move';
+        });
+        item.addEventListener('dragend', async () => {
+          item.classList.remove('dragging');
+          dragEl = null;
+          // Save new order to Firestore
+          const items = [...list.querySelectorAll('.sortable-item')];
+          const updates = items.map((el, i) => updateDoc(doc(db, colName, el.dataset.id), { order: i }));
+          try { await Promise.all(updates); }
+          catch { /* order save failed silently */ }
+        });
+        item.addEventListener('dragover', e => {
+          e.preventDefault();
+          if (!dragEl || dragEl === item) return;
+          list.querySelectorAll('.sortable-item').forEach(i => i.classList.remove('drag-target'));
+          item.classList.add('drag-target');
+          const rect = item.getBoundingClientRect();
+          const mid = rect.top + rect.height / 2;
+          if (e.clientY < mid) list.insertBefore(dragEl, item);
+          else list.insertBefore(dragEl, item.nextSibling);
+        });
+        item.addEventListener('dragleave', () => item.classList.remove('drag-target'));
+        item.addEventListener('drop', e => { e.preventDefault(); item.classList.remove('drag-target'); });
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       MESSAGES
+    ───────────────────────────────────────── */
+    let allMsgs = {};
+    window.openMsgDetail = async id => {
+      const d = allMsgs[id];
+      if (!d) return;
+      const ts = d.createdAt?.toDate?.()?.toLocaleString() || 'Unknown';
+      document.getElementById('msgDetailBody').innerHTML = `
+    <div class="msg-meta">
+      <span><strong>From:</strong> ${d.name || '?'}</span>
+      <span><strong>Email:</strong> <a href="mailto:${d.email}" style="color:var(--teal)">${d.email || '–'}</a></span>
+      <span><strong>Date:</strong> ${ts}</span>
+      ${d.starred ? '<span style="color:var(--yellow)">★ Starred</span>' : ''}
+    </div>
+    <div><strong style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Subject</strong>
+    <div style="margin-top:.25rem;color:var(--txt)">${d.subject || '(no subject)'}</div></div>
+    <div class="msg-body">${d.message || ''}</div>`;
+      document.getElementById('replyMsgBtn').onclick = () =>
+        window.open(`mailto:${d.email}?subject=Re: ${encodeURIComponent(d.subject || 'Your Message')}`);
+      if (!d.read) await updateDoc(doc(db, 'messages', id), { read: true });
+      openModal('msgModal');
+    };
+
+    function setupMessages() {
+      onSnapshot(query(collection(db, 'messages'), orderBy('createdAt', 'desc')), snap => {
+        allMsgs = {};
+        snap.docs.forEach(d => allMsgs[d.id] = d.data());
+        const unread = snap.docs.filter(d => !d.data().read).length;
+        document.getElementById('msg-count-sub').textContent = `${snap.size} total · ${unread} unread`;
+        const tb = document.getElementById('msgTableBody');
+        tb.innerHTML = snap.docs.map(d => {
+          const m = d.data(); const ts = m.createdAt?.toDate?.()?.toLocaleString() || '–';
+          return `<tr style="${!m.read ? 'font-weight:600' : ''}">
+        <td>${m.read ? '<span class="td-badge read">Read</span>' : '<span class="td-badge new">New</span>'}</td>
+        <td>${m.name || '–'}</td>
+        <td style="font-size:.8rem;color:var(--muted)">${m.email || '–'}</td>
+        <td class="td-truncate">${m.subject || '(no subject)'}</td>
+        <td style="font-size:.75rem;color:var(--dim)">${ts}</td>
+        <td style="white-space:nowrap">
+          <button class="btn-icon-sm view" onclick="openMsgDetail('${d.id}')" title="View">👁</button>
+          <button class="btn-icon-sm star" onclick="toggleStar('${d.id}','${m.starred}')" title="${m.starred ? 'Unstar' : 'Star'}">${m.starred ? '★' : '☆'}</button>
+          <button class="btn-icon-sm del"  onclick="confirmDelete('${d.id}','messages')" title="Delete">🗑</button>
+        </td>
+      </tr>`;
+        }).join('') || '<tr><td colspan="6"><div class="empty"><div class="empty-icon">📭</div><p>No messages yet</p></div></td></tr>';
+      });
+      document.getElementById('markAllReadBtn').addEventListener('click', async () => {
+        const ps = Object.entries(allMsgs).filter(([, m]) => !m.read).map(([id]) => updateDoc(doc(db, 'messages', id), { read: true }));
+        await Promise.all(ps);
+        toast(`${ps.length} message${ps.length === 1 ? '' : 's'} marked as read.`, 'success');
+      });
+    }
+    window.toggleStar = async (id, starred) => updateDoc(doc(db, 'messages', id), { starred: starred !== 'true' });
+
+    /* ── EXPORT MESSAGES CSV ── */
+    window.exportMessages = () => {
+      const rows = [['Name', 'Email', 'Subject', 'Message', 'Date', 'Read', 'Starred']];
+      Object.values(allMsgs).forEach(m => {
+        const d = m.createdAt?.toDate?.()?.toLocaleString() || '';
+        rows.push([m.name || '', m.email || '', m.subject || '', '"' + (m.message || '').replace(/"/g, '""') + '"', d, m.read ? 'Yes' : 'No', m.starred ? 'Yes' : 'No']);
+      });
+      const csv = rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = Object.assign(document.createElement('a'), { href: url, download: `messages_${Date.now()}.csv` });
+      a.click(); URL.revokeObjectURL(url);
+      toast('Messages exported as CSV!', 'success');
+    };
+
+    /* ── EXPORT ANY COLLECTION ── */
+    window.exportData = async colName => {
+      const snap = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js")
+        .then(m => m.getDocs(collection(db, colName)));
+      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = Object.assign(document.createElement('a'), { href: url, download: `${colName}_${Date.now()}.json` });
+      a.click(); URL.revokeObjectURL(url);
+      toast(`${colName} exported as JSON!`, 'success');
+    };
+
+    /* ─────────────────────────────────────────
+       ANALYTICS
+    ───────────────────────────────────────── */
+    function setupAnalytics() {
+      // Track this visit
+      const key = 'visited_' + new Date().toDateString();
+      if (!sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, '1');
+        const visRef = doc(db, 'site', 'analytics');
+        getDoc(visRef).then(s => {
+          const cur = s.exists() ? (s.data().visits || 0) : 0;
+          setDoc(visRef, { visits: cur + 1, lastVisit: serverTimestamp() }, { merge: true });
+        });
+      }
+
+      // Live analytics
+      onSnapshot(doc(db, 'site', 'analytics'), s => {
+        document.getElementById('an-visits').textContent = s.exists() ? (s.data().visits || 0) : 0;
+      });
+      onSnapshot(collection(db, 'messages'), s => {
+        const total = s.size;
+        const read = s.docs.filter(d => d.data().read).length;
+        const starred = s.docs.filter(d => d.data().starred).length;
+        document.getElementById('an-msgs').textContent = total;
+        document.getElementById('an-read-rate').textContent = total ? Math.round(read / total * 100) + '%' : '–';
+        document.getElementById('an-starred').textContent = starred;
+        // Message chart (last 7 days)
+        const days = {};
+        for (let i = 6; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); days[d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })] = 0; }
+        s.docs.forEach(d => {
+          const ts = d.data().createdAt?.toDate?.();
+          if (!ts) return;
+          const k = ts.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+          if (k in days) days[k]++;
+        });
+        const maxM = Math.max(...Object.values(days), 1);
+        document.getElementById('msgChart').innerHTML = Object.entries(days).map(([k, v]) => `
+      <div class="chart-bar-row">
+        <span class="chart-bar-label">${k}</span>
+        <div class="chart-bar-bg"><div class="chart-bar-fill" style="width:${Math.round(v / maxM * 100)}%"></div></div>
+        <span class="chart-bar-val">${v}</span>
+      </div>`).join('');
+      });
+      // Content chart
+      const contentItems = [
+        { label: 'Projects', id: 'st-proj' },
+        { label: 'Achievements', id: 'st-ach' },
+        { label: 'Custom Skills', id: 'st-skills' },
+      ];
+      setTimeout(() => {
+        const vals = contentItems.map(c => parseInt(document.getElementById(c.id).textContent) || 0);
+        const maxC = Math.max(...vals, 1);
+        document.getElementById('contentChart').innerHTML = contentItems.map((c, i) => `
+      <div class="chart-bar-row">
+        <span class="chart-bar-label">${c.label}</span>
+        <div class="chart-bar-bg"><div class="chart-bar-fill" style="width:${Math.round(vals[i] / maxC * 100)}%"></div></div>
+        <span class="chart-bar-val">${vals[i]}</span>
+      </div>`).join('');
+      }, 1000);
+      // Device info
+      const ua = navigator.userAgent;
+      const isMobile = /Mobi|Android/i.test(ua);
+      document.getElementById('deviceInfo').innerHTML = `
+    <div class="device-chip"><span>Device</span><strong>${isMobile ? 'Mobile' : 'Desktop'}</strong></div>
+    <div class="device-chip"><span>Browser</span><strong>${getBrowser()}</strong></div>
+    <div class="device-chip"><span>Screen</span><strong>${screen.width}×${screen.height}</strong></div>
+    <div class="device-chip"><span>Platform</span><strong>${navigator.platform}</strong></div>`;
+    }
+    function getBrowser() {
+      const ua = navigator.userAgent;
+      if (ua.includes('Firefox')) return 'Firefox';
+      if (ua.includes('Edg')) return 'Edge';
+      if (ua.includes('Chrome')) return 'Chrome';
+      if (ua.includes('Safari')) return 'Safari';
+      return 'Other';
+    }
+
+    /* ─────────────────────────────────────────
+       PROFILE
+    ───────────────────────────────────────── */
+    async function setupProfile() {
+      const ref = doc(db, 'site', 'profile');
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        const d = snap.data();
+        const map = { 'pf-name': 'name', 'pf-tagline': 'tagline', 'pf-email': 'email', 'pf-phone': 'phone', 'pf-bio': 'bio', 'pf-github': 'github', 'pf-linkedin': 'linkedin', 'pf-instagram': 'instagram', 'pf-twitter': 'twitter', 'pf-workshops': 'workshops', 'pf-students': 'students', 'pf-events': 'events', 'pf-resume': 'resume' };
+        Object.entries(map).forEach(([id, key]) => { const el = document.getElementById(id); if (el && d[key] != null) el.value = d[key]; });
+        // trigger char counters
+        document.getElementById('pf-bio').dispatchEvent(new Event('input'));
+      }
+      document.getElementById('savePfBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('savePfBtn'); btn.disabled = true; btn.textContent = 'Saving...';
+        try {
+          await setDoc(ref, {
+            name: document.getElementById('pf-name').value.trim(),
+            tagline: document.getElementById('pf-tagline').value.trim(),
+            email: document.getElementById('pf-email').value.trim(),
+            phone: document.getElementById('pf-phone').value.trim(),
+            bio: document.getElementById('pf-bio').value.trim(),
+            github: document.getElementById('pf-github').value.trim(),
+            linkedin: document.getElementById('pf-linkedin').value.trim(),
+            instagram: document.getElementById('pf-instagram').value.trim(),
+            twitter: document.getElementById('pf-twitter').value.trim(),
+            workshops: parseInt(document.getElementById('pf-workshops').value) || 0,
+            students: parseInt(document.getElementById('pf-students').value) || 0,
+            events: parseInt(document.getElementById('pf-events').value) || 0,
+            resume: document.getElementById('pf-resume').value.trim(),
+            updatedAt: serverTimestamp()
+          }, { merge: true });
+          toast('Profile saved!', 'success');
+        } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+        finally { btn.disabled = false; btn.textContent = 'Save Profile →'; }
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       SKILLS
+    ───────────────────────────────────────── */
+    let allSkills = {};
+    function setupSkills() {
+      document.getElementById('addSkillBtn').addEventListener('click', () => {
+        ['skm-name', 'skm-icon', 'skm-id'].forEach(i => document.getElementById(i).value = '');
+        document.getElementById('skm-pct').value = 80;
+        document.getElementById('skm-pct-label').textContent = '80';
+        document.getElementById('skillModalTitle').textContent = 'Add Skill';
+        openModal('skillModal');
+      });
+      onSnapshot(query(collection(db, 'skills'), orderBy('createdAt', 'asc')), snap => {
+        allSkills = {};
+        snap.docs.forEach(d => allSkills[d.id] = { ...d.data(), _id: d.id });
+        const el = document.getElementById('skillsAdmin');
+        el.innerHTML = snap.size
+          ? `<div style="display:flex;flex-direction:column;gap:.55rem">${snap.docs.map(d => {
+            const s = d.data();
+            return `<div style="display:flex;align-items:center;gap:.9rem;padding:.7rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--glass-b);border-radius:var(--radius)">
+            <span style="font-size:1.2rem">${s.icon || '⚡'}</span>
+            <span style="flex:1;font-weight:600;font-size:.88rem">${s.name || '–'}</span>
+            <div style="width:120px"><div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden"><div style="height:100%;width:${s.pct || 80}%;background:var(--grad);border-radius:2px"></div></div></div>
+            <span style="font-size:.78rem;color:var(--teal);font-family:JetBrains Mono,monospace;min-width:34px;text-align:right">${s.pct || 80}%</span>
+            <button class="btn-icon-sm edit" onclick="editSkill('${d.id}')">✏</button>
+            <button class="btn-icon-sm del"  onclick="confirmDelete('${d.id}','skills')">🗑</button>
+          </div>`;
+          }).join('')}</div>`
+          : '<div class="empty"><div class="empty-icon">⚡</div><p>No custom skills added yet. Static skills always show on portfolio.</p></div>';
+      });
+      document.getElementById('saveSkillBtn').addEventListener('click', async () => {
+        const name = document.getElementById('skm-name').value.trim();
+        if (!name) { toast('Skill name required.', 'error'); return; }
+        const btn = document.getElementById('saveSkillBtn'); btn.disabled = true; btn.textContent = 'Saving...';
+        const data = { name, icon: document.getElementById('skm-icon').value.trim() || '⚡', pct: parseInt(document.getElementById('skm-pct').value) || 80 };
+        const id = document.getElementById('skm-id').value;
+        try {
+          if (id) await updateDoc(doc(db, 'skills', id), data);
+          else await addDoc(collection(db, 'skills'), { ...data, createdAt: serverTimestamp() });
+          toast('Skill saved!', 'success'); closeModal('skillModal');
+        } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+        finally { btn.disabled = false; btn.textContent = 'Save Skill'; }
+      });
+    }
+    window.editSkill = id => {
+      const s = allSkills[id]; if (!s) return;
+      document.getElementById('skm-name').value = s.name || '';
+      document.getElementById('skm-icon').value = s.icon || '';
+      document.getElementById('skm-pct').value = s.pct || 80;
+      document.getElementById('skm-pct-label').textContent = s.pct || 80;
+      document.getElementById('skm-id').value = id;
+      document.getElementById('skillModalTitle').textContent = 'Edit Skill';
+      openModal('skillModal');
+    };
+
+    /* ─────────────────────────────────────────
+       SETTINGS
+    ───────────────────────────────────────── */
+    async function setupSettings() {
+      const ref = doc(db, 'site', 'settings');
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        const d = snap.data();
+        document.getElementById('sw-available').checked = d.showAvailable !== false;
+        document.getElementById('sw-testimonials').checked = d.showTestimonials !== false;
+        document.getElementById('sw-hireme').checked = d.showHireMe !== false;
+        document.getElementById('st-meta-title').value = d.metaTitle || '';
+        document.getElementById('st-meta-desc').value = d.metaDesc || '';
+      }
+      document.getElementById('saveSettingsBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('saveSettingsBtn'); btn.disabled = true; btn.textContent = 'Saving...';
+        try {
+          await setDoc(ref, {
+            showAvailable: document.getElementById('sw-available').checked,
+            showTestimonials: document.getElementById('sw-testimonials').checked,
+            showHireMe: document.getElementById('sw-hireme').checked,
+            metaTitle: document.getElementById('st-meta-title').value.trim(),
+            metaDesc: document.getElementById('st-meta-desc').value.trim(),
+            updatedAt: serverTimestamp()
+          }, { merge: true });
+          toast('Settings saved!', 'success');
+        } catch (e) { toast('Save failed: ' + e.message, 'error'); }
+        finally { btn.disabled = false; btn.textContent = 'Save Settings →'; }
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       QUICK NOTE
+    ───────────────────────────────────────── */
+    function setupQuickNote() {
+      const ta = document.getElementById('quickNote');
+      const saved = localStorage.getItem('admin_quick_note');
+      if (saved) ta.value = saved;
+      document.getElementById('saveNoteBtn').addEventListener('click', () => {
+        localStorage.setItem('admin_quick_note', ta.value);
+        toast('Note saved locally!', 'success');
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       DELETE (with Storage cleanup)
+    ───────────────────────────────────────── */
+    let _pd = null;
+    window.confirmDelete = (id, col, storagePath = '') => {
+      _pd = { id, col, storagePath };
+      const names = { projects: 'project', achievements: 'achievement', messages: 'message', skills: 'skill' };
+      document.getElementById('deleteMsg').textContent = `Delete this ${names[col] || 'item'}? This cannot be undone.`;
+      openModal('deleteModal');
+    };
+    document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
+      if (!_pd) return;
+      try {
+        await deleteDoc(doc(db, _pd.col, _pd.id));
+        // Note: To delete from Cloudinary, call your backend or Cloudinary Admin API
+        // The public_id is stored in storagePath field if needed for manual deletion
+        toast('Deleted successfully.', 'success');
+        closeModal('deleteModal');
+      } catch (e) { toast('Delete failed: ' + e.message, 'error'); }
+      _pd = null;
+    });
+  </script>
+</body>
+
+</html>
