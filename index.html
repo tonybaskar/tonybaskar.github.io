@@ -41,6 +41,7 @@
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#updates" class="nav-link">Updates</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -57,6 +58,8 @@
       <a href="#achievements">Achievements</a>
       <a href="#projects">Projects</a>
       <a href="#certificates">Certificates</a>
+      <a href="#updates">Updates</a>
+      <a href="#updates">Updates</a>
       <a href="#contact">Contact</a>
       <a href="assets/Tony_Baskar_Resume.pdf" target="_blank" class="drawer-resume">Resume ↗</a>
       <a href="admin-login.html" class="drawer-admin">⚙ Admin Panel</a>
@@ -223,14 +226,14 @@
                   Autonomous.</p>
               </div>
             </div>
-            <div class="tl-item tl-active">
+            <!-- <div class="tl-item tl-active">
               <div class="tl-dot tl-teal"></div>
               <div class="tl-content">
                 <span class="tl-yr">2025–Present</span>
                 <h4>Trainer &amp; Higher Studies ⚡</h4>
                 <p><strong>Technical Trainer</strong> + pursuing <strong>MCA at IGNOU</strong>.</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -546,6 +549,18 @@
     </div>
   </section>
 
+  <!-- ══════════════ UPDATES ══════════════ -->
+  <section id="updates" class="section section-alt" id="updatesSection">
+    <div class="container">
+      <div class="sec-label ios-fade-up">08 — Updates</div>
+      <h2 class="sec-title ios-fade-up">Latest <span class="teal">Updates</span></h2>
+      <p class="sec-sub ios-fade-up" style="--d:.05s">What I've been up to recently</p>
+      <div class="updates-feed" id="updatesFeed">
+        <!-- populated by Firebase -->
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════ CONTACT ══════════════ -->
   <section id="contact" class="section">
     <div class="container">
@@ -661,6 +676,8 @@
       messagingSenderId: "419892432323",
       appId: "1:419892432323:web:c185c92ddc458427c10176"
     };
+
+
     /* ────────────────────────────────────── */
 
     const app = initializeApp(firebaseConfig);
@@ -981,6 +998,306 @@
       } finally {
         sendBtn.disabled = false; sendTxt.textContent = 'Send Message';
         setTimeout(() => { formStat.textContent = ''; formStat.className = 'form-status'; }, 6000);
+      }
+    });
+
+    /* ════════════════════════════════════════
+       7. APPEARANCE — accent color, banner, maintenance
+       ════════════════════════════════════════ */
+    onSnapshot(doc(db, 'site', 'appearance'), snap => {
+      if (!snap.exists()) return;
+      const d = snap.data();
+
+      // Live accent color swap
+      if (d.accentColor) {
+        const root = document.documentElement;
+        // Compute a slightly darker variant for hover states
+        root.style.setProperty('--teal', d.accentColor);
+        root.style.setProperty('--teal2', d.accentColor + 'cc');
+        root.style.setProperty('--grad', `linear-gradient(135deg,${d.accentColor} 0%,${d.accentColor}bb 100%)`);
+      }
+
+      // Announcement banner
+      let bannerEl = document.getElementById('announcement-banner');
+      if (d.showBanner && d.bannerText) {
+        if (!bannerEl) {
+          bannerEl = document.createElement('div');
+          bannerEl.id = 'announcement-banner';
+          bannerEl.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--teal);color:#fff;text-align:center;padding:.55rem 3rem .55rem 1rem;font-size:.82rem;font-weight:600;letter-spacing:.02em;box-shadow:0 2px 12px rgba(0,0,0,.15)';
+          document.body.prepend(bannerEl);
+        }
+        const inner = d.bannerLink
+          ? `<a href="${d.bannerLink}" target="_blank" style="color:#fff;text-decoration:underline">${d.bannerText}</a>`
+          : d.bannerText;
+        bannerEl.innerHTML = `${inner}<button onclick="this.parentElement.remove()" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center">✕</button>`;
+        // Push nav down so banner doesn't overlap
+        const nav = document.getElementById('nav');
+        if (nav) nav.style.top = '36px';
+      } else if (bannerEl) {
+        bannerEl.remove();
+        const nav = document.getElementById('nav');
+        if (nav) nav.style.top = '0';
+      }
+
+      // Maintenance mode overlay
+      let maintEl = document.getElementById('maintenance-overlay');
+      if (d.maintenance) {
+        if (!maintEl) {
+          maintEl = document.createElement('div');
+          maintEl.id = 'maintenance-overlay';
+          maintEl.style.cssText = 'position:fixed;inset:0;background:rgba(10,15,30,.97);z-index:9998;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;text-align:center;padding:2rem';
+          maintEl.innerHTML = `
+        <div style="font-size:3rem">🔧</div>
+        <h2 style="font-size:1.6rem;font-weight:800;color:#e2eaf8">${d.maintenanceMsg || 'Site under maintenance. Back soon!'}</h2>
+        <p style="color:#7a90b8;max-width:400px">We're making improvements. Please check back shortly.</p>`;
+          document.body.appendChild(maintEl);
+        }
+      } else if (maintEl) {
+        maintEl.remove();
+      }
+    });
+
+    /* ════════════════════════════════════════
+       8. HERO SECTION — live text from site/heroSection
+       ════════════════════════════════════════ */
+    onSnapshot(doc(db, 'site', 'heroSection'), snap => {
+      if (!snap.exists()) return;
+      const d = snap.data();
+
+      if (d.line1) {
+        // Update heading first text node (before <span>)
+        const heading = document.querySelector('.hero-heading');
+        if (heading) {
+          const firstNode = [...heading.childNodes].find(n => n.nodeType === 3);
+          if (firstNode) firstNode.textContent = d.line1 + '';
+        }
+      }
+      if (d.heroName) {
+        const nameEl = document.getElementById('heroName');
+        if (nameEl) nameEl.textContent = d.heroName;
+      }
+      if (d.bio) {
+        const bioEl = document.querySelector('.hero-bio');
+        if (bioEl) bioEl.innerHTML = d.bio;
+      }
+      if (d.btn1) {
+        const b1 = document.querySelector('.hero-btns .btn-primary');
+        if (b1) b1.childNodes[0].textContent = d.btn1;
+      }
+      if (d.btn2) {
+        const b2 = document.getElementById('hireMeBtn');
+        if (b2) b2.childNodes[0].textContent = d.btn2;
+      }
+      // Update typewriter roles in app.js via global variable
+      if (d.roles && d.roles.length) {
+        window._heroRoles = d.roles;
+      }
+    });
+
+    /* ════════════════════════════════════════
+       9. TESTIMONIALS — dynamic from Firestore
+       ════════════════════════════════════════ */
+    const STATIC_TESTIS = [
+      { name: 'Antony', role: 'Student at SHC', message: 'Really good to see this. God may bless you abundantly and by His grace you can achieve a lot. Really really hats off you. BASKAR', stars: 5, avatar: 'A' },
+      { name: 'Shalini', role: 'Student at SHC', message: 'Congratulations for your success and keep rocking by your skills. I wish you to achieve & continue the successful path.', stars: 4, avatar: 'S' },
+      { name: 'Christhu Raj', role: 'Senior Software Engineer', message: 'Nice Tony, you really created a nice Profile. The design is clean and professional, and it showcases your skills effectively.', stars: 4, avatar: 'C' },
+    ];
+
+    function buildTestiHTML(t, i) {
+      const fullStars = '★'.repeat(t.stars || 4);
+      const emptyStars = '☆'.repeat(5 - (t.stars || 4));
+      return `
+  <div class="testi-card glass ios-fade-up" style="--d:${i * 0.08}s">
+    <div class="testi-quote">"</div>
+    <div class="testi-stars">${fullStars}${emptyStars}</div>
+    <p>"${t.message || ''}"</p>
+    <div class="testi-person">
+      <div class="t-av">${t.avatar || (t.name || '?')[0].toUpperCase()}</div>
+      <div><strong>${t.name || '–'}</strong><span>${t.role || ''}</span></div>
+    </div>
+  </div>`;
+    }
+
+    const testiGrid = document.querySelector('.testi-grid');
+    onSnapshot(query(collection(db, 'testimonials'), orderBy('createdAt', 'asc')), snap => {
+      const fbItems = snap.docs.map(d => d.data());
+      const all = snap.empty ? STATIC_TESTIS : [...STATIC_TESTIS, ...fbItems];
+      if (testiGrid) {
+        testiGrid.innerHTML = all.map((t, i) => buildTestiHTML(t, i)).join('');
+        window.observeStagger && window.observeStagger();
+        // Re-run reveal observer on new items
+        testiGrid.querySelectorAll('.ios-fade-up').forEach(el => {
+          el.classList.remove('in');
+          setTimeout(() => el.classList.add('in'), parseInt(el.style.getPropertyValue('--d') || '0') * 1000);
+        });
+      }
+    }, () => {
+      // fallback — static already in HTML
+    });
+
+    /* ════════════════════════════════════════
+       10. CERTIFICATES — dynamic from Firestore
+       ════════════════════════════════════════ */
+    onSnapshot(query(collection(db, 'certificates'), orderBy('createdAt', 'asc')), snap => {
+      if (snap.empty) return; // static certs already in HTML track
+      const track = document.getElementById('certTrack');
+      if (!track) return;
+
+      // Remove previously injected FB cert cards
+      track.querySelectorAll('.cert-card[data-fb="1"]').forEach(el => el.remove());
+
+      snap.docs.forEach(d => {
+        const cert = d.data();
+        const card = document.createElement('div');
+        card.className = 'cert-card glass';
+        card.dataset.fb = '1';
+        card.innerHTML = `
+      <div class="cert-img-wrap">
+        <img src="${cert.imageUrl || ''}" alt="${cert.title || 'Certificate'}" loading="lazy" class="lightbox-trigger"/>
+      </div>
+      <div class="cert-body">
+        <h4>${cert.title || '–'}</h4>
+        <p>${cert.description || ''}</p>
+      </div>`;
+        track.appendChild(card);
+      });
+
+      window.initLightbox && window.initLightbox();
+      // Re-init carousel dots after adding cards
+      const dotsW = document.getElementById('certDots');
+      if (dotsW) {
+        const cards = track.querySelectorAll('.cert-card');
+        dotsW.innerHTML = '';
+        cards.forEach((_, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'cert-dot' + (i === 0 ? ' active' : '');
+          btn.setAttribute('aria-label', `Certificate ${i + 1}`);
+          dotsW.appendChild(btn);
+        });
+      }
+    });
+
+    /* ════════════════════════════════════════
+       11. TIMELINE — dynamic from Firestore (optional override)
+       ════════════════════════════════════════ */
+    const tlTrack = document.querySelector('.tl-track');
+    onSnapshot(query(collection(db, 'timeline'), orderBy('createdAt', 'asc')), snap => {
+      if (snap.empty || !tlTrack) return;
+
+      const typeColors = { education: 'tl-teal', work: 'tl-gold', achievement: 'tl-gold' };
+
+      snap.docs.forEach((d, i) => {
+        const tl = d.data();
+        // Check not already in static HTML by matching title
+        const exists = [...tlTrack.querySelectorAll('.tl-content h4')]
+          .some(el => el.textContent.trim().toLowerCase().includes((tl.title || '').trim().toLowerCase()));
+        if (exists) return;
+
+        const item = document.createElement('div');
+        item.className = 'tl-item';
+        item.dataset.fb = '1';
+        item.innerHTML = `
+      <div class="tl-dot ${typeColors[tl.type] || 'tl-teal'}"></div>
+      <div class="tl-content">
+        <span class="tl-yr">${tl.year || ''}</span>
+        <h4>${tl.title || '–'}</h4>
+        <p>${tl.description || ''}${tl.highlight ? ` <strong>${tl.highlight}</strong>` : ''}</p>
+      </div>`;
+        tlTrack.appendChild(item);
+      });
+    });
+
+    /* ════════════════════════════════════════
+       12. UPDATES FEED — from admin Updates/Blog
+       ════════════════════════════════════════ */
+    const CAT_COLORS_FE = {
+      achievement: '#d97706', project: '#0077a8',
+      learning: '#059669', event: '#7c3aed', general: '#7a95b8'
+    };
+    const CAT_LABELS = {
+      achievement: '🏆 Achievement', project: '🚀 Project',
+      learning: '📚 Learning', event: '🎤 Event', general: '💬 General'
+    };
+
+    const updatesFeed = document.getElementById('updatesFeed');
+    const updatesSection = document.getElementById('updates');
+
+    onSnapshot(query(collection(db, 'updates'), orderBy('createdAt', 'desc')), snap => {
+      // Hide section if no published updates
+      const published = snap.docs.filter(d => d.data().status !== 'draft');
+      if (!published.length) {
+        if (updatesSection) updatesSection.style.display = 'none';
+        return;
+      }
+      if (updatesSection) updatesSection.style.display = '';
+      if (!updatesFeed) return;
+
+      updatesFeed.innerHTML = published.slice(0, 6).map((d, i) => {
+        const u = d.data();
+        const color = CAT_COLORS_FE[u.category] || '#7a95b8';
+        const label = CAT_LABELS[u.category] || '💬 General';
+        const ts = u.createdAt?.toDate?.()?.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) || '';
+        const isLast = i === published.slice(0, 6).length - 1;
+        return `
+    <div class="update-card ios-stagger" style="--si:${i}">
+      <div class="update-dot-wrap">
+        <div class="update-dot" style="background:${color}"></div>
+        ${!isLast ? '<div class="update-line"></div>' : ''}
+      </div>
+      <div class="update-feed-body">
+        <span class="update-feed-cat" style="color:${color}">${label}</span>
+        <div class="update-feed-title">${u.title || ''}</div>
+        ${u.body ? `<div class="update-feed-body-text">${u.body}</div>` : ''}
+        <div class="update-feed-date">${ts}</div>
+      </div>
+    </div>`;
+      }).join('');
+
+      window.observeStagger && window.observeStagger();
+    }, () => {
+      if (updatesSection) updatesSection.style.display = 'none';
+    });
+
+    /* ════════════════════════════════════════
+       13. SOCIAL LINKS — dynamic from admin
+       ════════════════════════════════════════ */
+    onSnapshot(query(collection(db, 'socialLinks'), orderBy('order', 'asc')), snap => {
+      if (snap.empty) return; // default links already in HTML
+      const visibleLinks = snap.docs.filter(d => d.data().visible !== false);
+      if (!visibleLinks.length) return;
+
+      // Update hero socials
+      const heroSocials = document.querySelector('.hero-socials');
+      if (heroSocials) {
+        const existing = heroSocials.innerHTML;
+        visibleLinks.forEach(d => {
+          const s = d.data();
+          if (!s.url) return;
+          // Only add if not already present (by URL match)
+          if (!existing.includes(s.url)) {
+            const a = document.createElement('a');
+            a.href = s.url; a.target = '_blank';
+            a.className = 'social-btn'; a.setAttribute('aria-label', s.platform);
+            a.innerHTML = `<span style="font-size:1rem">${s.icon || '🔗'}</span>`;
+            heroSocials.appendChild(a);
+          }
+        });
+      }
+
+      // Update contact social row
+      const contactRow = document.querySelector('.contact-social-row');
+      if (contactRow) {
+        visibleLinks.forEach(d => {
+          const s = d.data();
+          if (!s.url) return;
+          if (!contactRow.querySelector(`[href="${s.url}"]`)) {
+            const a = document.createElement('a');
+            a.href = s.url; a.target = '_blank';
+            a.className = 'cs-btn glass';
+            a.textContent = s.icon || s.platform?.slice(0, 2) || '🔗';
+            contactRow.appendChild(a);
+          }
+        });
       }
     });
   </script>

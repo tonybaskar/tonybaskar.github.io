@@ -154,7 +154,7 @@ if (hamburger && drawer) {
 (function initTypewriter() {
   const el = document.getElementById('roleType');
   if (!el) return;
-  const roles = [
+  const DEFAULT_ROLES = [
     'Tech Enthusiast',
     'Technical Trainer',
     'Computer Vision Dev',
@@ -163,7 +163,10 @@ if (hamburger && drawer) {
     'Gold Medalist 🥇',
   ];
   let ri = 0, ci = 0, deleting = false;
+  function getRoles() { return (window._heroRoles && window._heroRoles.length) ? window._heroRoles : DEFAULT_ROLES; }
   function tick() {
+    const roles = getRoles();
+    if (ri >= roles.length) ri = 0;
     const cur = roles[ri];
     if (!deleting) {
       el.textContent = cur.slice(0, ++ci);

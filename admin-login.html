@@ -11,88 +11,143 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* ── matches index.html palette ── */
+    :root {
+      --bg: #fffbea;
+      --bg2: #fff8d6;
+      --bg3: #fdf3c0;
+      --glass: rgba(255, 251, 220, 0.82);
+      --glass-b: rgba(0, 100, 160, 0.14);
+      --teal: #0077a8;
+      --teal2: #009dc4;
+      --text: #0d1f3c;
+      --muted: #3a5275;
+      --dim: #7a95b8;
+      --grad: linear-gradient(135deg, #0077a8, #009dc4);
+      --red: #dc2626;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      font-size: 16px
+    }
+
     body {
+      font-family: 'Inter', sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 119, 168, .07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 157, 196, .05) 0%, transparent 60%);
+      color: var(--text);
+      padding: 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none
+    }
+
+    input {
+      font-family: inherit
+    }
+
+    ::selection {
+      background: rgba(0, 119, 168, .2);
+      color: var(--text)
     }
 
     .login-wrap {
       width: 100%;
-      max-width: 420px;
-      padding: 2rem 1.5rem;
+      max-width: 420px
     }
 
     .login-card {
-      background: var(--glass);
+      background: rgba(255, 251, 220, .9);
+      backdrop-filter: blur(20px) saturate(150%);
       border: 1px solid var(--glass-b);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 2.5rem 2rem;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+      box-shadow: 0 16px 56px rgba(0, 30, 80, .12), 0 1px 0 rgba(255, 255, 255, .8) inset;
     }
 
     .login-logo {
       font-size: 2rem;
       font-weight: 900;
-      color: var(--teal);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       letter-spacing: -.03em;
       display: block;
       text-align: center;
       margin-bottom: .25rem;
     }
 
-    .login-logo span {
-      color: var(--teal-light);
-    }
-
     .login-sub {
       text-align: center;
       color: var(--muted);
-      font-size: .85rem;
-      margin-bottom: 2rem;
+      font-size: .82rem;
+      margin-bottom: 2rem
     }
 
     .login-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--txt);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
       text-align: center;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.75rem
     }
 
     .lf {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.2rem
     }
 
     .lf label {
       display: block;
-      font-size: .75rem;
-      font-weight: 600;
+      font-size: .71rem;
+      font-weight: 700;
       color: var(--muted);
       letter-spacing: .06em;
       text-transform: uppercase;
-      margin-bottom: .45rem;
+      margin-bottom: .4rem;
     }
 
     .lf input {
       width: 100%;
       padding: .85rem 1rem;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(0, 180, 216, .15);
+      background: #fff;
+      border: 1.5px solid rgba(0, 100, 160, .16);
       border-radius: 12px;
-      color: var(--txt);
-      font-size: .95rem;
-      font-family: inherit;
+      color: var(--text);
+      font-size: .93rem;
       transition: border-color .2s, box-shadow .2s;
       outline: none;
     }
 
     .lf input:focus {
       border-color: var(--teal);
-      box-shadow: 0 0 0 3px rgba(0, 180, 216, .12);
+      box-shadow: 0 0 0 3px rgba(0, 119, 168, .1);
+    }
+
+    .lf input::placeholder {
+      color: var(--dim)
     }
 
     .login-btn {
@@ -104,75 +159,91 @@
       border-radius: 12px;
       color: #fff;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: .95rem;
       font-family: inherit;
       cursor: pointer;
-      transition: opacity .2s, transform .15s;
+      transition: all .22s;
+      box-shadow: 0 4px 18px rgba(0, 119, 168, .28);
     }
 
     .login-btn:hover {
-      opacity: .88;
+      opacity: .9;
       transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 119, 168, .35)
     }
 
     .login-btn:active {
-      transform: translateY(0);
+      transform: translateY(0)
     }
 
     .login-btn:disabled {
-      opacity: .45;
+      opacity: .5;
       cursor: not-allowed;
+      transform: none;
+      box-shadow: none
     }
 
     .login-err {
       margin-top: 1rem;
-      padding: .75rem 1rem;
-      background: rgba(239, 68, 68, .1);
-      border: 1px solid rgba(239, 68, 68, .3);
+      padding: .72rem 1rem;
+      background: rgba(220, 38, 38, .08);
+      border: 1px solid rgba(220, 38, 38, .22);
       border-radius: 10px;
-      color: #fca5a5;
-      font-size: .83rem;
+      color: var(--red);
+      font-size: .82rem;
       text-align: center;
       display: none;
     }
 
     .login-back {
       text-align: center;
-      margin-top: 1.5rem;
+      margin-top: 1.4rem
     }
 
     .login-back a {
       color: var(--teal);
-      font-size: .85rem;
-      text-decoration: none;
+      font-size: .83rem;
+      font-weight: 500;
+      transition: opacity .2s
     }
 
     .login-back a:hover {
-      text-decoration: underline;
+      opacity: .75
     }
 
     .glow-bg {
       position: fixed;
       pointer-events: none;
       border-radius: 50%;
-      filter: blur(100px);
-      z-index: 0;
+      filter: blur(90px);
+      z-index: 0
     }
 
     .glow-bg.g1 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(0, 180, 216, .08) 0%, transparent 70%);
-      top: -100px;
-      right: -100px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(0, 119, 168, .07) 0%, transparent 70%);
+      top: -80px;
+      right: -80px
     }
 
     .glow-bg.g2 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 150, 199, .06) 0%, transparent 70%);
-      bottom: -80px;
-      left: -80px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(0, 100, 150, .05) 0%, transparent 70%);
+      bottom: -60px;
+      left: -60px
+    }
+
+    @media(max-width:480px) {
+      .login-card {
+        padding: 1.75rem 1.35rem;
+        border-radius: 18px
+      }
+
+      .login-logo {
+        font-size: 1.65rem
+      }
     }
   </style>
 </head>
@@ -213,6 +284,7 @@
       messagingSenderId: "419892432323",
       appId: "1:419892432323:web:c185c92ddc458427c10176"
     };
+
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
